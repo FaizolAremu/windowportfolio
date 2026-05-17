@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 11 Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Boot Screen -->
+    <div id="boot-screen" class="screen">
+        <div class="logo-container">
+            <svg viewBox="0 0 88 88" width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="42" height="42" fill="#F25022" />
+                <rect x="46" y="0" width="42" height="42" fill="#7FBA00" />
+                <rect x="0" y="46" width="42" height="42" fill="#00A4EF" />
+                <rect x="46" y="46" width="42" height="42" fill="#FFB900" />
+            </svg>
+        </div>
+        <div class="spinner">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <!-- Lock Screen -->
+    <div id="lock-screen" class="screen hidden">
+        <div class="lock-info">
+            <h1 id="time-display">10:45</h1>
+            <p id="date-display">Monday, May 17</p>
+        </div>
+        <div class="unlock-hint">
+            <p>Click or press any key to unlock</p>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen hidden">
+        <div class="login-wrapper">
+            <div class="avatar" id="avatar-display">FA</div>
+            <h2 id="name-display">Faizol Aremu</h2>
+            <form id="login-form">
+                <div class="input-wrapper">
+                    <input type="password" id="password-input" placeholder="PIN" required />
+                    <button type="submit" id="submit-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Desktop Screen -->
+    <div id="desktop-screen" class="screen hidden">
+        <!-- Dual layer background for smooth fade -->
+        <div id="desktop-bg-layer1" class="desktop-bg"></div>
+        <div id="desktop-bg-layer2" class="desktop-bg hidden-bg"></div>
+
+        <!-- Desktop Icons Grid -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" data-app="My Projects">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                <span>My Projects</span>
+            </div>
+            <div class="desktop-icon" data-app="Resume">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <span>Resume</span>
+            </div>
+            <div class="desktop-icon" data-app="About Me">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <span>About Me</span>
+            </div>
+            <div class="desktop-icon" data-app="Skills">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <span>Skills</span>
+            </div>
+            <div class="desktop-icon" data-app="Terminal">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>
+                <span>Terminal</span>
+            </div>
+            <div class="desktop-icon" data-app="GitHub">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#FFF"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                <span>GitHub</span>
+            </div>
+            <div class="desktop-icon" data-app="Settings">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#888"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                <span>Settings</span>
+            </div>
+            <div class="desktop-icon" data-app="Recycle Bin">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#aaa"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <span>Recycle Bin</span>
+            </div>
+        </div>
+
+        <!-- Context Menu -->
+        <div id="context-menu" class="context-menu hidden">
+            <div class="menu-item" data-action="view">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <span>View</span>
+                <span class="arrow">›</span>
+            </div>
+            <div class="menu-item" data-action="refresh">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                <span>Refresh</span>
+            </div>
+            <hr class="menu-divider" />
+            <div class="menu-item" data-action="display-settings">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-2-2H5V7h14v10z"/></svg>
+                <span>Display Settings</span>
+            </div>
+            <div class="menu-item" data-action="personalize">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                <span>Personalize</span>
+            </div>
+        </div>
+
+        <!-- Personalize Panel -->
+        <div id="personalize-panel" class="window hidden">
+            <div class="window-header">
+                <div class="window-title">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="#0078D4"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    <span>Personalization > Background</span>
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn close-btn" id="close-personalize">✕</button>
+                </div>
+            </div>
+            <div class="window-body">
+                <h3>Choose a wallpaper</h3>
+                <div class="wallpaper-grid" id="wallpaper-grid">
+                    <!-- Thumbnails generated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
