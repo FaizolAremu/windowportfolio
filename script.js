@@ -416,5 +416,92 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.remove('active');
             }
         });
+        });
+    });
+
+    // 13. Window Manager (Dragging)
+    let activeWindow = null;
+    let isDragging = false;
+    let dragOffsetX = 0;
+    let dragOffsetY = 0;
+
+    document.querySelectorAll('.window-header').forEach(header => {
+        header.addEventListener('mousedown', (e) => {
+            if (e.target.closest('.window-controls')) return; // Don't drag if clicking buttons
+            const win = header.closest('.app-window') || header.closest('.window');
+            if (!win) return;
+            
+            isDragging = true;
+            activeWindow = win;
+            
+            // Bring to front
+            document.querySelectorAll('.app-window, .window').forEach(w => w.style.zIndex = 500);
+            activeWindow.style.zIndex = 501;
+
+            const rect = activeWindow.getBoundingClientRect();
+            dragOffsetX = e.clientX - rect.left;
+            dragOffsetY = e.clientY - rect.top;
+        });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging || !activeWindow) return;
+        
+        // Remove transform if it exists (for legacy .window)
+        if (activeWindow.style.transform) {
+            activeWindow.style.transform = 'none';
+        }
+
+        activeWindow.style.left = `${e.clientX - dragOffsetX}px`;
+        activeWindow.style.top = `${e.clientY - dragOffsetY}px`;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+        activeWindow = null;
+    });
+
+    // 14. Settings App Logic
+    const settingsAppBtn = document.getElementById('settings-app-btn');
+    const settingsApp = document.getElementById('settings-app');
+
+    if (settingsAppBtn && settingsApp) {
+        settingsAppBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            settingsApp.classList.remove('hidden');
+            // Center it on first open if it hasn't been dragged
+            if (!settingsApp.style.left) {
+                settingsApp.style.left = `${(window.innerWidth - 800) / 2}px`;
+                settingsApp.style.top = `${(window.innerHeight - 550) / 2}px`;
+            }
+            // Bring to front
+            document.querySelectorAll('.app-window, .window').forEach(w => w.style.zIndex = 500);
+            settingsApp.style.zIndex = 501;
+            
+            // close quick settings
+            document.getElementById('quick-settings-panel').classList.add('hidden');
+            document.getElementById('quick-settings-panel').classList.remove('active');
+        });
+    }
+
+    const settingsNavItems = document.querySelectorAll('.settings-nav-item');
+    const settingsPages = document.querySelectorAll('.settings-page');
+
+    settingsNavItems.forEach(item => {
+        item.addEventListener('click', () => {
+            // Update active nav
+            settingsNavItems.forEach(nav => nav.classList.remove('active'));
+            item.classList.add('active');
+
+            // Update active page
+            const targetPageId = item.getAttribute('data-page');
+            settingsPages.forEach(page => {
+                if (page.id === targetPageId) {
+                    page.classList.add('active');
+                } else {
+                    page.classList.remove('active');
+                }
+            });
+        });
     });
 });
