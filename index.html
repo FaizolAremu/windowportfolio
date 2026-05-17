@@ -139,6 +139,74 @@
                 </div>
             </div>
         </div>
+
+        <!-- Taskbar -->
+        <div id="taskbar" class="taskbar">
+            <div class="taskbar-center">
+                <div class="taskbar-icon start-btn" id="start-btn">
+                    <svg viewBox="0 0 88 88" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0" y="0" width="40" height="40" fill="#0078D4" />
+                        <rect x="44" y="0" width="40" height="40" fill="#0078D4" />
+                        <rect x="0" y="44" width="40" height="40" fill="#0078D4" />
+                        <rect x="44" y="44" width="40" height="40" fill="#0078D4" />
+                    </svg>
+                </div>
+                <div class="taskbar-icon search-btn" id="search-btn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                </div>
+                <!-- Pinned Apps -->
+                <div class="taskbar-icon app-btn" data-app="My Projects" title="My Projects">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                    <div class="indicator"></div>
+                </div>
+                <div class="taskbar-icon app-btn" data-app="Resume" title="Resume">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                    <div class="indicator"></div>
+                </div>
+                <div class="taskbar-icon app-btn" data-app="About Me" title="About Me">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <div class="indicator"></div>
+                </div>
+                <div class="taskbar-icon app-btn" data-app="Skills" title="Skills">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    <div class="indicator"></div>
+                </div>
+                <div class="taskbar-icon app-btn" data-app="Terminal" title="Terminal">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>
+                    <div class="indicator"></div>
+                </div>
+                <div class="taskbar-icon app-btn" data-app="Settings" title="Settings">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#888"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                    <div class="indicator"></div>
+                </div>
+            </div>
+            <div class="taskbar-right">
+                <div class="tray-icons">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon"><path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/></svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                </div>
+                <div class="tray-time" id="tray-time-btn" title="Monday, May 17, 2026">
+                    <div id="taskbar-time">10:45 AM</div>
+                    <div id="taskbar-date">5/17/2026</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar / Clock Panel -->
+        <div id="calendar-panel" class="sys-panel hidden">
+            <div class="calendar-header">
+                <h2 id="calendar-date-display">Monday, May 17, 2026</h2>
+            </div>
+            <div class="calendar-body">
+                <div class="calendar-grid-header">
+                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                </div>
+                <div class="calendar-grid" id="cal-days-container">
+                    <!-- Days generated by JS -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>

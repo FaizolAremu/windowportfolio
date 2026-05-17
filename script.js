@@ -214,4 +214,91 @@ document.addEventListener('DOMContentLoaded', () => {
             i.style.border = '1px solid transparent';
         });
     });
+
+    // 11. Taskbar Clock & Calendar
+    const taskbarTime = document.getElementById('taskbar-time');
+    const taskbarDate = document.getElementById('taskbar-date');
+    const trayTimeBtn = document.getElementById('tray-time-btn');
+    const calendarPanel = document.getElementById('calendar-panel');
+
+    function updateTaskbarTime() {
+        const now = new Date();
+        let hours = now.getHours();
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // '0' should be '12'
+        
+        taskbarTime.textContent = `${hours}:${minutes} ${ampm}`;
+        taskbarDate.textContent = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
+        
+        const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+        trayTimeBtn.title = now.toLocaleDateString('en-US', options);
+        document.getElementById('calendar-date-display').textContent = now.toLocaleDateString('en-US', options);
+    }
+    setInterval(updateTaskbarTime, 1000);
+    updateTaskbarTime();
+
+    // Render Calendar Grid
+    function renderCalendar() {
+        const calGrid = document.getElementById('cal-days-container');
+        if (!calGrid) return;
+        calGrid.innerHTML = '';
+        
+        const now = new Date();
+        const firstDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
+        const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+        
+        for(let i=0; i<firstDay; i++) {
+            const empty = document.createElement('div');
+            calGrid.appendChild(empty);
+        }
+        
+        for(let i=1; i<=daysInMonth; i++) {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = `cal-day ${i === now.getDate() ? 'today' : ''}`;
+            dayDiv.textContent = i;
+            calGrid.appendChild(dayDiv);
+        }
+    }
+    renderCalendar();
+
+    trayTimeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        calendarPanel.classList.remove('hidden');
+        setTimeout(() => {
+            calendarPanel.classList.toggle('active');
+        }, 10);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!calendarPanel.contains(e.target) && !trayTimeBtn.contains(e.target)) {
+            calendarPanel.classList.remove('active');
+            setTimeout(() => {
+                if (!calendarPanel.classList.contains('active')) {
+                    calendarPanel.classList.add('hidden');
+                }
+            }, 200);
+        }
+    });
+
+    // 12. Taskbar App Toggles
+    const startBtn = document.getElementById('start-btn');
+    startBtn.addEventListener('click', () => {
+        console.log("Start Menu toggled!");
+    });
+
+    document.querySelectorAll('.app-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Toggle open state
+            btn.classList.toggle('open');
+            // Toggle active state
+            if (btn.classList.contains('open')) {
+                document.querySelectorAll('.app-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+    });
 });
