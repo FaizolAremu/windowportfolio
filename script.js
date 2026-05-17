@@ -280,6 +280,57 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 200);
         }
+        if (!quickSettingsPanel.contains(e.target) && !trayIconsBtn.contains(e.target)) {
+            quickSettingsPanel.classList.remove('active');
+            setTimeout(() => {
+                if (!quickSettingsPanel.classList.contains('active')) {
+                    quickSettingsPanel.classList.add('hidden');
+                }
+            }, 200);
+        }
+    });
+
+    // Quick Settings Panel Logic
+    const trayIconsBtn = document.getElementById('tray-icons-btn');
+    const quickSettingsPanel = document.getElementById('quick-settings-panel');
+
+    trayIconsBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        quickSettingsPanel.classList.remove('hidden');
+        setTimeout(() => quickSettingsPanel.classList.toggle('active'), 10);
+    });
+
+    // Range Sliders Logic
+    const volumeSlider = document.getElementById('volume-slider');
+    const volumePct = document.getElementById('volume-pct');
+    const brightnessSlider = document.getElementById('brightness-slider');
+    const brightnessPct = document.getElementById('brightness-pct');
+
+    function updateSliderBackground(slider) {
+        const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+        slider.style.setProperty('--val', `${val}%`);
+    }
+
+    volumeSlider.addEventListener('input', (e) => {
+        updateSliderBackground(e.target);
+        volumePct.textContent = e.target.value;
+    });
+    updateSliderBackground(volumeSlider);
+
+    brightnessSlider.addEventListener('input', (e) => {
+        updateSliderBackground(e.target);
+        brightnessPct.textContent = e.target.value;
+        const brightnessVal = e.target.value / 100; // 0.1 to 1.0
+        document.getElementById('desktop-bg-layer1').style.filter = `brightness(${brightnessVal})`;
+        document.getElementById('desktop-bg-layer2').style.filter = `brightness(${brightnessVal})`;
+    });
+    updateSliderBackground(brightnessSlider);
+
+    // QS Buttons toggle
+    document.querySelectorAll('.qs-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            btn.classList.toggle('active');
+        });
     });
 
     // 12. Taskbar App Toggles

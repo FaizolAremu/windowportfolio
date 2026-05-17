@@ -668,3 +668,129 @@ body {
     background: #0078D4;
     color: white;
 }
+
+/* Quick Settings Panel */
+#quick-settings-panel {
+    width: 360px;
+    right: 15px; /* same as calendar */
+}
+
+.qs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 10px;
+    margin-bottom: 25px;
+}
+
+.qs-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.qs-icon {
+    width: 95px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s, border 0.2s;
+    margin-bottom: 8px;
+}
+
+.qs-btn:hover .qs-icon {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.qs-btn.active .qs-icon {
+    background: #0078D4;
+    border-color: #0078D4;
+}
+
+.qs-btn span {
+    font-size: 11px;
+    text-align: center;
+}
+
+.qs-sliders {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.slider-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slider-row svg {
+    min-width: 16px;
+}
+
+input[type=range] {
+    --track-color: #0078D4;
+    --track-bg: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(to right, var(--track-color) 0%, var(--track-color) var(--val, 65%), var(--track-bg) var(--val, 65%), var(--track-bg) 100%);
+    height: 4px;
+    border-radius: 2px;
+    border: none;
+    -webkit-appearance: none;
+    width: 100%;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: transparent;
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #0078D4;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -6px;
+    box-shadow: 0 0 0 4px rgba(32, 32, 32, 1);
+    transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.qs-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.qs-battery-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.qs-settings-btn {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+.qs-settings-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
