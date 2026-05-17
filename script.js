@@ -317,21 +317,86 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     updateSliderBackground(volumeSlider);
 
+    const desktopBgLayer1 = document.getElementById('desktop-bg-layer1');
+    const desktopBgLayer2 = document.getElementById('desktop-bg-layer2');
+    
+    let currentBrightness = 1.0;
+    let isNightLightOn = false;
+
+    function updateDesktopFilters() {
+        let filterString = `brightness(${currentBrightness})`;
+        if (isNightLightOn) {
+            filterString += ` sepia(0.4) hue-rotate(-15deg) saturate(1.2)`;
+        }
+        desktopBgLayer1.style.filter = filterString;
+        desktopBgLayer2.style.filter = filterString;
+    }
+
     brightnessSlider.addEventListener('input', (e) => {
         updateSliderBackground(e.target);
         brightnessPct.textContent = e.target.value;
-        const brightnessVal = e.target.value / 100; // 0.1 to 1.0
-        document.getElementById('desktop-bg-layer1').style.filter = `brightness(${brightnessVal})`;
-        document.getElementById('desktop-bg-layer2').style.filter = `brightness(${brightnessVal})`;
+        currentBrightness = e.target.value / 100;
+        updateDesktopFilters();
     });
     updateSliderBackground(brightnessSlider);
 
-    // QS Buttons toggle
-    document.querySelectorAll('.qs-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('active');
+    // QS Buttons advanced toggle logic
+    const qsWifi = document.getElementById('qs-wifi');
+    const qsBluetooth = document.getElementById('qs-bluetooth');
+    const qsAirplane = document.getElementById('qs-airplane');
+    const qsBatterySaver = document.getElementById('qs-battery-saver');
+    const qsNightLight = document.getElementById('qs-night-light');
+    const qsAccessibility = document.getElementById('qs-accessibility');
+
+    if (qsNightLight) {
+        qsNightLight.addEventListener('click', () => {
+            qsNightLight.classList.toggle('active');
+            isNightLightOn = qsNightLight.classList.contains('active');
+            updateDesktopFilters();
         });
-    });
+    }
+
+    if (qsAirplane) {
+        qsAirplane.addEventListener('click', () => {
+            qsAirplane.classList.toggle('active');
+            if (qsAirplane.classList.contains('active')) {
+                if (qsWifi) qsWifi.classList.remove('active');
+                if (qsBluetooth) qsBluetooth.classList.remove('active');
+            }
+        });
+    }
+
+    if (qsWifi) {
+        qsWifi.addEventListener('click', () => {
+            qsWifi.classList.toggle('active');
+            if (qsWifi.classList.contains('active') && qsAirplane) qsAirplane.classList.remove('active');
+        });
+    }
+
+    if (qsBluetooth) {
+        qsBluetooth.addEventListener('click', () => {
+            qsBluetooth.classList.toggle('active');
+            if (qsBluetooth.classList.contains('active') && qsAirplane) qsAirplane.classList.remove('active');
+        });
+    }
+
+    if (qsBatterySaver) {
+        qsBatterySaver.addEventListener('click', () => {
+            qsBatterySaver.classList.toggle('active');
+            if (qsBatterySaver.classList.contains('active')) {
+                brightnessSlider.value = 40;
+            } else {
+                brightnessSlider.value = 100;
+            }
+            brightnessSlider.dispatchEvent(new Event('input'));
+        });
+    }
+
+    if (qsAccessibility) {
+        qsAccessibility.addEventListener('click', () => {
+            qsAccessibility.classList.toggle('active');
+        });
+    }
 
     // 12. Taskbar App Toggles
     const startBtn = document.getElementById('start-btn');
