@@ -20,6 +20,60 @@ const USER_CONFIG = {
 };
 
 /**
+ * RESUME CONFIGURATION
+ * Define all your professional data here.
+ * The Resume App dynamically renders this data and provides a printable view.
+ */
+const RESUME = {
+    name: "Faizol Aremu",
+    title: "Fullstack Developer",
+    email: "waliufaizol@gmail.com",
+    github: "https://github.com/faizolaremu",
+    linkedin: "https://linkedin.com/in/faizolaremu",
+    portfolio: "https://proxycowrywise.netlify.app/",
+    summary: "Ambitious Computer Science student at LAUTECH and Fullstack Developer Intern at SQI College of ICT. Extremely passionate about building modern, responsive, and highly interactive digital experiences. I integrate advanced AI tools into my engineering workflow to boost velocity, write cleaner code, and deliver premium products at speed.",
+    experience: [
+        {
+            company: "SQI College of ICT",
+            role: "Fullstack Developer Intern",
+            dateRange: "2024 - Present",
+            achievements: [
+                "Collaborate on building modern responsive web interfaces using JavaScript, CSS3, Tailwind CSS, and frontend frameworks.",
+                "Integrate generative AI tools into development workflows to accelerate coding velocity, optimize debug cycles, and structure clean modular files.",
+                "Acquire hands-on experience in backend architectures, database connectivity, API design, and fullstack application logic."
+            ]
+        },
+        {
+            company: "LAUTECH",
+            role: "Computer Science Undergraduate",
+            dateRange: "2021 - Present",
+            achievements: [
+                "Acquired deep theoretical foundations in data structures, algorithms, database systems, and software engineering methodologies.",
+                "Designed and built interactive personal and team web projects using vanilla HTML, CSS, and modular JavaScript structures.",
+                "Developed clean, modern UI layout prototypes using modern design tools like Figma before translating them into frontend code."
+            ]
+        }
+    ],
+    education: [
+        {
+            school: "Ladoke Akintola University of Technology (LAUTECH)",
+            degree: "B.Tech in Computer Science",
+            year: "2021 - Present"
+        },
+        {
+            school: "SQI College of ICT",
+            degree: "Professional Diploma in Software Engineering",
+            year: "2024 - Present"
+        }
+    ],
+    skills: {
+        languages: ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "SQL"],
+        frameworks: ["React.js", "Tailwind CSS", "Bootstrap", "Node.js", "Express.js"],
+        tools: ["Git & GitHub", "Figma", "VS Code", "AI Assistant Tools", "Postman", "PostgreSQL"]
+    }
+};
+
+/**
  * PROJECTS DATA
  * Easily add or edit projects here
  */
@@ -78,6 +132,43 @@ const PROJECTS = [
         demo: "https://github.com/faizolaremu",
         repo: "https://github.com/faizolaremu"
     }
+];
+
+/**
+ * Global Skills Configuration
+ * Used by the Skills App to render category-specific skill progress cards.
+ */
+const SKILLS = [
+    // Languages
+    { category: "Languages", name: "JavaScript", icon: "javascript", color: "#f7df1e", level: 90 },
+    { category: "Languages", name: "HTML5", icon: "html5", color: "#e34f26", level: 95 },
+    { category: "Languages", name: "CSS3", icon: "css3", color: "#1572b6", level: 92 },
+    { category: "Languages", name: "TypeScript", icon: "typescript", color: "#3178c6", level: 80 },
+    { category: "Languages", name: "SQL", icon: "database", color: "#0078d4", level: 75, fallback: "🛢️" },
+
+    // Frameworks & Libraries
+    { category: "Frameworks & Libraries", name: "React.js", icon: "react", color: "#61dafb", level: 88 },
+    { category: "Frameworks & Libraries", name: "Tailwind CSS", icon: "tailwindcss", color: "#38bdf8", level: 90 },
+    { category: "Frameworks & Libraries", name: "Bootstrap", icon: "bootstrap", color: "#7952b3", level: 85 },
+    { category: "Frameworks & Libraries", name: "Node.js", icon: "nodedotjs", color: "#339933", level: 78 },
+    { category: "Frameworks & Libraries", name: "Express.js", icon: "express", color: "#828282", level: 80, fallback: "🚀" },
+
+    // Tools & Platforms
+    { category: "Tools & Platforms", name: "Git & GitHub", icon: "git", color: "#f05032", level: 85 },
+    { category: "Tools & Platforms", name: "Figma", icon: "figma", color: "#f24e1e", level: 80 },
+    { category: "Tools & Platforms", name: "VS Code", icon: "visualstudiocode", color: "#007acc", level: 92 },
+    { category: "Tools & Platforms", name: "Postman", icon: "postman", color: "#ff6c37", level: 82 },
+
+    // Cloud & DevOps
+    { category: "Cloud & DevOps", name: "PostgreSQL", icon: "postgresql", color: "#4169e1", level: 70 },
+    { category: "Cloud & DevOps", name: "Vercel", icon: "vercel", color: "#ffffff", level: 85 },
+    { category: "Cloud & DevOps", name: "Netlify", icon: "netlify", color: "#00c7b7", level: 88 },
+
+    // Soft Skills
+    { category: "Soft Skills", name: "AI Workflows", icon: "openai", color: "#8a2be2", level: 95, fallback: "🤖" },
+    { category: "Soft Skills", name: "Problem Solving", icon: "puzzle", color: "#ff8c00", level: 90, fallback: "🧩" },
+    { category: "Soft Skills", name: "Collaboration", icon: "people", color: "#32cd32", level: 92, fallback: "🤝" },
+    { category: "Soft Skills", name: "Fast Learning", icon: "speed", color: "#ff007f", level: 95, fallback: "🚀" }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -889,6 +980,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (id === 'my-projects') {
             initProjectsApp(win);
         }
+        if (id === 'resume') {
+            initResumeApp(win);
+        }
+        if (id === 'about-me') {
+            initAboutMeApp(win);
+        }
+        if (id === 'skills') {
+            initSkillsApp(win);
+        }
 
         return win;
     };
@@ -1013,6 +1113,496 @@ document.addEventListener('DOMContentLoaded', () => {
         render('All Projects');
     }
 
+    // Initialize specific logic for Resume app
+    function initResumeApp(win) {
+        const docContainer = win.querySelector('.resume-document');
+        if (!docContainer) return;
+
+        // Render resume dynamically from RESUME config!
+        let expHTML = RESUME.experience.map(exp => `
+            <div class="resume-timeline-item">
+                <div class="resume-timeline-marker"></div>
+                <div class="resume-timeline-content">
+                    <div class="resume-job-header">
+                        <h4 class="resume-job-title">${exp.role}</h4>
+                        <span class="resume-job-date">${exp.dateRange}</span>
+                    </div>
+                    <div class="resume-company">${exp.company}</div>
+                    <ul class="resume-achievements">
+                        ${exp.achievements.map(ach => `<li>${ach}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+        `).join('');
+
+        let eduHTML = RESUME.education.map(edu => `
+            <div class="resume-education-item">
+                <div class="resume-edu-header">
+                    <h4 class="resume-school">${edu.school}</h4>
+                    <span class="resume-edu-year">${edu.year}</span>
+                </div>
+                <div class="resume-degree">${edu.degree}</div>
+            </div>
+        `).join('');
+
+        let skillsHTML = '';
+        for (const [cat, tags] of Object.entries(RESUME.skills)) {
+            const catName = cat.charAt(0).toUpperCase() + cat.slice(1);
+            const tagsHTML = tags.map(tag => `<span class="resume-skill-tag">${tag}</span>`).join('');
+            skillsHTML += `
+                <div class="resume-skills-group">
+                    <div class="resume-skills-category">${catName}</div>
+                    <div class="resume-skills-tags">${tagsHTML}</div>
+                </div>
+            `;
+        }
+
+        docContainer.innerHTML = `
+            <header class="resume-header">
+                <h1 class="resume-name">${RESUME.name}</h1>
+                <h2 class="resume-subtitle">${RESUME.title}</h2>
+                <div class="resume-links">
+                    <a href="mailto:${RESUME.email}" class="resume-link" title="Email" target="_blank">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>${RESUME.email}</span>
+                    </a>
+                    <a href="${RESUME.github}" class="resume-link" title="GitHub" target="_blank">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="${RESUME.linkedin}" class="resume-link" title="LinkedIn" target="_blank">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="${RESUME.portfolio}" class="resume-link" title="Portfolio" target="_blank">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                        <span>Portfolio</span>
+                    </a>
+                </div>
+            </header>
+            
+            <section class="resume-section">
+                <h3 class="resume-section-title">Professional Summary</h3>
+                <div class="resume-divider-line"></div>
+                <p class="resume-summary-text">${RESUME.summary}</p>
+            </section>
+            
+            <section class="resume-section">
+                <h3 class="resume-section-title">Experience</h3>
+                <div class="resume-divider-line"></div>
+                <div class="resume-timeline">
+                    ${expHTML}
+                </div>
+            </section>
+            
+            <section class="resume-section">
+                <h3 class="resume-section-title">Education</h3>
+                <div class="resume-divider-line"></div>
+                <div class="resume-education-list">
+                    ${eduHTML}
+                </div>
+            </section>
+            
+            <section class="resume-section">
+                <h3 class="resume-section-title">Skills</h3>
+                <div class="resume-divider-line"></div>
+                <div class="resume-skills-container">
+                    ${skillsHTML}
+                </div>
+            </section>
+        `;
+
+        // Handle Download / Print Button
+        const downloadBtn = win.querySelector('#resume-download-btn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.print();
+            });
+        }
+    }
+
+    // Initialize specific logic for About Me VS Code app
+    function initAboutMeApp(win) {
+        const fileItems = win.querySelectorAll('.vscode-file-item');
+        const codeContainer = win.querySelector('.vscode-code-content');
+        const linesContainer = win.querySelector('.vscode-line-numbers');
+        const activeTabName = win.querySelector('#vscode-active-tab');
+        const statusLines = win.querySelector('#vscode-status-lines');
+        const statusLang = win.querySelector('#vscode-status-lang');
+
+        const filesData = {
+            'about-me.md': {
+                lang: 'Markdown',
+                code: `# Faizol Aremu | Fullstack Developer
+
+## 🚀 The Mission
+I am a Computer Science student at LAUTECH and a Fullstack Developer Intern at SQI College of ICT. I don't just write code—I build responsive, modern, and highly interactive digital experiences that feel alive.
+
+## 🤖 Workflow & Velocity
+I integrate cutting-edge AI tools into my everyday development workflow to accelerate coding velocity, eliminate bugs, and structure premium products at lightspeed.
+
+## 🛠️ The Tech Stack
+- HTML5 & CSS3
+- Tailwind CSS
+- JavaScript (ES6+)
+- Responsive Clean UI Design
+- Growing knowledge in Frontend & Backend architectures
+
+Let's create something legendary together!`,
+                highlighted: `<span class="vs-md-h"># Faizol Aremu | Fullstack Developer</span>
+
+<span class="vs-md-h">## 🚀 The Mission</span>
+I am a Computer Science student at LAUTECH and a Fullstack Developer Intern at SQI College of ICT. I don't just write code—I build responsive, modern, and highly interactive digital experiences that feel alive.
+
+<span class="vs-md-h">## 🤖 Workflow & Velocity</span>
+I integrate cutting-edge AI tools into my everyday development workflow to accelerate coding velocity, eliminate bugs, and structure premium products at lightspeed.
+
+<span class="vs-md-h">## 🛠️ The Tech Stack</span>
+<span class="vs-md-bullet">-</span> HTML5 & CSS3
+<span class="vs-md-bullet">-</span> Tailwind CSS
+<span class="vs-md-bullet">-</span> JavaScript (ES6+)
+<span class="vs-md-bullet">-</span> Responsive Clean UI Design
+<span class="vs-md-bullet">-</span> Growing knowledge in Frontend & Backend architectures
+
+Let's create something legendary together!`
+            },
+            'fun-facts.md': {
+                lang: 'Markdown',
+                code: `# Beyond The Code
+
+- 🚀 Fast Learner: Growing knowledge in both frontend and backend architectures
+- 🤖 AI Enthusiast: Seamlessly integrates LLMs and AI tools to write cleaner code and deliver products 3x faster
+- 💡 Physics-based Motion: Obsessed with building web UI that feels alive and tactile
+- 🌟 Ambition: Chasing down complex challenges to shape the future of elegant web engineering`,
+                highlighted: `<span class="vs-md-h"># Beyond The Code</span>
+
+<span class="vs-md-bullet">-</span> 🚀 Fast Learner: Growing knowledge in both frontend and backend architectures
+<span class="vs-md-bullet">-</span> 🤖 AI Enthusiast: Seamlessly integrates LLMs and AI tools to write cleaner code and deliver products 3x faster
+<span class="vs-md-bullet">-</span> 💡 Physics-based Motion: Obsessed with building web UI that feels alive and tactile
+<span class="vs-md-bullet">-</span> 🌟 Ambition: Chasing down complex challenges to shape the future of elegant web engineering`
+            },
+            'contact.js': {
+                lang: 'JavaScript',
+                code: `// Let's create something legendary together!
+export const collaboration = {
+    email: "waliufaizol@gmail.com",
+    github: "https://github.com/faizolaremu",
+    linkedin: "https://linkedin.com/in/faizolaremu",
+    status: "Open to bold ideas, intern roles, & fullstack collaborations.",
+    action: "Let's connect and build the next big thing!"
+};`,
+                highlighted: `<span class="vs-comment">// Let's create something legendary together!</span>
+<span class="vs-keyword">export</span> <span class="vs-keyword">const</span> <span class="vs-property">collaboration</span> <span class="vs-punct">=</span> <span class="vs-punct">{</span>
+    <span class="vs-property">email</span><span class="vs-punct">:</span> <span class="vs-string">"waliufaizol@gmail.com"</span><span class="vs-punct">,</span>
+    <span class="vs-property">github</span><span class="vs-punct">:</span> <span class="vs-string">"https://github.com/faizolaremu"</span><span class="vs-punct">,</span>
+    <span class="vs-property">linkedin</span><span class="vs-punct">:</span> <span class="vs-string">"https://linkedin.com/in/faizolaremu"</span><span class="vs-punct">,</span>
+    <span class="vs-property">status</span><span class="vs-punct">:</span> <span class="vs-string">"Open to bold ideas, intern roles, & fullstack collaborations."</span><span class="vs-punct">,</span>
+    <span class="vs-property">action</span><span class="vs-punct">:</span> <span class="vs-string">"Let's connect and build the next big thing!"</span>
+<span class="vs-punct">}</span><span class="vs-punct">;</span>`
+            }
+        };
+
+        function loadFile(fileName) {
+            const data = filesData[fileName];
+            if (!data) return;
+
+            // Highlighted content + cursor
+            codeContainer.innerHTML = data.highlighted + '<span class="vscode-cursor"></span>';
+
+            // Lines calculation and population
+            const lines = data.code.split('\n');
+            let numbersHTML = '';
+            for (let i = 1; i <= lines.length; i++) {
+                numbersHTML += `<div>${i}</div>`;
+            }
+            linesContainer.innerHTML = numbersHTML;
+
+            // Active file visual state
+            fileItems.forEach(item => {
+                if (item.getAttribute('data-file') === fileName) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Update Tab name
+            if (activeTabName) activeTabName.textContent = fileName;
+
+            // Update status details
+            if (statusLines) statusLines.textContent = `Ln ${lines.length}, Col 1`;
+            if (statusLang) statusLang.textContent = data.lang;
+        }
+
+        // Add folder tree clicking triggers
+        fileItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const fileName = item.getAttribute('data-file');
+                loadFile(fileName);
+            });
+        });
+
+        // 1. Folder collapse/expand accordion toggle
+        const folderTitle = win.querySelector('.vscode-folder-title');
+        const fileList = win.querySelector('.vscode-file-list');
+        const folderArrow = win.querySelector('.vscode-arrow');
+
+        if (folderTitle && fileList && folderArrow) {
+            folderTitle.addEventListener('click', () => {
+                if (fileList.style.display === 'none') {
+                    fileList.style.display = 'flex';
+                    folderArrow.textContent = '▼';
+                } else {
+                    fileList.style.display = 'none';
+                    folderArrow.textContent = '▶';
+                }
+            });
+        }
+
+        // 2. Activity Bar sidebar toggles & sliding panels
+        const sidebar = win.querySelector('.vscode-sidebar');
+        const actIcons = win.querySelectorAll('.vscode-act-top .vscode-act-icon');
+        const views = win.querySelectorAll('.vscode-sidebar-view');
+
+        actIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const title = icon.getAttribute('title').toLowerCase();
+                let targetViewId = 'vscode-view-explorer';
+                
+                if (title.includes('search')) targetViewId = 'vscode-view-search';
+                else if (title.includes('source')) targetViewId = 'vscode-view-git';
+                else if (title.includes('run')) targetViewId = 'vscode-view-debug';
+                else if (title.includes('extensions')) targetViewId = 'vscode-view-extensions';
+
+                const targetView = win.querySelector(`#${targetViewId}`);
+
+                // If already active, toggle collapse
+                if (icon.classList.contains('active')) {
+                    icon.classList.remove('active');
+                    sidebar.style.width = '0px';
+                    sidebar.style.minWidth = '0px';
+                    sidebar.style.overflow = 'hidden';
+                } else {
+                    // Deactivate all
+                    actIcons.forEach(i => i.classList.remove('active'));
+                    views.forEach(v => v.classList.add('hidden'));
+
+                    // Activate selected
+                    icon.classList.add('active');
+                    sidebar.style.width = '240px';
+                    sidebar.style.minWidth = '240px';
+                    sidebar.style.overflow = 'visible';
+                    if (targetView) targetView.classList.remove('hidden');
+                }
+            });
+        });
+
+        // 3. Search Engine Filter
+        const searchInput = win.querySelector('.vscode-search-input');
+        const searchResults = win.querySelector('.vscode-search-results');
+
+        if (searchInput && searchResults) {
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+                searchResults.innerHTML = '';
+
+                if (!query) {
+                    searchResults.innerHTML = '<div style="padding: 10px; color: #858585;">Type to search in files...</div>';
+                    return;
+                }
+
+                let matchesFound = 0;
+                for (const [fileName, file] of Object.entries(filesData)) {
+                    if (file.code.toLowerCase().includes(query)) {
+                        matchesFound++;
+                        const lines = file.code.split('\n');
+                        const matchingLine = lines.find(line => line.toLowerCase().includes(query)) || '';
+                        
+                        const matchEl = document.createElement('div');
+                        matchEl.className = 'vscode-search-match';
+                        matchEl.innerHTML = `
+                            <div class="vscode-search-match-file">📄 ${fileName}</div>
+                            <div class="vscode-search-match-text">${matchingLine.replace(new RegExp(query, 'gi'), m => `<mark style="background: #613214; color: #ffeb3b; padding: 0 2px; border-radius: 2px;">${m}</mark>`)}</div>
+                        `;
+
+                        matchEl.addEventListener('click', () => {
+                            // Automatically switch sidebars to explorer and load file
+                            const explorerIcon = win.querySelector('.vscode-act-icon[title="Explorer"]');
+                            if (explorerIcon) explorerIcon.click();
+                            loadFile(fileName);
+                        });
+
+                        searchResults.appendChild(matchEl);
+                    }
+                }
+
+                if (matchesFound === 0) {
+                    searchResults.innerHTML = '<div style="padding: 10px; color: #858585;">No results found.</div>';
+                }
+            });
+        }
+
+        // 4. Source Control (Git) Commit Interactive Actions
+        const commitBtn = win.querySelector('.vscode-git-commit-btn');
+        const gitMsgInput = win.querySelector('.vscode-git-msg-input');
+        const gitBadge = win.querySelector('.vscode-git-changes-title .vscode-badge');
+        const gitFile = win.querySelector('.vscode-git-file');
+        const gitStatusMode = win.querySelector('.vscode-status-mode');
+
+        if (commitBtn && gitMsgInput) {
+            commitBtn.addEventListener('click', () => {
+                const msg = gitMsgInput.value.trim();
+                if (!msg) {
+                    alert('Please enter a commit message!');
+                    return;
+                }
+
+                gitMsgInput.value = '';
+                if (gitBadge) gitBadge.style.display = 'none';
+                if (gitFile) {
+                    gitFile.innerHTML = '<div style="padding: 10px 0; color: #6a9955; font-style: italic;">✓ No changes detected</div>';
+                }
+                if (gitStatusMode) {
+                    gitStatusMode.innerHTML = `<span class="vscode-status-mode">✔ Master (Commit: ${msg.substring(0, 7)})</span>`;
+                }
+                alert(`Successfully committed changes:\n"${msg}"\n\nBranch: master is up-to-date.`);
+            });
+        }
+
+        // 5. Debug Session trigger
+        const debugBtn = win.querySelector('.vscode-debug-btn');
+        if (debugBtn) {
+            debugBtn.addEventListener('click', () => {
+                alert('🚀 Debugger Session Started...\n\nRunning profile checklist:\n- Name: Faizol Aremu\n- Role: Fullstack Developer\n- Status: Optimized with AI workflows.\n\nResult: SUCCESS! Ready for new challenges.');
+            });
+        }
+
+        // 6. Settings Link OS integration
+        const vsSettingsBtn = win.querySelector('.vscode-act-bottom .vscode-act-icon[title="Settings"]');
+        if (vsSettingsBtn) {
+            vsSettingsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (window.openApp) {
+                    window.openApp('Settings');
+                }
+            });
+        }
+
+        // 7. Tab Close Button integration (closes entire window)
+        const tabCloseBtn = win.querySelector('.vscode-tab-close');
+        if (tabCloseBtn) {
+            tabCloseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (window.closeApp) {
+                    window.closeApp('About Me');
+                }
+            });
+        }
+
+        // 8. Sync Spinner integration
+        const syncBtn = win.querySelector('.vscode-status-sync');
+        if (syncBtn) {
+            syncBtn.addEventListener('click', () => {
+                syncBtn.classList.add('spinning');
+                setTimeout(() => {
+                    syncBtn.classList.remove('spinning');
+                    alert('Synchronized successfully with remote branch origin/master!');
+                }, 800);
+            });
+        }
+
+        // Pre-load default file
+        loadFile('about-me.md');
+    }
+
+    // Initialize specific logic for skills app (Windows 11 Settings clone)
+    function initSkillsApp(win) {
+        const navItems = win.querySelectorAll('.skills-nav-item');
+        const grid = win.querySelector('#skills-grid');
+        const catTitle = win.querySelector('#skills-cat-title');
+
+        if (!grid || !catTitle) return;
+
+        function loadCategory(categoryName) {
+            // Update title
+            catTitle.textContent = categoryName;
+
+            // Filter skills
+            const filteredSkills = SKILLS.filter(s => s.category === categoryName);
+            grid.innerHTML = '';
+
+            filteredSkills.forEach(skill => {
+                const card = document.createElement('div');
+                card.className = 'skills-card';
+
+                const hexColor = skill.color.replace('#', '');
+                const logoUrl = `https://cdn.simpleicons.org/${skill.icon}/${hexColor}`;
+
+                card.innerHTML = `
+                    <div class="skills-card-logo">
+                        <img class="skills-brand-img" src="${logoUrl}" alt="${skill.name}" style="width: 28px; height: 28px; object-fit: contain;" />
+                        <span class="skills-fallback-icon" style="display: none; font-size: 24px; line-height: 1;">${skill.fallback || '💻'}</span>
+                    </div>
+                    <div class="skills-card-info">
+                        <div class="skills-card-header">
+                            <span class="skills-card-name">${skill.name}</span>
+                            <span class="skills-card-level" style="color: ${skill.color}; font-weight: 600;">${skill.level}%</span>
+                        </div>
+                        <div class="skills-progress-track">
+                            <div class="skills-progress-fill" style="background: ${skill.color}; width: 0%;" data-level="${skill.level}"></div>
+                        </div>
+                    </div>
+                `;
+
+                // Handle Image Loading Failure (Fallback to emoji/icon)
+                const img = card.querySelector('.skills-brand-img');
+                const fallbackSpan = card.querySelector('.skills-fallback-icon');
+                if (img && fallbackSpan) {
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        fallbackSpan.style.display = 'inline-block';
+                    };
+                }
+
+                grid.appendChild(card);
+            });
+
+            // Trigger Animation (Fills bars from 0 to actual level)
+            setTimeout(() => {
+                const fills = grid.querySelectorAll('.skills-progress-fill');
+                fills.forEach(fill => {
+                    const level = fill.getAttribute('data-level');
+                    fill.style.width = `${level}%`;
+                });
+            }, 50);
+        }
+
+        // Add Click Triggers to Categories Sidebar
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+
+                const category = item.getAttribute('data-category');
+                loadCategory(category);
+            });
+        });
+
+        // Pre-load default active category
+        loadCategory('Languages');
+    }
 
     const settingsAppBtn = document.getElementById('settings-app-btn');
     if (settingsAppBtn) {

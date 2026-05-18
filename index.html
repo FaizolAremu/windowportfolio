@@ -485,19 +485,178 @@
         </div>
 
         <template id="tpl-about-me">
-            <div class="window-body app-content" style="padding: 30px; overflow-y: auto; height: 100%;">
-                <h2>Hi, I'm Faizol Aremu 👋</h2>
-                <p>I am a passionate web developer focused on creating highly interactive, engaging, and beautiful user interfaces. This portfolio is built to mimic a desktop environment, providing a familiar yet unique experience to explore my work.</p>
-                
-                <h3 style="margin-top: 30px;">My Journey</h3>
-                <p>I have always been fascinated by how technology can be shaped to provide intuitive and immersive experiences. I started my journey building simple static pages, and have since leveled up to complex interactive web applications using modern web technologies.</p>
-                
-                <h3 style="margin-top: 30px;">What I Do</h3>
-                <ul style="line-height: 1.8;">
-                    <li><strong>Frontend Development:</strong> HTML5, CSS3, JavaScript, React</li>
-                    <li><strong>UI/UX Design:</strong> Creating responsive and aesthetically pleasing layouts</li>
-                    <li><strong>Interactive Experiences:</strong> Micro-animations, complex state management, custom layouts</li>
-                </ul>
+            <div class="vscode-app">
+                <!-- Activity Bar (left strip) -->
+                <div class="vscode-activity-bar">
+                    <div class="vscode-act-top">
+                        <div class="vscode-act-icon active" title="Explorer">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                            </svg>
+                        </div>
+                        <div class="vscode-act-icon" title="Search">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </div>
+                        <div class="vscode-act-icon" title="Source Control (Git)">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.84 3.44 8.87 8.02 9.75.05.01.1-.03.1-.08v-1.63c-3.13-.3-5.26-2.22-5.26-5.04c0-2.45 1.63-4.48 4.26-5.03c.05-.01.1-.05.1-.11V5.7c0-.28.22-.5.5-.5s.5.22.5.5v3.17c0 .06.05.1.1.11c2.63.55 4.26 2.58 4.26 5.03c0 2.82-2.13 4.74-5.26 5.04v1.63c0 .05.05.09.1.08C18.56 20.87 22 16.84 22 12c0-5.52-4.48-10-10-10zm0 13c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="vscode-act-icon" title="Run & Debug">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M19 8H5c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2zm-6 6h-2v-2h2v2zm5-1.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5s.5.22.5.5s-.22.5-.5.5zm0-2c-.28 0-.5-.22-.5-.5s.22-.5.5-.5s.22.5-.5.5zm0 4c-.28 0-.5-.22-.5-.5s.22-.5.5-.5s.5.22.5.5s-.22.5-.5.5z"/>
+                            </svg>
+                        </div>
+                        <div class="vscode-act-icon" title="Extensions">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm-6 6h4v4H4v-4zm6 0h4v4h-4v-4zm6-6h4v4h-4V4zm0 6h4v4h-4v-4zm-6 6h4v4h-4v-4zm6 0h4v4h-4v-4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="vscode-act-bottom">
+                        <div class="vscode-act-icon" title="Settings">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                <path d="M19.14 12.94c.04-.3.06-.61.06-.94c0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84a.48.48 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87a.49.49 0 0 0 .12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32a.49.49 0 0 0-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6s3.6 1.62 3.6 3.6s-1.62 3.6-3.6 3.6z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Pane -->
+                <div class="vscode-sidebar">
+                    <!-- Explorer View -->
+                    <div class="vscode-sidebar-view" id="vscode-view-explorer">
+                        <div class="vscode-sidebar-header">EXPLORER: PORTFOLIO</div>
+                        <div class="vscode-folder-section">
+                            <div class="vscode-folder-title" style="cursor: pointer;">
+                                <span class="vscode-arrow">▼</span>
+                                <span class="vscode-folder-icon">📁</span>
+                                <span class="vscode-folder-name">about-me</span>
+                            </div>
+                            <div class="vscode-file-list">
+                                <div class="vscode-file-item active" data-file="about-me.md">
+                                    <span class="vscode-file-icon">📄</span>
+                                    <span class="vscode-file-name">about-me.md</span>
+                                </div>
+                                <div class="vscode-file-item" data-file="fun-facts.md">
+                                    <span class="vscode-file-icon">📄</span>
+                                    <span class="vscode-file-name">fun-facts.md</span>
+                                </div>
+                                <div class="vscode-file-item" data-file="contact.js">
+                                    <span class="vscode-file-icon">📄</span>
+                                    <span class="vscode-file-name">contact.js</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search View -->
+                    <div class="vscode-sidebar-view hidden" id="vscode-view-search">
+                        <div class="vscode-sidebar-header">SEARCH</div>
+                        <div class="vscode-search-box">
+                            <input type="text" class="vscode-search-input" placeholder="Search (e.g. Faizol, SQI, AI)" />
+                            <div class="vscode-search-results">
+                                <div style="padding: 10px; color: #858585;">Type to search in files...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Source Control (Git) View -->
+                    <div class="vscode-sidebar-view hidden" id="vscode-view-git">
+                        <div class="vscode-sidebar-header">SOURCE CONTROL: GIT</div>
+                        <div class="vscode-git-section">
+                            <div class="vscode-git-changes-title">CHANGES <span class="vscode-badge">1</span></div>
+                            <div class="vscode-git-file">
+                                <span class="vscode-file-icon">📄</span>
+                                <span class="vscode-git-filename">about-me.md</span>
+                                <span class="vscode-git-badge modified">M</span>
+                            </div>
+                            <div class="vscode-git-input-container">
+                                <input type="text" class="vscode-git-msg-input" placeholder="Message (Ctrl+Enter to commit)" />
+                                <button class="vscode-git-commit-btn">✓ Commit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Run & Debug View -->
+                    <div class="vscode-sidebar-view hidden" id="vscode-view-debug">
+                        <div class="vscode-sidebar-header">RUN AND DEBUG</div>
+                        <div class="vscode-debug-section">
+                            <button class="vscode-debug-btn">▶ Run and Debug</button>
+                            <div class="vscode-debug-variables">
+                                <div class="vscode-debug-var-title">VARIABLES</div>
+                                <div class="vscode-debug-var-item"><span>this</span><span>=</span><span>developer</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extensions View -->
+                    <div class="vscode-sidebar-view hidden" id="vscode-view-extensions">
+                        <div class="vscode-sidebar-header">EXTENSIONS</div>
+                        <div class="vscode-ext-list">
+                            <div class="vscode-ext-item">
+                                <div class="vscode-ext-icon-box">🎨</div>
+                                <div class="vscode-ext-details">
+                                    <div class="vscode-ext-name">Tailwind CSS</div>
+                                    <div class="vscode-ext-desc">IntelliSense for CSS</div>
+                                </div>
+                                <button class="vscode-ext-btn installed">✓</button>
+                            </div>
+                            <div class="vscode-ext-item">
+                                <div class="vscode-ext-icon-box">🤖</div>
+                                <div class="vscode-ext-details">
+                                    <div class="vscode-ext-name">GitHub Copilot</div>
+                                    <div class="vscode-ext-desc">Your AI pair programmer</div>
+                                </div>
+                                <button class="vscode-ext-btn installed">✓</button>
+                            </div>
+                            <div class="vscode-ext-item">
+                                <div class="vscode-ext-icon-box">⚙</div>
+                                <div class="vscode-ext-details">
+                                    <div class="vscode-ext-name">Prettier</div>
+                                    <div class="vscode-ext-desc">Opinionated code formatter</div>
+                                </div>
+                                <button class="vscode-ext-btn installed">✓</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Editor Area -->
+                <div class="vscode-editor-area">
+                    <!-- Tab Bar -->
+                    <div class="vscode-tab-bar">
+                        <div class="vscode-tab active">
+                            <span class="vscode-tab-icon">📄</span>
+                            <span class="vscode-tab-name" id="vscode-active-tab">about-me.md</span>
+                            <span class="vscode-tab-close">×</span>
+                        </div>
+                    </div>
+                    <!-- Editor Code Container -->
+                    <div class="vscode-editor-body">
+                        <!-- Line Numbers -->
+                        <div class="vscode-line-numbers">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <!-- Code Output -->
+                        <pre class="vscode-code-pre"><code class="vscode-code-content"><!-- Syntax Highlighted Code --></code></pre>
+                    </div>
+                </div>
+
+                <!-- Status Bar -->
+                <div class="vscode-status-bar">
+                    <div class="vscode-status-left">
+                        <span class="vscode-status-mode">✔ Master</span>
+                        <span class="vscode-status-sync">↻</span>
+                    </div>
+                    <div class="vscode-status-right">
+                        <span class="vscode-status-info" id="vscode-status-lines">Ln 1, Col 1</span>
+                        <span class="vscode-status-info" id="vscode-status-spaces">Spaces: 4</span>
+                        <span class="vscode-status-info" id="vscode-status-lang">JavaScript</span>
+                    </div>
+                </div>
             </div>
         </template>
 
@@ -540,26 +699,31 @@
 
 
         <template id="tpl-resume">
-            <div class="window-body app-content" style="padding: 20px; overflow-y: auto; background: #e5e5e5; color: #333; height: 100%;">
-                <div style="max-width: 800px; margin: 0 auto; background: white; padding: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-                    <h1 style="margin: 0 0 10px 0; font-size: 2.5rem; color: #222;">Faizol Aremu</h1>
-                    <p style="margin: 0 0 20px 0; color: #666; font-size: 1.1rem;">Frontend Developer & UI/UX Enthusiast</p>
-                    <hr style="border: 0; border-top: 2px solid #0078D4; margin-bottom: 20px;" />
-                    
-                    <h3 style="color: #0078D4;">Experience</h3>
-                    <div style="margin-bottom: 20px;">
-                        <h4 style="margin: 0;">Senior Web Developer</h4>
-                        <p style="margin: 5px 0; font-style: italic; color: #555;">Tech Innovators Inc. (2024 - Present)</p>
-                        <ul>
-                            <li>Led the development of scalable React applications.</li>
-                            <li>Improved core web vitals by 40%.</li>
-                        </ul>
+            <div class="pdf-viewer">
+                <div class="pdf-toolbar">
+                    <div class="pdf-toolbar-left">
+                        <svg class="pdf-doc-icon" viewBox="0 0 24 24" width="18" height="18" fill="#E65A4A">
+                            <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H10v-2h8v2zm0-4H10V6h8v2zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>
+                        </svg>
+                        <span class="pdf-title">Resume.pdf</span>
                     </div>
-                    
-                    <h3 style="color: #0078D4;">Education</h3>
-                    <div style="margin-bottom: 20px;">
-                        <h4 style="margin: 0;">B.Sc. Computer Science</h4>
-                        <p style="margin: 5px 0; font-style: italic; color: #555;">University of Technology (2020 - 2024)</p>
+                    <div class="pdf-toolbar-center">
+                        <button class="pdf-zoom-btn zoom-out" title="Zoom Out">−</button>
+                        <span class="pdf-zoom-val">100%</span>
+                        <button class="pdf-zoom-btn zoom-in" title="Zoom In">+</button>
+                    </div>
+                    <div class="pdf-toolbar-right">
+                        <button class="pdf-download-btn" id="resume-download-btn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                            </svg>
+                            <span>Download PDF</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="pdf-body">
+                    <div class="resume-document">
+                        <!-- Dynamically populated from JS config -->
                     </div>
                 </div>
             </div>
@@ -586,6 +750,55 @@
                         <div style="height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden;"><div style="width: 80%; height: 100%; background: #7FBA00;"></div></div>
                     </div>
                 </div>
+            </div>
+        </template>
+
+        <template id="tpl-skills">
+            <div class="skills-app">
+                <!-- Sidebar Category Navigation -->
+                <aside class="skills-sidebar">
+                    <div class="skills-sidebar-header">
+                        <div class="skills-user-profile">
+                            <div class="skills-user-avatar">FA</div>
+                            <div class="skills-user-info">
+                                <div class="skills-user-name">Faizol Aremu</div>
+                                <div class="skills-user-role">Fullstack Developer</div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="skills-nav-list">
+                        <li class="skills-nav-item active" data-category="Languages">
+                            <span class="skills-nav-icon">💻</span>
+                            <span class="skills-nav-text">Languages</span>
+                        </li>
+                        <li class="skills-nav-item" data-category="Frameworks & Libraries">
+                            <span class="skills-nav-icon">📦</span>
+                            <span class="skills-nav-text">Frameworks & Libraries</span>
+                        </li>
+                        <li class="skills-nav-item" data-category="Tools & Platforms">
+                            <span class="skills-nav-icon">🛠️</span>
+                            <span class="skills-nav-text">Tools & Platforms</span>
+                        </li>
+                        <li class="skills-nav-item" data-category="Cloud & DevOps">
+                            <span class="skills-nav-icon">☁️</span>
+                            <span class="skills-nav-text">Cloud & DevOps</span>
+                        </li>
+                        <li class="skills-nav-item" data-category="Soft Skills">
+                            <span class="skills-nav-icon">🤝</span>
+                            <span class="skills-nav-text">Soft Skills</span>
+                        </li>
+                    </ul>
+                </aside>
+
+                <!-- Main Grid Panel -->
+                <main class="skills-main">
+                    <div class="skills-main-header">
+                        <h2 class="skills-category-title" id="skills-cat-title">Languages</h2>
+                    </div>
+                    <div class="skills-grid" id="skills-grid">
+                        <!-- Populated dynamically by script.js -->
+                    </div>
+                </main>
             </div>
         </template>
 

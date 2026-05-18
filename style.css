@@ -1198,3 +1198,1226 @@ input[type=range]::-webkit-slider-thumb:hover {
     gap: 10px;
 }
 
+/* ==========================================================================
+   Resume App / PDF Viewer Styles
+   ========================================================================== */
+
+.pdf-viewer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: #2b2b2b;
+}
+
+.pdf-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    background: #1c1c1c;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0 16px;
+    z-index: 5;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.pdf-toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #e3e3e3;
+}
+
+.pdf-doc-icon {
+    flex-shrink: 0;
+}
+
+.pdf-toolbar-center {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 2px 8px;
+}
+
+.pdf-zoom-btn {
+    background: transparent;
+    border: none;
+    color: #e3e3e3;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+}
+
+.pdf-zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.pdf-zoom-val {
+    font-size: 12px;
+    color: #e3e3e3;
+    min-width: 35px;
+    text-align: center;
+}
+
+.pdf-toolbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.pdf-download-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #0078D4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.pdf-download-btn:hover {
+    background: #005A9E;
+}
+
+.pdf-download-btn:active {
+    transform: scale(0.97);
+}
+
+.pdf-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: #2b2b2b;
+}
+
+/* Document Sheet */
+.resume-document {
+    background: #ffffff;
+    color: #1a1a1a;
+    width: 100%;
+    max-width: 740px;
+    padding: 48px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    font-family: Georgia, 'Times New Roman', serif;
+    line-height: 1.5;
+    user-select: text;
+    box-sizing: border-box;
+}
+
+/* Resume Content Typography & Layout */
+.resume-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.resume-name {
+    font-size: 2.2rem;
+    font-weight: normal;
+    margin: 0 0 4px 0;
+    color: #111;
+}
+
+.resume-subtitle {
+    font-size: 1.05rem;
+    font-weight: normal;
+    font-style: italic;
+    margin: 0 0 14px 0;
+    color: #555;
+}
+
+.resume-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.85rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.resume-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #0078D4;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.resume-link:hover {
+    color: #004b87;
+    text-decoration: underline;
+}
+
+.resume-link svg {
+    flex-shrink: 0;
+}
+
+.resume-section {
+    margin-bottom: 24px;
+}
+
+.resume-section-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 4px 0;
+    color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+}
+
+.resume-divider-line {
+    height: 1px;
+    background: #ddd;
+    margin-bottom: 12px;
+}
+
+.resume-summary-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2b2b2b;
+    text-align: justify;
+}
+
+/* Timeline Experience */
+.resume-timeline {
+    position: relative;
+    padding-left: 16px;
+    margin-top: 8px;
+}
+
+.resume-timeline::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    bottom: 4px;
+    width: 1px;
+    background: #ccc;
+}
+
+.resume-timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.resume-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.resume-timeline-marker {
+    position: absolute;
+    left: -16px;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #0078D4;
+    border: 2px solid white;
+    z-index: 2;
+}
+
+.resume-job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2px;
+}
+
+.resume-job-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.resume-job-date {
+    font-size: 0.85rem;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.resume-company {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.resume-achievements {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.resume-achievements li {
+    margin-bottom: 4px;
+}
+
+/* Education */
+.resume-education-list {
+    margin-top: 8px;
+}
+
+.resume-education-item {
+    margin-bottom: 12px;
+}
+
+.resume-edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.resume-school {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #222;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.resume-edu-year {
+    font-size: 0.85rem;
+    color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.resume-degree {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #444;
+}
+
+/* Skills */
+.resume-skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.resume-skills-group {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.resume-skills-category {
+    min-width: 100px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #444;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.resume-skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.resume-skill-tag {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.8rem;
+    background: #f4f4f4;
+    color: #333;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+/* ==========================================================================
+   Print Layout Styles
+   ========================================================================== */
+
+@media print {
+    /* Hide everything on the desktop page */
+    body > *:not(#window-layer) {
+        display: none !important;
+    }
+    
+    #window-layer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        height: auto !important;
+        background: transparent !important;
+    }
+    
+    /* Hide all windows except the resume window */
+    .app-window {
+        display: none !important;
+    }
+    
+    .app-window#resume-window {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* Hide the title bars and toolbar of the resume window */
+    .app-window#resume-window .window-header,
+    .app-window#resume-window .window-controls,
+    .app-window#resume-window .resize-handle,
+    .app-window#resume-window .pdf-toolbar {
+        display: none !important;
+    }
+    
+    .app-window#resume-window .pdf-body {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+    
+    .app-window#resume-window .resume-document {
+        border: none !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        background: white !important;
+    }
+}
+
+/* ==========================================================================
+   VS Code About Me App Styles
+   ========================================================================== */
+
+.vscode-app {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    user-select: none;
+    position: relative;
+}
+
+.vscode-activity-bar {
+    width: 48px;
+    background: #333333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.vscode-act-top, .vscode-act-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    width: 100%;
+}
+
+.vscode-act-icon {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #858585;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.15s;
+}
+
+.vscode-act-icon svg {
+    pointer-events: none;
+}
+
+.vscode-act-icon:hover {
+    color: #ffffff;
+}
+
+.vscode-act-icon.active {
+    color: #ffffff;
+}
+
+.vscode-act-icon.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #007acc;
+}
+
+/* Sidebar Explorer */
+.vscode-sidebar {
+    width: 200px;
+    background: #252526;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(0,0,0,0.15);
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.vscode-sidebar-header {
+    padding: 10px 14px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #bbbbbb;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.vscode-folder-section {
+    padding: 8px 0;
+}
+
+.vscode-folder-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #858585;
+    cursor: default;
+}
+
+.vscode-arrow {
+    font-size: 8px;
+    transition: transform 0.15s;
+}
+
+.vscode-file-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4px;
+}
+
+.vscode-file-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 28px;
+    font-size: 13px;
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: background 0.1s, color 0.1s;
+}
+
+.vscode-file-item:hover {
+    background: rgba(255,255,255,0.04);
+    color: #ffffff;
+}
+
+.vscode-file-item.active {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+}
+
+/* Main Editor Area */
+.vscode-editor-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #1e1e1e;
+    overflow: hidden;
+}
+
+.vscode-tab-bar {
+    height: 35px;
+    background: #2d2d2d;
+    display: flex;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.vscode-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    background: #2d2d2d;
+    font-size: 12px;
+    color: #969696;
+    border-right: 1px solid rgba(0,0,0,0.15);
+    cursor: default;
+    position: relative;
+    user-select: none;
+}
+
+.vscode-tab.active {
+    background: #1e1e1e;
+    color: #ffffff;
+}
+
+.vscode-tab.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #007acc;
+}
+
+.vscode-tab-close {
+    font-size: 14px;
+    border-radius: 2px;
+    padding: 0 2px;
+    cursor: pointer;
+}
+
+.vscode-tab-close:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Editor Body */
+.vscode-editor-body {
+    flex: 1;
+    display: flex;
+    overflow-y: auto;
+    font-family: 'Consolas', 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    background: #1e1e1e;
+    user-select: text;
+}
+
+.vscode-line-numbers {
+    width: 48px;
+    padding: 16px 0;
+    text-align: right;
+    color: #858585;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    user-select: none;
+    padding-right: 12px;
+}
+
+.vscode-line-numbers div {
+    height: 20px;
+}
+
+.vscode-code-pre {
+    margin: 0;
+    padding: 16px;
+    flex: 1;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.vscode-code-content {
+    font-family: inherit;
+    font-size: inherit;
+    white-space: pre;
+    display: block;
+}
+
+/* Status Bar */
+.vscode-status-bar {
+    width: 100%;
+    height: 22px;
+    background: #007acc;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    font-size: 11px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.vscode-status-left, .vscode-status-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.vscode-status-info {
+    font-weight: normal;
+}
+
+/* Syntax Highlighting CSS Tokens */
+.vs-keyword { color: #569cd6; }
+.vs-string { color: #ce9178; }
+.vs-property { color: #9cdcfe; }
+.vs-comment { color: #6a9955; font-style: italic; }
+.vs-punct { color: #d4d4d4; }
+.vs-num { color: #b5cea8; }
+.vs-func { color: #dcdcaa; }
+.vs-md-h { color: #569cd6; font-weight: bold; }
+.vs-md-bullet { color: #4ec9b0; font-weight: bold; }
+
+/* Blinking Cursor */
+.vscode-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    background: #528bff;
+    margin-left: 2px;
+    animation: vs-blink 1s infinite steps(2, start);
+    vertical-align: middle;
+}
+
+@keyframes vs-blink {
+    to { visibility: hidden; }
+}
+
+/* ==========================================================================
+   VS Code Clone Multi-Panel Sidebar Views
+   ========================================================================== */
+
+.vscode-sidebar {
+    transition: width 0.15s ease-in-out;
+}
+
+.vscode-sidebar-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.vscode-sidebar-view.hidden {
+    display: none !important;
+}
+
+/* Search Sidebar Styles */
+.vscode-search-box {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.vscode-search-input {
+    width: 100%;
+    background: #3c3c3c;
+    border: 1px solid #6b6b6b;
+    color: #cccccc;
+    padding: 4px 8px;
+    font-size: 12px;
+    box-sizing: border-box;
+    outline: none;
+    font-family: inherit;
+    border-radius: 2px;
+}
+
+.vscode-search-input:focus {
+    border-color: #007acc;
+}
+
+.vscode-search-results {
+    font-size: 12px;
+    color: #cccccc;
+    margin-top: 5px;
+    max-height: calc(100% - 60px);
+    overflow-y: auto;
+}
+
+.vscode-search-match {
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    transition: background 0.15s;
+}
+
+.vscode-search-match:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.vscode-search-match-file {
+    font-weight: bold;
+    color: #569cd6;
+    margin-bottom: 2px;
+}
+
+.vscode-search-match-text {
+    font-family: monospace;
+    font-size: 11px;
+    color: #ce9178;
+    padding-left: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Source Control (Git) Styles */
+.vscode-git-section {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vscode-git-changes-title {
+    font-size: 11px;
+    font-weight: bold;
+    color: #858585;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vscode-badge {
+    background: #007acc;
+    color: white;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+.vscode-git-file {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 6px 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 3px;
+}
+
+.vscode-git-filename {
+    margin-left: 4px;
+    color: #e0e0e0;
+}
+
+.vscode-git-badge.modified {
+    color: #e2c08d;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+.vscode-git-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.vscode-git-msg-input {
+    background: #3c3c3c;
+    border: 1px solid #6b6b6b;
+    color: #cccccc;
+    padding: 6px;
+    font-size: 12px;
+    outline: none;
+    font-family: inherit;
+    border-radius: 2px;
+}
+
+.vscode-git-msg-input:focus {
+    border-color: #007acc;
+}
+
+.vscode-git-commit-btn {
+    background: #0e639c;
+    color: white;
+    border: none;
+    padding: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: background 0.15s;
+}
+
+.vscode-git-commit-btn:hover {
+    background: #1177bb;
+}
+
+/* Debugger Styles */
+.vscode-debug-section {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.vscode-debug-btn {
+    background: #388a34;
+    color: white;
+    border: none;
+    padding: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: background 0.15s;
+}
+
+.vscode-debug-btn:hover {
+    background: #43a047;
+}
+
+.vscode-debug-variables {
+    font-size: 12px;
+    color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vscode-debug-var-title {
+    font-weight: bold;
+    color: #858585;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+    font-size: 11px;
+}
+
+.vscode-debug-var-item {
+    display: flex;
+    gap: 4px;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+.vscode-debug-var-item span:nth-child(1) { color: #9cdcfe; }
+.vscode-debug-var-item span:nth-child(2) { color: #d4d4d4; }
+.vscode-debug-var-item span:nth-child(3) { color: #4ec9b0; }
+
+/* Extensions Styles */
+.vscode-ext-list {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vscode-ext-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.vscode-ext-icon-box {
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.05);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.vscode-ext-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.vscode-ext-name {
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.vscode-ext-desc {
+    font-size: 10px;
+    color: #858585;
+}
+
+.vscode-ext-btn.installed {
+    background: transparent;
+    border: none;
+    color: #388a34;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* Sync spin animation */
+.vscode-status-sync {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+.vscode-status-sync.spinning {
+    animation: vs-spin 0.8s linear infinite;
+}
+@keyframes vs-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Windows 11 Settings Skills App Styles
+   ========================================================================== */
+
+.skills-app {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.skills-sidebar {
+    width: 260px;
+    background: #202020;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+
+.skills-sidebar-header {
+    padding: 10px 20px 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skills-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skills-user-avatar {
+    width: 44px;
+    height: 44px;
+    background: #0078d4;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.skills-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.skills-user-role {
+    font-size: 11px;
+    color: #858585;
+    margin-top: 1px;
+}
+
+.skills-nav-list {
+    list-style: none;
+    padding: 15px 8px 0 8px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.skills-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #cccccc;
+    font-size: 13px;
+    transition: background 0.15s, border-left-color 0.15s, color 0.15s;
+    border-left: 3px solid transparent;
+}
+
+.skills-nav-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+}
+
+.skills-nav-item.active {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    border-left-color: #0078d4;
+    font-weight: 600;
+}
+
+.skills-nav-icon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.skills-nav-text {
+    flex: 1;
+}
+
+.skills-main {
+    flex: 1;
+    padding: 30px 40px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.skills-main-header {
+    margin-bottom: 25px;
+}
+
+.skills-category-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.skills-card {
+    background: #2d2d2d;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 16px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    transition: background 0.25s, transform 0.25s, border-color 0.25s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+.skills-card:hover {
+    background: #353535;
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.skills-card-logo {
+    width: 46px;
+    height: 46px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.skills-card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.skills-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skills-card-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.skills-card-level {
+    font-size: 12px;
+}
+
+.skills-progress-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skills-progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+/* Make skills-app scrollbar look premium */
+.skills-main::-webkit-scrollbar {
+    width: 8px;
+}
+
+.skills-main::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.skills-main::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+}
+
+.skills-main::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+
+
+
