@@ -19,6 +19,67 @@ const USER_CONFIG = {
     currentWallpaperIndex: 0
 };
 
+/**
+ * PROJECTS DATA
+ * Easily add or edit projects here
+ */
+const PROJECTS = [
+    {
+        title: "Cowrywise",
+        description: "A premium responsive clone cowrywise website.",
+        tags: ["HTML", "CSS", "Bootstrap"],
+        category: "Web Apps",
+        image: "",
+        demo: "https://proxycowrywise.netlify.app/",
+        repo: "https://github.com/FaizolAremu/Cowry-wise"
+    },
+    {
+        title: "E-Commerce Suite",
+        description: "A premium responsive shop with dynamic widgets, fast analytics dashboard, and stripe integration.",
+        tags: ["React", "Node.js", "JS"],
+        category: "Web Apps",
+        image: "",
+        demo: "https://github.com/faizolaremu",
+        repo: "https://github.com/faizolaremu"
+    },
+    {
+        title: "Fintech Mobile Wallet",
+        description: "Secure cross-platform wallet application featuring dynamic multi-currency conversions and swift payments.",
+        tags: ["Flutter", "Firebase", "CSS"],
+        category: "Mobile",
+        image: "",
+        demo: "https://github.com/faizolaremu",
+        repo: "https://github.com/faizolaremu"
+    },
+    {
+        title: "Auto-Code CLI Tool",
+        description: "High-speed developer CLI utility that structuralizes complex folders and auto-generates custom setup templates.",
+        tags: ["Python", "JS", "Node.js"],
+        category: "Open Source",
+        image: "",
+        demo: "https://github.com/faizolaremu",
+        repo: "https://github.com/faizolaremu"
+    },
+    {
+        title: "WebGL Fluid Simulation",
+        description: "Ultra smooth vector flow particle system utilizing dynamic fragment shaders for realistic liquid physics.",
+        tags: ["JS", "HTML", "CSS"],
+        category: "Experiments",
+        image: "",
+        demo: "https://github.com/faizolaremu",
+        repo: "https://github.com/faizolaremu"
+    },
+    {
+        title: "AI Chat Assistant",
+        description: "Intelligent offline assistant running state-of-the-art quantized large language models completely in-browser.",
+        tags: ["React", "Python", "TS"],
+        category: "Web Apps",
+        image: "",
+        demo: "https://github.com/faizolaremu",
+        repo: "https://github.com/faizolaremu"
+    }
+];
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Apply User Configuration
     document.documentElement.style.setProperty('--bg-url', `url('${WALLPAPERS[USER_CONFIG.currentWallpaperIndex].url}')`);
@@ -825,6 +886,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (id === 'settings') {
             initSettingsApp(win);
         }
+        if (id === 'my-projects') {
+            initProjectsApp(win);
+        }
 
         return win;
     };
@@ -846,6 +910,109 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Initialize specific logic for My Projects app
+    function initProjectsApp(win) {
+        const folderItems = win.querySelectorAll('.proj-folder');
+        const grid = win.querySelector('#proj-grid');
+        const locationSpan = win.querySelector('#proj-location');
+        const countSpan = win.querySelector('#proj-count');
+
+        const tagStyles = {
+            'javascript': { bg: '#f7df1e', color: '#000' },
+            'js': { bg: '#f7df1e', color: '#000' },
+            'react': { bg: '#61dafb', color: '#000' },
+            'python': { bg: '#3776ab', color: '#fff' },
+            'node.js': { bg: '#339933', color: '#fff' },
+            'node': { bg: '#339933', color: '#fff' },
+            'css': { bg: '#1572b6', color: '#fff' },
+            'html': { bg: '#e34c26', color: '#fff' },
+            'typescript': { bg: '#3178c6', color: '#fff' },
+            'ts': { bg: '#3178c6', color: '#fff' },
+            'flutter': { bg: '#02569b', color: '#fff' },
+            'firebase': { bg: '#ffca28', color: '#000' },
+            'bootstrap': { bg: '#7952b3', color: '#fff' }
+        };
+
+        const gradients = [
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #5ee7df 0%, #b490ca 100%)',
+            'linear-gradient(135deg, #f6d365 0%, #fda085 100%)',
+            'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)',
+            'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)'
+        ];
+
+        function render(cat) {
+            if (!grid) return;
+            grid.innerHTML = '';
+            if (locationSpan) locationSpan.textContent = cat;
+
+            const filtered = cat === 'All Projects'
+                ? PROJECTS
+                : PROJECTS.filter(p => p.category === cat);
+
+            if (countSpan) {
+                countSpan.textContent = `(${filtered.length} item${filtered.length !== 1 ? 's' : ''})`;
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="proj-empty">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="#555"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+                        <span>No projects found in this folder.</span>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach((p, idx) => {
+                const initials = p.title.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase();
+                const grad = gradients[idx % gradients.length];
+                
+                const card = document.createElement('div');
+                card.className = 'proj-card';
+                
+                let thumbHTML = '';
+                if (p.image) {
+                    thumbHTML = `<div class="proj-thumb" style="background-image: url('${p.image}'); background-size: cover; background-position: center; height: 110px;"></div>`;
+                } else {
+                    thumbHTML = `<div class="proj-thumb" style="background: ${grad};">${initials}</div>`;
+                }
+
+                const tagsHTML = p.tags.map(t => {
+                    const norm = t.toLowerCase();
+                    const style = tagStyles[norm] || { bg: '#555', color: '#fff' };
+                    return `<span class="proj-tag" style="background-color: ${style.bg}; color: ${style.color};">${t}</span>`;
+                }).join('');
+
+                card.innerHTML = `
+                    ${thumbHTML}
+                    <div class="proj-body">
+                        <h4 class="proj-title">${p.title}</h4>
+                        <div class="proj-tags">${tagsHTML}</div>
+                        <p class="proj-desc">${p.description}</p>
+                        <div class="proj-actions">
+                            <a href="${p.demo}" target="_blank" class="proj-btn proj-btn-demo">Live Demo</a>
+                            <a href="${p.repo}" target="_blank" class="proj-btn proj-btn-repo">GitHub</a>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        folderItems.forEach(item => {
+            item.addEventListener('click', () => {
+                folderItems.forEach(f => f.classList.remove('active'));
+                item.classList.add('active');
+                render(item.getAttribute('data-cat'));
+            });
+        });
+
+        // Initial load
+        render('All Projects');
+    }
+
 
     const settingsAppBtn = document.getElementById('settings-app-btn');
     if (settingsAppBtn) {

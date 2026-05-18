@@ -502,35 +502,42 @@
         </template>
 
         <template id="tpl-my-projects">
-            <div class="window-body app-content" style="padding: 20px; overflow-y: auto; background: rgba(20, 20, 20, 0.7); height: 100%;">
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
-                    <!-- Project 1 -->
-                    <div style="background: rgba(40,40,40,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="height: 120px; background: linear-gradient(45deg, #FF6B6B, #FFE66D);"></div>
-                        <div style="padding: 15px;">
-                            <h4 style="margin: 0 0 10px 0; font-size: 16px;">E-Commerce Dashboard</h4>
-                            <p style="margin: 0; font-size: 12px; color: #ccc;">A comprehensive admin dashboard for managing products, orders, and users with real-time analytics.</p>
-                        </div>
+            <div class="proj-layout">
+                <aside class="proj-sidebar">
+                    <div class="proj-sidebar-header">Folders</div>
+                    <ul class="proj-folder-list">
+                        <li class="proj-folder active" data-cat="All Projects">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                            All Projects
+                        </li>
+                        <li class="proj-folder" data-cat="Web Apps">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10z"/></svg>
+                            Web Apps
+                        </li>
+                        <li class="proj-folder" data-cat="Mobile">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                            Mobile
+                        </li>
+                        <li class="proj-folder" data-cat="Open Source">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            Open Source
+                        </li>
+                        <li class="proj-folder" data-cat="Experiments">
+                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z"/></svg>
+                            Experiments
+                        </li>
+                    </ul>
+                </aside>
+                <main class="proj-main">
+                    <div class="proj-toolbar">
+                        <span class="proj-location" id="proj-location">All Projects</span>
+                        <span class="proj-count" id="proj-count"></span>
                     </div>
-                    <!-- Project 2 -->
-                    <div style="background: rgba(40,40,40,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="height: 120px; background: linear-gradient(45deg, #4E65FF, #92EFFD);"></div>
-                        <div style="padding: 15px;">
-                            <h4 style="margin: 0 0 10px 0; font-size: 16px;">Weather App</h4>
-                            <p style="margin: 0; font-size: 12px; color: #ccc;">A beautiful, animated weather application pulling real-time data from OpenWeather API.</p>
-                        </div>
-                    </div>
-                    <!-- Project 3 -->
-                    <div style="background: rgba(40,40,40,0.8); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="height: 120px; background: linear-gradient(45deg, #11998e, #38ef7d);"></div>
-                        <div style="padding: 15px;">
-                            <h4 style="margin: 0 0 10px 0; font-size: 16px;">Task Manager</h4>
-                            <p style="margin: 0; font-size: 12px; color: #ccc;">A drag-and-drop Kanban board for managing tasks, built with React and LocalStorage.</p>
-                        </div>
-                    </div>
-                </div>
+                    <div class="proj-grid" id="proj-grid"></div>
+                </main>
             </div>
         </template>
+
 
         <template id="tpl-resume">
             <div class="window-body app-content" style="padding: 20px; overflow-y: auto; background: #e5e5e5; color: #333; height: 100%;">
