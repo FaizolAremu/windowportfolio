@@ -402,19 +402,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 12. Taskbar App Toggles
+    // 13. Dynamic Window Manager state (declared early so power options can reference it)
+    const openWindows = {};
+    let highestZIndex = 500;
+
+    // 12. Taskbar App Toggles & Start Menu
     const startBtn = document.getElementById('start-btn');
     const startMenu = document.getElementById('start-menu');
+    const startSearchInput = document.getElementById('start-search-input');
+    const startIcons = document.querySelectorAll('#start-pinned-grid .start-icon');
+    const powerBtn = document.getElementById('power-btn');
+    const powerMenu = document.getElementById('power-menu');
+
+    // Search Filtering
+    if (startSearchInput) {
+        startSearchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            startIcons.forEach(icon => {
+                const name = icon.getAttribute('data-name');
+                if (name.includes(query)) {
+                    icon.style.display = 'block';
+                } else {
+                    icon.style.display = 'none';
+                }
+            });
+        });
+    }
 
     startBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        
+        // Reset Search & Power Menu
+        if (startSearchInput) {
+            startSearchInput.value = '';
+            startIcons.forEach(i => i.style.display = 'block');
+        }
+        if (powerMenu) powerMenu.classList.add('hidden');
+
         startMenu.classList.remove('hidden');
         setTimeout(() => startMenu.classList.toggle('active'), 10);
     });
 
-    // Close start menu when clicking outside
+    // Close start menu or power menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (!startMenu.contains(e.target) && !startBtn.contains(e.target)) {
+        if (startMenu && !startMenu.contains(e.target) && !startBtn.contains(e.target)) {
             startMenu.classList.remove('active');
             setTimeout(() => {
                 if (!startMenu.classList.contains('active')) {
@@ -422,7 +453,137 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 200);
         }
+        if (powerMenu && !powerBtn.contains(e.target) && !powerMenu.contains(e.target)) {
+            powerMenu.classList.add('hidden');
+        }
     });
+
+    // Power Options
+    if (powerBtn) {
+        powerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            powerMenu.classList.toggle('hidden');
+        });
+    }
+
+    const sleepBtn = document.getElementById('po-sleep');
+    const restartBtn = document.getElementById('po-restart');
+    const shutdownBtn = document.getElementById('po-shutdown');
+    const sleepScreen = document.getElementById('sleep-screen');
+    const shutdownScreen = document.getElementById('shutdown-screen');
+    const turnOnBtn = document.getElementById('turn-on-btn');
+
+    if (sleepBtn) {
+        sleepBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            powerMenu.classList.add('hidden');
+            startMenu.classList.remove('active');
+            startMenu.classList.add('hidden');
+            
+            sleepScreen.classList.remove('hidden');
+            sleepScreen.style.pointerEvents = 'auto';
+            setTimeout(() => sleepScreen.style.opacity = '1', 50);
+        });
+    }
+
+    if (sleepScreen) {
+        const wakeUp = () => {
+            if (sleepScreen.style.opacity === '1') {
+                sleepScreen.style.opacity = '0';
+                sleepScreen.style.pointerEvents = 'none';
+                setTimeout(() => sleepScreen.classList.add('hidden'), 500);
+            }
+        };
+        sleepScreen.addEventListener('click', wakeUp);
+        window.addEventListener('keydown', wakeUp);
+    }
+
+    if (restartBtn) {
+        restartBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            powerMenu.classList.add('hidden');
+            startMenu.classList.remove('active');
+            startMenu.classList.add('hidden');
+            
+            // "Restart": Close all open windows
+            Object.values(openWindows).forEach(win => {
+                win.querySelector('.close-btn').click();
+            });
+            // Show boot screen to simulate restart
+            const bootScreen = document.getElementById('boot-screen');
+            if (bootScreen) {
+                bootScreen.classList.remove('hidden');
+                setTimeout(() => {
+                    bootScreen.classList.add('hidden');
+                    const lockScreen = document.getElementById('lock-screen');
+                    if (lockScreen) lockScreen.classList.remove('hidden', 'slide-up');
+                    const loginScreen = document.getElementById('login-screen');
+                    if (loginScreen) loginScreen.classList.add('hidden');
+                    const desktopScreen = document.getElementById('desktop-screen');
+                    if (desktopScreen) desktopScreen.classList.add('hidden');
+                }, 3000);
+            }
+        });
+    }
+
+    if (shutdownBtn) {
+        shutdownBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            powerMenu.classList.add('hidden');
+            startMenu.classList.remove('active');
+            startMenu.classList.add('hidden');
+            
+            shutdownScreen.classList.remove('hidden');
+            shutdownScreen.style.pointerEvents = 'auto';
+            setTimeout(() => {
+                shutdownScreen.style.opacity = '1';
+                setTimeout(() => {
+                    const spinner = document.getElementById('shutdown-spinner');
+                    const text = document.getElementById('shutdown-text');
+                    if (spinner) spinner.style.display = 'none';
+                    if (text) text.style.display = 'none';
+                    if (turnOnBtn) turnOnBtn.classList.remove('hidden');
+                }, 3000);
+            }, 50);
+        });
+    }
+
+    if (turnOnBtn) {
+        turnOnBtn.addEventListener('click', () => {
+            // Turn back on
+            turnOnBtn.classList.add('hidden');
+            
+            // Reset spinner/text for next time
+            const spinner = document.getElementById('shutdown-spinner');
+            const text = document.getElementById('shutdown-text');
+            if (spinner) spinner.style.display = 'block';
+            if (text) text.style.display = 'block';
+
+            shutdownScreen.style.opacity = '0';
+            shutdownScreen.style.pointerEvents = 'none';
+            setTimeout(() => {
+                shutdownScreen.classList.add('hidden');
+                
+                // Show boot sequence like a fresh start
+                const bootScreen = document.getElementById('boot-screen');
+                const lockScreen = document.getElementById('lock-screen');
+                const loginScreen = document.getElementById('login-screen');
+                const desktopScreen = document.getElementById('desktop-screen');
+                
+                if (desktopScreen) desktopScreen.classList.add('hidden');
+                if (lockScreen) lockScreen.classList.remove('slide-up');
+                if (loginScreen) loginScreen.classList.add('hidden');
+
+                if (bootScreen) {
+                    bootScreen.classList.remove('hidden');
+                    setTimeout(() => {
+                        bootScreen.classList.add('hidden');
+                        if (lockScreen) lockScreen.classList.remove('hidden');
+                    }, 3000);
+                }
+            }, 500);
+        });
+    }
 
     document.querySelectorAll('.app-btn').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -435,9 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 13. Dynamic Window Manager
-    const openWindows = {};
-    let highestZIndex = 500;
+    // 13. Dynamic Window Manager (continued)
 
     function bringToFront(winElem) {
         highestZIndex++;
@@ -697,18 +856,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('quick-settings-panel').classList.remove('active');
         });
     }
-
-    // Demo: Auto-open placeholder on load
-    setTimeout(() => {
-        window.createWindow({
-            id: 'demo-window',
-            title: 'Welcome to OS Portfolio',
-            icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#00A4EF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v2h-2v-2zm0-10h2v8h-2V7z"/></svg>',
-            content: '<div class="window-body" style="padding: 30px; font-size: 16px;"><h3>Hello!</h3><p>Welcome to my dynamic OS-style portfolio. Feel free to drag this window around, resize it using the edges, or test the maximize and minimize buttons.</p></div>',
-            width: 400,
-            height: 250
-        });
-    }, 500);
 });
 
 // Global Window Management Functions
@@ -741,6 +888,13 @@ window.openApp = function(appName) {
                 icon: config.icon,
                 content: template.innerHTML
             });
+
+            // Close start menu after launching app (Windows 11 behavior)
+            const startMenu = document.getElementById('start-menu');
+            if (startMenu) {
+                startMenu.classList.remove('active');
+                setTimeout(() => startMenu.classList.add('hidden'), 200);
+            }
             
             // update taskbar
             const taskbarBtn = document.querySelector(`.app-btn[data-app="${appName}"]`);

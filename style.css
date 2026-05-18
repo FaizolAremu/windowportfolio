@@ -382,53 +382,6 @@ body {
     display: none !important;
 }
 
-.window-header {
-    height: 35px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 15px;
-    user-select: none;
-}
-
-.window-title {
-    display: flex;
-    align-items: center;
-    font-size: 12px;
-    gap: 8px;
-}
-
-.window-controls {
-    display: flex;
-    height: 100%;
-}
-
-.win-btn {
-    background: transparent;
-    border: none;
-    color: white;
-    width: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.win-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.close-btn:hover {
-    background: #E81123;
-}
-
-.window-body {
-    padding: 20px;
-    flex: 1;
-    background: rgba(20, 20, 20, 0.5);
-}
-
 .window-body h3 {
     margin-top: 0;
     font-weight: 400;
@@ -623,6 +576,27 @@ body {
 
 .sys-panel.hidden {
     display: none !important;
+}
+
+/* Start Menu overrides — must center horizontally and animate via scale */
+#start-menu {
+    left: 50%;
+    right: auto;
+    bottom: 60px;
+    width: 640px;
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(30, 30, 30, 0.88);
+    backdrop-filter: blur(40px);
+    transform: translateX(-50%) scale(0.95);
+    transform-origin: bottom center;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease;
+}
+
+#start-menu.active {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .calendar-header h2 {
@@ -854,6 +828,8 @@ input[type=range]::-webkit-slider-thumb:hover {
 .window-controls {
     display: flex;
     height: 100%;
+    position: relative;
+    z-index: 20; /* Must be above resize handles (z-index: 10) */
 }
 
 .win-btn {
@@ -866,7 +842,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: default;
+    cursor: pointer;
     transition: background 0.1s;
 }
 
@@ -878,7 +854,7 @@ input[type=range]::-webkit-slider-thumb:hover {
 .window-body {
     flex: 1;
     position: relative;
-    overflow: hidden;
+    overflow: auto;
 }
 
 /* Resize Handles */
@@ -886,14 +862,16 @@ input[type=range]::-webkit-slider-thumb:hover {
     position: absolute;
     z-index: 10;
 }
-.resize-n { top: 0; left: 5px; right: 5px; height: 5px; cursor: n-resize; }
-.resize-s { bottom: 0; left: 5px; right: 5px; height: 5px; cursor: s-resize; }
-.resize-e { top: 5px; bottom: 5px; right: 0; width: 5px; cursor: e-resize; }
-.resize-w { top: 5px; bottom: 5px; left: 0; width: 5px; cursor: w-resize; }
-.resize-nw { top: 0; left: 0; width: 8px; height: 8px; cursor: nw-resize; }
-.resize-ne { top: 0; right: 0; width: 8px; height: 8px; cursor: ne-resize; }
+/* Top edge and corners start BELOW the 35px title bar so they never block buttons */
+.resize-n  { top: 35px; left: 8px; right: 8px; height: 5px; cursor: n-resize; }
+.resize-s  { bottom: 0; left: 8px; right: 8px; height: 5px; cursor: s-resize; }
+.resize-e  { top: 35px; bottom: 8px; right: 0; width: 5px; cursor: e-resize; }
+.resize-w  { top: 35px; bottom: 8px; left: 0; width: 5px; cursor: w-resize; }
+.resize-nw { top: 35px; left: 0; width: 8px; height: 8px; cursor: nw-resize; }
+.resize-ne { top: 35px; right: 0; width: 8px; height: 8px; cursor: ne-resize; }
 .resize-sw { bottom: 0; left: 0; width: 8px; height: 8px; cursor: sw-resize; }
 .resize-se { bottom: 0; right: 0; width: 8px; height: 8px; cursor: se-resize; }
+
 
 
 /* Settings App Specific Layout */
@@ -998,4 +976,9 @@ input[type=range]::-webkit-slider-thumb:hover {
     margin: 3px 0 0 0;
     font-size: 12px;
     color: #bbb;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
