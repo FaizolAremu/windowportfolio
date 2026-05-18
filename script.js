@@ -192,7 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // 10. Desktop Icons Logic
     document.querySelectorAll('.desktop-icon').forEach(icon => {
         icon.addEventListener('dblclick', () => {
-            console.log(`Opening app: ${icon.getAttribute('data-app')}`);
+            const appName = icon.getAttribute('data-app');
+            console.log(`Opening app: ${appName}`);
+            if (window.openApp) {
+                window.openApp(appName);
+            }
         });
         
         // Single click selection
@@ -400,108 +404,379 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 12. Taskbar App Toggles
     const startBtn = document.getElementById('start-btn');
-    startBtn.addEventListener('click', () => {
-        console.log("Start Menu toggled!");
+    const startMenu = document.getElementById('start-menu');
+
+    startBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        startMenu.classList.remove('hidden');
+        setTimeout(() => startMenu.classList.toggle('active'), 10);
+    });
+
+    // Close start menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!startMenu.contains(e.target) && !startBtn.contains(e.target)) {
+            startMenu.classList.remove('active');
+            setTimeout(() => {
+                if (!startMenu.classList.contains('active')) {
+                    startMenu.classList.add('hidden');
+                }
+            }, 200);
+        }
     });
 
     document.querySelectorAll('.app-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            // Toggle open state
-            btn.classList.toggle('open');
-            // Toggle active state
-            if (btn.classList.contains('open')) {
-                document.querySelectorAll('.app-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+            const appName = btn.getAttribute('data-app');
+            if (btn.classList.contains('active')) {
+                if (window.closeApp) window.closeApp(appName, true);
             } else {
-                btn.classList.remove('active');
+                if (window.openApp) window.openApp(appName);
             }
         });
-        });
     });
 
-    // 13. Window Manager (Dragging)
-    let activeWindow = null;
-    let isDragging = false;
-    let dragOffsetX = 0;
-    let dragOffsetY = 0;
+    // 13. Dynamic Window Manager
+    const openWindows = {};
+    let highestZIndex = 500;
 
-    document.querySelectorAll('.window-header').forEach(header => {
-        header.addEventListener('mousedown', (e) => {
-            if (e.target.closest('.window-controls')) return; // Don't drag if clicking buttons
-            const win = header.closest('.app-window') || header.closest('.window');
-            if (!win) return;
-            
-            isDragging = true;
-            activeWindow = win;
-            
-            // Bring to front
-            document.querySelectorAll('.app-window, .window').forEach(w => w.style.zIndex = 500);
-            activeWindow.style.zIndex = 501;
+    function bringToFront(winElem) {
+        highestZIndex++;
+        winElem.style.zIndex = highestZIndex;
+        document.querySelectorAll('.app-window').forEach(w => w.classList.remove('active'));
+        winElem.classList.add('active');
+    }
 
-            const rect = activeWindow.getBoundingClientRect();
-            dragOffsetX = e.clientX - rect.left;
-            dragOffsetY = e.clientY - rect.top;
-        });
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (!isDragging || !activeWindow) return;
-        
-        // Remove transform if it exists (for legacy .window)
-        if (activeWindow.style.transform) {
-            activeWindow.style.transform = 'none';
+    window.createWindow = function({ id, title, icon, content, width=800, height=550, x, y }) {
+        if (openWindows[id]) {
+            const win = openWindows[id];
+            if (win.classList.contains('minimized') || win.classList.contains('hidden')) {
+                win.classList.remove('minimized', 'hidden');
+            }
+            bringToFront(win);
+            return win;
         }
 
-        activeWindow.style.left = `${e.clientX - dragOffsetX}px`;
-        activeWindow.style.top = `${e.clientY - dragOffsetY}px`;
-    });
+        const win = document.createElement('div');
+        win.className = 'app-window active';
+        win.id = `${id}-window`;
+        win.setAttribute('data-app-name', title);
+        
+        // Default centering if no x/y provided
+        if (x === undefined) x = (window.innerWidth - width) / 2;
+        if (y === undefined) y = (window.innerHeight - height) / 2;
+        
+        win.style.width = `${width}px`;
+        win.style.height = `${height}px`;
+        win.style.left = `${x}px`;
+        win.style.top = `${y}px`;
 
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-        activeWindow = null;
-    });
+        win.innerHTML = `
+            <div class="window-header">
+                <div class="window-title">
+                    ${icon}
+                    ${title}
+                </div>
+                <div class="window-controls">
+                    <button class="win-btn min-btn">—</button>
+                    <button class="win-btn max-btn">☐</button>
+                    <button class="win-btn close-btn">✕</button>
+                </div>
+            </div>
+            ${content}
+            <div class="resize-handle resize-n"></div>
+            <div class="resize-handle resize-s"></div>
+            <div class="resize-handle resize-e"></div>
+            <div class="resize-handle resize-w"></div>
+            <div class="resize-handle resize-nw"></div>
+            <div class="resize-handle resize-ne"></div>
+            <div class="resize-handle resize-sw"></div>
+            <div class="resize-handle resize-se"></div>
+        `;
 
-    // 14. Settings App Logic
+        document.getElementById('window-layer').appendChild(win);
+        openWindows[id] = win;
+        bringToFront(win);
+
+        win.addEventListener('mousedown', () => bringToFront(win));
+
+        // Button Logic
+        const minBtn = win.querySelector('.min-btn');
+        const maxBtn = win.querySelector('.max-btn');
+        const closeBtn = win.querySelector('.close-btn');
+
+        minBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            win.classList.add('minimized');
+            const taskbarBtn = document.querySelector(`.app-btn[data-app="${title}"]`);
+            if (taskbarBtn) taskbarBtn.classList.remove('active');
+        });
+
+        let isMaximized = false;
+        let preMaxRect = null;
+
+        function toggleMaximize() {
+            if (!isMaximized) {
+                preMaxRect = {
+                    left: win.style.left,
+                    top: win.style.top,
+                    width: win.style.width,
+                    height: win.style.height
+                };
+                win.style.left = '0px';
+                win.style.top = '0px';
+                win.style.width = '100vw';
+                win.style.height = 'calc(100vh - 50px)'; // 50px taskbar
+                isMaximized = true;
+            } else {
+                win.style.left = preMaxRect.left;
+                win.style.top = preMaxRect.top;
+                win.style.width = preMaxRect.width;
+                win.style.height = preMaxRect.height;
+                isMaximized = false;
+            }
+        }
+
+        maxBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMaximize();
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            win.classList.add('hidden');
+            setTimeout(() => {
+                win.remove();
+                delete openWindows[id];
+                const taskbarBtn = document.querySelector(`.app-btn[data-app="${title}"]`);
+                if (taskbarBtn) taskbarBtn.classList.remove('active', 'open');
+            }, 200);
+        });
+
+        // Drag Logic
+        const header = win.querySelector('.window-header');
+        let isDragging = false;
+        let dragOffsetX = 0;
+        let dragOffsetY = 0;
+
+        header.addEventListener('mousedown', (e) => {
+            if (e.target.closest('.window-controls')) return;
+            if (isMaximized) return; 
+            isDragging = true;
+            bringToFront(win);
+            
+            const rect = win.getBoundingClientRect();
+            dragOffsetX = e.clientX - rect.left;
+            dragOffsetY = e.clientY - rect.top;
+            
+            // Temporarily disable transitions during drag for smooth performance
+            win.style.transition = 'none';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            let newX = e.clientX - dragOffsetX;
+            let newY = e.clientY - dragOffsetY;
+
+            // Edge Snap: Maximize if dragged to top edge
+            if (e.clientY <= 0) {
+                isDragging = false;
+                win.style.transition = '';
+                toggleMaximize();
+                return;
+            }
+
+            win.style.left = `${newX}px`;
+            win.style.top = `${newY}px`;
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                win.style.transition = '';
+            }
+        });
+
+        // Resize Logic
+        let isResizing = false;
+        let currentHandle = null;
+        let startX = 0, startY = 0;
+        let startW = 0, startH = 0;
+        let startL = 0, startT = 0;
+
+        win.querySelectorAll('.resize-handle').forEach(handle => {
+            handle.addEventListener('mousedown', (e) => {
+                e.stopPropagation();
+                if (isMaximized) return;
+                isResizing = true;
+                currentHandle = handle.className;
+                bringToFront(win);
+                win.style.transition = 'none';
+                
+                startX = e.clientX;
+                startY = e.clientY;
+                const rect = win.getBoundingClientRect();
+                startW = rect.width;
+                startH = rect.height;
+                startL = rect.left;
+                startT = rect.top;
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+            const minW = 300;
+            const minH = 200;
+
+            if (currentHandle.includes('resize-e')) {
+                let nw = startW + dx;
+                if (nw > minW) win.style.width = `${nw}px`;
+            }
+            if (currentHandle.includes('resize-w')) {
+                let nw = startW - dx;
+                if (nw > minW) {
+                    win.style.width = `${nw}px`;
+                    win.style.left = `${startL + dx}px`;
+                }
+            }
+            if (currentHandle.includes('resize-s')) {
+                let nh = startH + dy;
+                if (nh > minH) win.style.height = `${nh}px`;
+            }
+            if (currentHandle.includes('resize-n')) {
+                let nh = startH - dy;
+                if (nh > minH) {
+                    win.style.height = `${nh}px`;
+                    win.style.top = `${startT + dy}px`;
+                }
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            if (isResizing) {
+                isResizing = false;
+                win.style.transition = '';
+            }
+        });
+
+        // Re-attach internal scripts if necessary (e.g. settings navigation)
+        if (id === 'settings') {
+            initSettingsApp(win);
+        }
+
+        return win;
+    };
+
+    // Initialize specific logic for settings app after rendering its template
+    function initSettingsApp(win) {
+        const settingsNavItems = win.querySelectorAll('.settings-nav-item');
+        const settingsPages = win.querySelectorAll('.settings-page');
+
+        settingsNavItems.forEach(item => {
+            item.addEventListener('click', () => {
+                settingsNavItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                const targetPageId = item.getAttribute('data-page');
+                settingsPages.forEach(page => {
+                    if (page.id === targetPageId) page.classList.add('active');
+                    else page.classList.remove('active');
+                });
+            });
+        });
+    }
+
     const settingsAppBtn = document.getElementById('settings-app-btn');
-    const settingsApp = document.getElementById('settings-app');
-
-    if (settingsAppBtn && settingsApp) {
+    if (settingsAppBtn) {
         settingsAppBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            settingsApp.classList.remove('hidden');
-            // Center it on first open if it hasn't been dragged
-            if (!settingsApp.style.left) {
-                settingsApp.style.left = `${(window.innerWidth - 800) / 2}px`;
-                settingsApp.style.top = `${(window.innerHeight - 550) / 2}px`;
-            }
-            // Bring to front
-            document.querySelectorAll('.app-window, .window').forEach(w => w.style.zIndex = 500);
-            settingsApp.style.zIndex = 501;
-            
-            // close quick settings
+            window.openApp('Settings');
             document.getElementById('quick-settings-panel').classList.add('hidden');
             document.getElementById('quick-settings-panel').classList.remove('active');
         });
     }
 
-    const settingsNavItems = document.querySelectorAll('.settings-nav-item');
-    const settingsPages = document.querySelectorAll('.settings-page');
-
-    settingsNavItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Update active nav
-            settingsNavItems.forEach(nav => nav.classList.remove('active'));
-            item.classList.add('active');
-
-            // Update active page
-            const targetPageId = item.getAttribute('data-page');
-            settingsPages.forEach(page => {
-                if (page.id === targetPageId) {
-                    page.classList.add('active');
-                } else {
-                    page.classList.remove('active');
-                }
-            });
+    // Demo: Auto-open placeholder on load
+    setTimeout(() => {
+        window.createWindow({
+            id: 'demo-window',
+            title: 'Welcome to OS Portfolio',
+            icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#00A4EF"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v2h-2v-2zm0-10h2v8h-2V7z"/></svg>',
+            content: '<div class="window-body" style="padding: 30px; font-size: 16px;"><h3>Hello!</h3><p>Welcome to my dynamic OS-style portfolio. Feel free to drag this window around, resize it using the edges, or test the maximize and minimize buttons.</p></div>',
+            width: 400,
+            height: 250
         });
-    });
+    }, 500);
 });
+
+// Global Window Management Functions
+window.openApp = function(appName) {
+    if (appName === 'GitHub') {
+        window.open('https://github.com/faizolaremu', '_blank');
+        return;
+    }
+    if (appName === 'Recycle Bin') {
+        alert('Recycle Bin is empty!');
+        return;
+    }
+
+    const appConfigs = {
+        'Settings': { id: 'settings', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>' },
+        'About Me': { id: 'about-me', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>' },
+        'My Projects': { id: 'my-projects', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>' },
+        'Resume': { id: 'resume', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>' },
+        'Skills': { id: 'skills', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>' },
+        'Terminal': { id: 'terminal', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>' }
+    };
+
+    const config = appConfigs[appName];
+    if (config) {
+        const template = document.getElementById(`tpl-${config.id}`);
+        if (template) {
+            window.createWindow({
+                id: config.id,
+                title: appName,
+                icon: config.icon,
+                content: template.innerHTML
+            });
+            
+            // update taskbar
+            const taskbarBtn = document.querySelector(`.app-btn[data-app="${appName}"]`);
+            if (taskbarBtn) {
+                document.querySelectorAll('.app-btn').forEach(b => b.classList.remove('active'));
+                taskbarBtn.classList.add('open', 'active');
+            }
+        }
+    } else {
+        console.log(`App not implemented: ${appName}`);
+    }
+}
+
+window.closeApp = function(appName, minimizeOnly = false) {
+    const configId = appName.toLowerCase().replace(/\s+/g, '-');
+    const win = document.getElementById(`${configId}-window`);
+    
+    if (win) {
+        if (minimizeOnly) {
+            win.querySelector('.min-btn').click();
+        } else {
+            win.querySelector('.close-btn').click();
+        }
+    }
+}
+
+window.openPersonalizePanel = function() {
+    window.openApp('Settings');
+    // We simulate switching to the personalization tab:
+    setTimeout(() => {
+        const win = document.getElementById('settings-window');
+        if (win) {
+            const navItems = win.querySelectorAll('.settings-nav-item');
+            navItems.forEach(n => {
+                if (n.getAttribute('data-page') === 'page-personalization') n.click();
+            });
+        }
+    }, 100);
+}
