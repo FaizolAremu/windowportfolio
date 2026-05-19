@@ -16,7 +16,38 @@ const WALLPAPERS = [
 const USER_CONFIG = {
     name: "Faizol Aremu",
     initials: "FA",
-    currentWallpaperIndex: 0
+    currentWallpaperIndex: 0,
+    available: true
+};
+
+const CONFIG = {
+    user: {
+        name: "Faizol Aremu",
+        title: "Fullstack Developer",
+        avatar: "", // Shows initials fallback
+        initials: "FA",
+        available: true,
+        email: "waliufaizol@gmail.com",
+        github: "faizolaremu",
+        githubUrl: "https://github.com/faizolaremu",
+        linkedin: "linkedin.com/in/faizolaremu",
+        linkedinUrl: "https://linkedin.com/in/faizolaremu",
+        twitter: "@faizolaremu",
+        twitterUrl: "https://twitter.com/faizolaremu",
+        location: "Ogbomoso, Oyo State"
+    },
+    contact: {
+        responseTime: "Within 24 hours",
+        budgetOptions: ["< $500", "$500–$2k", "$2k–$5k", "$5k+", "Open to discuss"],
+        subjects: [
+            "💼 Job Opportunity",
+            "🤝 Collaboration",
+            "🐛 Bug Report",
+            "💬 Just saying hi",
+            "❓ Other"
+        ],
+        showBudgetFor: ["💼 Job Opportunity", "🤝 Collaboration"]
+    }
 };
 
 /**
@@ -31,47 +62,49 @@ const RESUME = {
     github: "https://github.com/faizolaremu",
     linkedin: "https://linkedin.com/in/faizolaremu",
     portfolio: "https://proxycowrywise.netlify.app/",
-    summary: "Ambitious Computer Science student at LAUTECH and Fullstack Developer Intern at SQI College of ICT. Extremely passionate about building modern, responsive, and highly interactive digital experiences. I integrate advanced AI tools into my engineering workflow to boost velocity, write cleaner code, and deliver premium products at speed.",
+    summary: "Results-driven CSC student and Fullstack Developer Intern with a proven track record of building high-performance, responsive, and visually compelling web applications. Skilled in leveraging modern JavaScript frameworks (React.js, Node.js) and integrating cutting-edge AI technologies into the software development lifecycle to increase code velocity, automate workflows, and optimize overall software quality. Passionate about software architecture, UI/UX aesthetics, and scalable backend design.",
     experience: [
         {
             company: "SQI College of ICT",
             role: "Fullstack Developer Intern",
-            dateRange: "2024 - Present",
+            dateRange: "2026 - Present",
             achievements: [
-                "Collaborate on building modern responsive web interfaces using JavaScript, CSS3, Tailwind CSS, and frontend frameworks.",
-                "Integrate generative AI tools into development workflows to accelerate coding velocity, optimize debug cycles, and structure clean modular files.",
-                "Acquire hands-on experience in backend architectures, database connectivity, API design, and fullstack application logic."
+                "Architect and develop clean, responsive user interfaces using React.js, Tailwind CSS, and ES6+ JavaScript, improving frontend loading efficiency and cross-device responsiveness.",
+                "Integrate state-of-the-art Generative AI workflows into the development lifecycle, accelerating code authoring, simplifying debugging cycles, and cutting time-to-market for prototypes by 3x.",
+                "Collaborate on building scalable backend REST APIs using Node.js and Express.js, connecting relational databases (PostgreSQL) to power dynamic, data-driven features.",
+                "Actively participate in code reviews, version control (Git/GitHub), and Agile methodologies to ensure seamless project delivery and alignment with industry standards."
             ]
         },
         {
-            company: "LAUTECH",
-            role: "Computer Science Undergraduate",
-            dateRange: "2021 - Present",
+            company: "Freelance & Open Source Initiatives",
+            role: "Frontend Developer",
+            dateRange: "2026 - Present",
             achievements: [
-                "Acquired deep theoretical foundations in data structures, algorithms, database systems, and software engineering methodologies.",
-                "Designed and built interactive personal and team web projects using vanilla HTML, CSS, and modular JavaScript structures.",
-                "Developed clean, modern UI layout prototypes using modern design tools like Figma before translating them into frontend code."
+                "Design, prototype, and implement a variety of fullstack web applications, employing object-oriented principles, efficient data structures, and modular software designs.",
+                "Build and maintain responsive frontend clones and interactive dashboards (e.g., Cowrywise platform replica) using HTML5, CSS3, Tailwind CSS, and Bootstrap, ensuring high fidelity to UX design systems.",
+                "Establish robust Git-based version control workflows for team projects, ensuring clean branch management and structured documentation."
             ]
         }
     ],
     education: [
         {
             school: "Ladoke Akintola University of Technology (LAUTECH)",
-            degree: "B.Tech in Computer Science",
-            year: "2021 - Present"
+            degree: "Bachelor of Technology (B.Tech.) in Computer Science (CSC)",
+            year: "2022 - (still Ongoing)"
         },
         {
             school: "SQI College of ICT",
             degree: "Professional Diploma in Software Engineering",
-            year: "2024 - Present"
+            year: "2026 - Present"
         }
     ],
     skills: {
         languages: ["HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "SQL"],
-        frameworks: ["React.js", "Tailwind CSS", "Bootstrap", "Node.js", "Express.js"],
-        tools: ["Git & GitHub", "Figma", "VS Code", "AI Assistant Tools", "Postman", "PostgreSQL"]
+        frameworks: ["React.js", "Node.js", "Express.js", "Tailwind CSS", "Bootstrap"],
+        tools: ["Git & GitHub", "Figma", "VS Code", "AI Development Assistants", "Postman", "PostgreSQL"]
     }
 };
+
 
 /**
  * PROJECTS DATA
@@ -246,6 +279,109 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Optional: clear password field
         passwordInput.value = '';
+    });
+
+    // 6b. Global Keyboard Shortcuts
+    let allMinimized = false;
+    let previousWindowStates = {};
+
+    function toggleShowDesktop() {
+        const windows = document.querySelectorAll('.app-window');
+        if (windows.length === 0) return;
+
+        if (!allMinimized) {
+            windows.forEach(win => {
+                const id = win.id.replace('-window', '');
+                previousWindowStates[id] = win.classList.contains('minimized');
+                if (!win.classList.contains('minimized')) {
+                    win.classList.add('minimized');
+                    const taskbarBtn = document.querySelector(`.app-btn[data-app="${win.getAttribute('data-app-name')}"]`);
+                    if (taskbarBtn) taskbarBtn.classList.remove('active');
+                }
+            });
+            allMinimized = true;
+        } else {
+            windows.forEach(win => {
+                const id = win.id.replace('-window', '');
+                const wasMinimized = previousWindowStates[id];
+                if (!wasMinimized) {
+                    win.classList.remove('minimized');
+                    const taskbarBtn = document.querySelector(`.app-btn[data-app="${win.getAttribute('data-app-name')}"]`);
+                    if (taskbarBtn) taskbarBtn.classList.add('active');
+                }
+            });
+            allMinimized = false;
+        }
+    }
+
+    window.addEventListener('keydown', (e) => {
+        // Skip shortcuts if desktop is not active
+        if (!desktopScreen || desktopScreen.classList.contains('hidden')) return;
+
+        const activeEl = document.activeElement;
+        const isTyping = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
+
+        // Win key alone -> Toggle Start Menu
+        if (e.key === 'Meta' && !isTyping) {
+            e.preventDefault();
+            const startBtn = document.getElementById('start-btn');
+            if (startBtn) startBtn.click();
+            return;
+        }
+
+        // Win + I -> Settings
+        if (e.key.toLowerCase() === 'i' && e.metaKey) {
+            e.preventDefault();
+            window.openApp('Settings');
+            return;
+        }
+
+        // Win + R -> Terminal
+        if (e.key.toLowerCase() === 'r' && e.metaKey) {
+            e.preventDefault();
+            window.openApp('Terminal');
+            return;
+        }
+
+        // Win + D -> Toggle Show/Hide Desktop
+        if (e.key.toLowerCase() === 'd' && e.metaKey) {
+            e.preventDefault();
+            toggleShowDesktop();
+            return;
+        }
+
+        // Ctrl + Shift + Esc -> Open Terminal (Task Manager shortcut)
+        if (e.key === 'Escape' && e.ctrlKey && e.shiftKey) {
+            e.preventDefault();
+            window.openApp('Terminal');
+            return;
+        }
+
+        // Alt + F4 or Alt + Q -> Close Active Window
+        if ((e.key === 'F4' && e.altKey) || (e.key.toLowerCase() === 'q' && e.altKey)) {
+            e.preventDefault();
+            const activeWin = document.querySelector('.app-window.active');
+            if (activeWin) {
+                const closeBtn = activeWin.querySelector('.close-btn');
+                if (closeBtn) closeBtn.click();
+            }
+            return;
+        }
+
+        // Esc -> Close active window or Start Menu
+        if (e.key === 'Escape' && !isTyping) {
+            const activeWin = document.querySelector('.app-window.active');
+            if (activeWin) {
+                const closeBtn = activeWin.querySelector('.close-btn');
+                if (closeBtn) closeBtn.click();
+            } else {
+                const startMenu = document.getElementById('start-menu');
+                if (startMenu && startMenu.classList.contains('active')) {
+                    startMenu.classList.remove('active');
+                    setTimeout(() => startMenu.classList.add('hidden'), 200);
+                }
+            }
+        }
     });
 
     // 7. Desktop Initialization & Wallpaper Picker
@@ -488,11 +624,39 @@ document.addEventListener('DOMContentLoaded', () => {
         desktopBgLayer2.style.filter = filterString;
     }
 
-    brightnessSlider.addEventListener('input', (e) => {
-        updateSliderBackground(e.target);
-        brightnessPct.textContent = e.target.value;
-        currentBrightness = e.target.value / 100;
+    function setSystemBrightness(value) {
+        const valNum = parseInt(value, 10);
+        // Sync Quick Settings Slider
+        const qsSlider = document.getElementById('brightness-slider');
+        const qsPct = document.getElementById('brightness-pct');
+        if (qsSlider) {
+            qsSlider.value = valNum;
+            updateSliderBackground(qsSlider);
+        }
+        if (qsPct) {
+            qsPct.textContent = valNum;
+        }
+
+        // Sync Settings App Slider
+        const settingsSlider = document.querySelector('#settings-brightness');
+        if (settingsSlider) {
+            settingsSlider.value = valNum;
+            settingsSlider.style.setProperty('--val', `${valNum}%`);
+        }
+
+        // Apply visual filter to desktop layers
+        currentBrightness = valNum / 100;
         updateDesktopFilters();
+
+        // Apply physical dimming to fullscreen overlay
+        const overlay = document.getElementById('brightness-overlay');
+        if (overlay) {
+            overlay.style.opacity = ((100 - valNum) / 100) * 0.7;
+        }
+    }
+
+    brightnessSlider.addEventListener('input', (e) => {
+        setSystemBrightness(e.target.value);
     });
     updateSliderBackground(brightnessSlider);
 
@@ -989,7 +1153,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (id === 'skills') {
             initSkillsApp(win);
         }
-
+        if (id === 'terminal') {
+            initTerminalApp(win);
+        }
+        if (id === 'browser') {
+            initBrowserApp(win);
+        }
+        if (id === 'contact-me') {
+            initContactMeApp(win);
+        }
         return win;
     };
 
@@ -998,6 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const settingsNavItems = win.querySelectorAll('.settings-nav-item');
         const settingsPages = win.querySelectorAll('.settings-page');
 
+        // 1. Sidebar Page Navigation
         settingsNavItems.forEach(item => {
             item.addEventListener('click', () => {
                 settingsNavItems.forEach(nav => nav.classList.remove('active'));
@@ -1009,6 +1182,163 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
+
+        // 2. Brightness Slider
+        const settingsBrightness = win.querySelector('#settings-brightness');
+        if (settingsBrightness) {
+            const globalQsSlider = document.getElementById('brightness-slider');
+            if (globalQsSlider) {
+                settingsBrightness.value = globalQsSlider.value;
+            }
+            settingsBrightness.style.setProperty('--val', `${settingsBrightness.value}%`);
+            settingsBrightness.addEventListener('input', () => {
+                setSystemBrightness(settingsBrightness.value);
+            });
+        }
+
+        // 3. Sound Volume Slider
+        const volumeSlider = win.querySelector('#settings-volume');
+        if (volumeSlider) {
+            volumeSlider.style.setProperty('--val', `${volumeSlider.value}%`);
+            volumeSlider.addEventListener('input', () => {
+                const val = volumeSlider.value;
+                volumeSlider.style.setProperty('--val', `${val}%`);
+                
+                // Sync with taskbar Quick Settings panel if open/rendered
+                const qsVolume = document.getElementById('qs-volume-slider');
+                if (qsVolume) {
+                    qsVolume.value = val;
+                    qsVolume.style.setProperty('--val', `${val}%`);
+                }
+            });
+        }
+
+        // 4. Light Mode Theme Switcher
+        const lightmodeSwitch = win.querySelector('#settings-lightmode');
+        if (lightmodeSwitch) {
+            lightmodeSwitch.checked = document.body.classList.contains('light-mode');
+            lightmodeSwitch.addEventListener('change', () => {
+                if (lightmodeSwitch.checked) {
+                    document.body.classList.add('light-mode');
+                } else {
+                    document.body.classList.remove('light-mode');
+                }
+            });
+        }
+
+        // 5. Personalization: Wallpaper Thumbnails Row
+        const wallpapersRow = win.querySelector('#settings-wallpapers-row');
+        if (wallpapersRow) {
+            wallpapersRow.innerHTML = '';
+            WALLPAPERS.forEach((wp, index) => {
+                const wpItem = document.createElement('div');
+                wpItem.className = 'settings-wallpaper-item';
+                if (USER_CONFIG.currentWallpaperIndex === index) {
+                    wpItem.classList.add('active');
+                }
+                wpItem.innerHTML = `
+                    <img src="${wp.url}" alt="${wp.name}">
+                    ${USER_CONFIG.currentWallpaperIndex === index ? '<div class="settings-check-badge">✓</div>' : ''}
+                `;
+                wpItem.addEventListener('click', () => {
+                    USER_CONFIG.currentWallpaperIndex = index;
+                    document.documentElement.style.setProperty('--bg-url', `url('${wp.url}')`);
+                    
+                    // Crossfade using bg layers on desktop if present
+                    const bgLayer1 = document.getElementById('desktop-bg-layer1');
+                    const bgLayer2 = document.getElementById('desktop-bg-layer2');
+                    if (bgLayer1 && bgLayer2) {
+                        const style1 = window.getComputedStyle(bgLayer1);
+                        if (style1.opacity === '1') {
+                            bgLayer2.style.backgroundImage = `url('${wp.url}')`;
+                            bgLayer2.style.opacity = '1';
+                            bgLayer1.style.opacity = '0';
+                        } else {
+                            bgLayer1.style.backgroundImage = `url('${wp.url}')`;
+                            bgLayer1.style.opacity = '1';
+                            bgLayer2.style.opacity = '0';
+                        }
+                    }
+
+                    // Update Active Thumbnails in Settings panel
+                    win.querySelectorAll('.settings-wallpaper-item').forEach((item, idx) => {
+                        item.classList.remove('active');
+                        const badge = item.querySelector('.settings-check-badge');
+                        if (badge) badge.remove();
+                        if (idx === index) {
+                            item.classList.add('active');
+                            const newBadge = document.createElement('div');
+                            newBadge.className = 'settings-check-badge';
+                            newBadge.textContent = '✓';
+                            item.appendChild(newBadge);
+                        }
+                    });
+                });
+                wallpapersRow.appendChild(wpItem);
+            });
+        }
+
+        // 6. Personalization: Accent Color Pickers
+        const accentColors = [
+            '#0078d4', '#744da9', '#00b7c3', '#107c41',
+            '#e81123', '#ff8c00', '#f9d616', '#505050'
+        ];
+        const accentRow = win.querySelector('#settings-accent-row');
+        if (accentRow) {
+            accentRow.innerHTML = '';
+            
+            // Get current accent color from CSS variables (default to #0078d4)
+            const currentAccent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#0078d4';
+            
+            accentColors.forEach(color => {
+                const accentItem = document.createElement('div');
+                accentItem.className = 'settings-accent-item';
+                accentItem.style.backgroundColor = color;
+                if (currentAccent.toLowerCase() === color.toLowerCase()) {
+                    accentItem.classList.add('active');
+                }
+                
+                accentItem.addEventListener('click', () => {
+                    document.documentElement.style.setProperty('--accent', color);
+                    
+                    // Highlight selected swatch in Settings
+                    win.querySelectorAll('.settings-accent-item').forEach(item => {
+                        item.classList.remove('active');
+                        // Use color comparison helper since style.backgroundColor may return rgb representation
+                        const rgbColor = item.style.backgroundColor;
+                        if (rgbColor === color || item.style.backgroundColor === color) {
+                            item.classList.add('active');
+                        }
+                    });
+                    
+                    // Highlight active indicators
+                    const activeIndicator = document.querySelector('.taskbar-icon.active .indicator');
+                    if (activeIndicator) {
+                        activeIndicator.style.backgroundColor = color;
+                    }
+                });
+                accentRow.appendChild(accentItem);
+            });
+        }
+
+        // 7. Personalization: Transparency Effects Toggle
+        const transparencySwitch = win.querySelector('#settings-transparency');
+        if (transparencySwitch) {
+            const currentBlur = getComputedStyle(document.documentElement).getPropertyValue('--window-blur').trim();
+            transparencySwitch.checked = currentBlur !== 'none';
+            
+            transparencySwitch.addEventListener('change', () => {
+                if (transparencySwitch.checked) {
+                    document.documentElement.style.setProperty('--window-bg', 'rgba(32, 32, 32, 0.85)');
+                    document.documentElement.style.setProperty('--window-bg-light', 'rgba(243, 243, 243, 0.85)');
+                    document.documentElement.style.setProperty('--window-blur', 'blur(25px)');
+                } else {
+                    document.documentElement.style.setProperty('--window-bg', '#1e1e1e');
+                    document.documentElement.style.setProperty('--window-bg-light', '#f3f3f3');
+                    document.documentElement.style.setProperty('--window-blur', 'none');
+                }
+            });
+        }
     }
 
     // Initialize specific logic for My Projects app
@@ -1233,317 +1563,85 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Initialize specific logic for About Me VS Code app
+    // Initialize specific logic for About Me Profile Dashboard
     function initAboutMeApp(win) {
-        const fileItems = win.querySelectorAll('.vscode-file-item');
-        const codeContainer = win.querySelector('.vscode-code-content');
-        const linesContainer = win.querySelector('.vscode-line-numbers');
-        const activeTabName = win.querySelector('#vscode-active-tab');
-        const statusLines = win.querySelector('#vscode-status-lines');
-        const statusLang = win.querySelector('#vscode-status-lang');
-
-        const filesData = {
-            'about-me.md': {
-                lang: 'Markdown',
-                code: `# Faizol Aremu | Fullstack Developer
-
-## 🚀 The Mission
-I am a Computer Science student at LAUTECH and a Fullstack Developer Intern at SQI College of ICT. I don't just write code—I build responsive, modern, and highly interactive digital experiences that feel alive.
-
-## 🤖 Workflow & Velocity
-I integrate cutting-edge AI tools into my everyday development workflow to accelerate coding velocity, eliminate bugs, and structure premium products at lightspeed.
-
-## 🛠️ The Tech Stack
-- HTML5 & CSS3
-- Tailwind CSS
-- JavaScript (ES6+)
-- Responsive Clean UI Design
-- Growing knowledge in Frontend & Backend architectures
-
-Let's create something legendary together!`,
-                highlighted: `<span class="vs-md-h"># Faizol Aremu | Fullstack Developer</span>
-
-<span class="vs-md-h">## 🚀 The Mission</span>
-I am a Computer Science student at LAUTECH and a Fullstack Developer Intern at SQI College of ICT. I don't just write code—I build responsive, modern, and highly interactive digital experiences that feel alive.
-
-<span class="vs-md-h">## 🤖 Workflow & Velocity</span>
-I integrate cutting-edge AI tools into my everyday development workflow to accelerate coding velocity, eliminate bugs, and structure premium products at lightspeed.
-
-<span class="vs-md-h">## 🛠️ The Tech Stack</span>
-<span class="vs-md-bullet">-</span> HTML5 & CSS3
-<span class="vs-md-bullet">-</span> Tailwind CSS
-<span class="vs-md-bullet">-</span> JavaScript (ES6+)
-<span class="vs-md-bullet">-</span> Responsive Clean UI Design
-<span class="vs-md-bullet">-</span> Growing knowledge in Frontend & Backend architectures
-
-Let's create something legendary together!`
-            },
-            'fun-facts.md': {
-                lang: 'Markdown',
-                code: `# Beyond The Code
-
-- 🚀 Fast Learner: Growing knowledge in both frontend and backend architectures
-- 🤖 AI Enthusiast: Seamlessly integrates LLMs and AI tools to write cleaner code and deliver products 3x faster
-- 💡 Physics-based Motion: Obsessed with building web UI that feels alive and tactile
-- 🌟 Ambition: Chasing down complex challenges to shape the future of elegant web engineering`,
-                highlighted: `<span class="vs-md-h"># Beyond The Code</span>
-
-<span class="vs-md-bullet">-</span> 🚀 Fast Learner: Growing knowledge in both frontend and backend architectures
-<span class="vs-md-bullet">-</span> 🤖 AI Enthusiast: Seamlessly integrates LLMs and AI tools to write cleaner code and deliver products 3x faster
-<span class="vs-md-bullet">-</span> 💡 Physics-based Motion: Obsessed with building web UI that feels alive and tactile
-<span class="vs-md-bullet">-</span> 🌟 Ambition: Chasing down complex challenges to shape the future of elegant web engineering`
-            },
-            'contact.js': {
-                lang: 'JavaScript',
-                code: `// Let's create something legendary together!
-export const collaboration = {
-    email: "waliufaizol@gmail.com",
-    github: "https://github.com/faizolaremu",
-    linkedin: "https://linkedin.com/in/faizolaremu",
-    status: "Open to bold ideas, intern roles, & fullstack collaborations.",
-    action: "Let's connect and build the next big thing!"
-};`,
-                highlighted: `<span class="vs-comment">// Let's create something legendary together!</span>
-<span class="vs-keyword">export</span> <span class="vs-keyword">const</span> <span class="vs-property">collaboration</span> <span class="vs-punct">=</span> <span class="vs-punct">{</span>
-    <span class="vs-property">email</span><span class="vs-punct">:</span> <span class="vs-string">"waliufaizol@gmail.com"</span><span class="vs-punct">,</span>
-    <span class="vs-property">github</span><span class="vs-punct">:</span> <span class="vs-string">"https://github.com/faizolaremu"</span><span class="vs-punct">,</span>
-    <span class="vs-property">linkedin</span><span class="vs-punct">:</span> <span class="vs-string">"https://linkedin.com/in/faizolaremu"</span><span class="vs-punct">,</span>
-    <span class="vs-property">status</span><span class="vs-punct">:</span> <span class="vs-string">"Open to bold ideas, intern roles, & fullstack collaborations."</span><span class="vs-punct">,</span>
-    <span class="vs-property">action</span><span class="vs-punct">:</span> <span class="vs-string">"Let's connect and build the next big thing!"</span>
-<span class="vs-punct">}</span><span class="vs-punct">;</span>`
-            }
-        };
-
-        function loadFile(fileName) {
-            const data = filesData[fileName];
-            if (!data) return;
-
-            // Highlighted content + cursor
-            codeContainer.innerHTML = data.highlighted + '<span class="vscode-cursor"></span>';
-
-            // Lines calculation and population
-            const lines = data.code.split('\n');
-            let numbersHTML = '';
-            for (let i = 1; i <= lines.length; i++) {
-                numbersHTML += `<div>${i}</div>`;
-            }
-            linesContainer.innerHTML = numbersHTML;
-
-            // Active file visual state
-            fileItems.forEach(item => {
-                if (item.getAttribute('data-file') === fileName) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            // Update Tab name
-            if (activeTabName) activeTabName.textContent = fileName;
-
-            // Update status details
-            if (statusLines) statusLines.textContent = `Ln ${lines.length}, Col 1`;
-            if (statusLang) statusLang.textContent = data.lang;
-        }
-
-        // Add folder tree clicking triggers
-        fileItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const fileName = item.getAttribute('data-file');
-                loadFile(fileName);
-            });
-        });
-
-        // 1. Folder collapse/expand accordion toggle
-        const folderTitle = win.querySelector('.vscode-folder-title');
-        const fileList = win.querySelector('.vscode-file-list');
-        const folderArrow = win.querySelector('.vscode-arrow');
-
-        if (folderTitle && fileList && folderArrow) {
-            folderTitle.addEventListener('click', () => {
-                if (fileList.style.display === 'none') {
-                    fileList.style.display = 'flex';
-                    folderArrow.textContent = '▼';
-                } else {
-                    fileList.style.display = 'none';
-                    folderArrow.textContent = '▶';
-                }
-            });
-        }
-
-        // 2. Activity Bar sidebar toggles & sliding panels
-        const sidebar = win.querySelector('.vscode-sidebar');
-        const actIcons = win.querySelectorAll('.vscode-act-top .vscode-act-icon');
-        const views = win.querySelectorAll('.vscode-sidebar-view');
-
-        actIcons.forEach(icon => {
-            icon.addEventListener('click', () => {
-                const title = icon.getAttribute('title').toLowerCase();
-                let targetViewId = 'vscode-view-explorer';
+        // Copy to clipboard fallback and mailto link for Email button
+        const emailBtn = win.querySelector('#about-email-btn');
+        if (emailBtn) {
+            emailBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const emailAddress = 'waliufaizol@gmail.com';
                 
-                if (title.includes('search')) targetViewId = 'vscode-view-search';
-                else if (title.includes('source')) targetViewId = 'vscode-view-git';
-                else if (title.includes('run')) targetViewId = 'vscode-view-debug';
-                else if (title.includes('extensions')) targetViewId = 'vscode-view-extensions';
-
-                const targetView = win.querySelector(`#${targetViewId}`);
-
-                // If already active, toggle collapse
-                if (icon.classList.contains('active')) {
-                    icon.classList.remove('active');
-                    sidebar.style.width = '0px';
-                    sidebar.style.minWidth = '0px';
-                    sidebar.style.overflow = 'hidden';
-                } else {
-                    // Deactivate all
-                    actIcons.forEach(i => i.classList.remove('active'));
-                    views.forEach(v => v.classList.add('hidden'));
-
-                    // Activate selected
-                    icon.classList.add('active');
-                    sidebar.style.width = '240px';
-                    sidebar.style.minWidth = '240px';
-                    sidebar.style.overflow = 'visible';
-                    if (targetView) targetView.classList.remove('hidden');
-                }
+                // Open mail composition
+                window.location.href = `mailto:${emailAddress}`;
+                
+                // Also copy for convenience
+                navigator.clipboard.writeText(emailAddress).then(() => {
+                    const originalHTML = emailBtn.innerHTML;
+                    emailBtn.innerHTML = `
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Copied & Opening!
+                    `;
+                    emailBtn.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+                    emailBtn.style.background = 'rgba(34, 197, 94, 0.15)';
+                    emailBtn.style.color = '#4ade80';
+                    setTimeout(() => {
+                        emailBtn.innerHTML = originalHTML;
+                        emailBtn.style.borderColor = '';
+                        emailBtn.style.background = '';
+                        emailBtn.style.color = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.log('Failed to copy: ', err);
+                });
             });
+        }
+
+        // Animate cards in on open
+        const cards = win.querySelectorAll('.about-card');
+        cards.forEach((card, i) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.4s ease ${i * 0.08}s, transform 0.4s ease ${i * 0.08}s`;
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 50);
         });
-
-        // 3. Search Engine Filter
-        const searchInput = win.querySelector('.vscode-search-input');
-        const searchResults = win.querySelector('.vscode-search-results');
-
-        if (searchInput && searchResults) {
-            searchInput.addEventListener('input', () => {
-                const query = searchInput.value.toLowerCase().trim();
-                searchResults.innerHTML = '';
-
-                if (!query) {
-                    searchResults.innerHTML = '<div style="padding: 10px; color: #858585;">Type to search in files...</div>';
-                    return;
-                }
-
-                let matchesFound = 0;
-                for (const [fileName, file] of Object.entries(filesData)) {
-                    if (file.code.toLowerCase().includes(query)) {
-                        matchesFound++;
-                        const lines = file.code.split('\n');
-                        const matchingLine = lines.find(line => line.toLowerCase().includes(query)) || '';
-                        
-                        const matchEl = document.createElement('div');
-                        matchEl.className = 'vscode-search-match';
-                        matchEl.innerHTML = `
-                            <div class="vscode-search-match-file">📄 ${fileName}</div>
-                            <div class="vscode-search-match-text">${matchingLine.replace(new RegExp(query, 'gi'), m => `<mark style="background: #613214; color: #ffeb3b; padding: 0 2px; border-radius: 2px;">${m}</mark>`)}</div>
-                        `;
-
-                        matchEl.addEventListener('click', () => {
-                            // Automatically switch sidebars to explorer and load file
-                            const explorerIcon = win.querySelector('.vscode-act-icon[title="Explorer"]');
-                            if (explorerIcon) explorerIcon.click();
-                            loadFile(fileName);
-                        });
-
-                        searchResults.appendChild(matchEl);
-                    }
-                }
-
-                if (matchesFound === 0) {
-                    searchResults.innerHTML = '<div style="padding: 10px; color: #858585;">No results found.</div>';
-                }
-            });
-        }
-
-        // 4. Source Control (Git) Commit Interactive Actions
-        const commitBtn = win.querySelector('.vscode-git-commit-btn');
-        const gitMsgInput = win.querySelector('.vscode-git-msg-input');
-        const gitBadge = win.querySelector('.vscode-git-changes-title .vscode-badge');
-        const gitFile = win.querySelector('.vscode-git-file');
-        const gitStatusMode = win.querySelector('.vscode-status-mode');
-
-        if (commitBtn && gitMsgInput) {
-            commitBtn.addEventListener('click', () => {
-                const msg = gitMsgInput.value.trim();
-                if (!msg) {
-                    alert('Please enter a commit message!');
-                    return;
-                }
-
-                gitMsgInput.value = '';
-                if (gitBadge) gitBadge.style.display = 'none';
-                if (gitFile) {
-                    gitFile.innerHTML = '<div style="padding: 10px 0; color: #6a9955; font-style: italic;">✓ No changes detected</div>';
-                }
-                if (gitStatusMode) {
-                    gitStatusMode.innerHTML = `<span class="vscode-status-mode">✔ Master (Commit: ${msg.substring(0, 7)})</span>`;
-                }
-                alert(`Successfully committed changes:\n"${msg}"\n\nBranch: master is up-to-date.`);
-            });
-        }
-
-        // 5. Debug Session trigger
-        const debugBtn = win.querySelector('.vscode-debug-btn');
-        if (debugBtn) {
-            debugBtn.addEventListener('click', () => {
-                alert('🚀 Debugger Session Started...\n\nRunning profile checklist:\n- Name: Faizol Aremu\n- Role: Fullstack Developer\n- Status: Optimized with AI workflows.\n\nResult: SUCCESS! Ready for new challenges.');
-            });
-        }
-
-        // 6. Settings Link OS integration
-        const vsSettingsBtn = win.querySelector('.vscode-act-bottom .vscode-act-icon[title="Settings"]');
-        if (vsSettingsBtn) {
-            vsSettingsBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (window.openApp) {
-                    window.openApp('Settings');
-                }
-            });
-        }
-
-        // 7. Tab Close Button integration (closes entire window)
-        const tabCloseBtn = win.querySelector('.vscode-tab-close');
-        if (tabCloseBtn) {
-            tabCloseBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (window.closeApp) {
-                    window.closeApp('About Me');
-                }
-            });
-        }
-
-        // 8. Sync Spinner integration
-        const syncBtn = win.querySelector('.vscode-status-sync');
-        if (syncBtn) {
-            syncBtn.addEventListener('click', () => {
-                syncBtn.classList.add('spinning');
-                setTimeout(() => {
-                    syncBtn.classList.remove('spinning');
-                    alert('Synchronized successfully with remote branch origin/master!');
-                }, 800);
-            });
-        }
-
-        // Pre-load default file
-        loadFile('about-me.md');
     }
+
+
 
     // Initialize specific logic for skills app (Windows 11 Settings clone)
     function initSkillsApp(win) {
         const navItems = win.querySelectorAll('.skills-nav-item');
         const grid = win.querySelector('#skills-grid');
         const catTitle = win.querySelector('#skills-cat-title');
+        const searchInput = win.querySelector('#skills-search-input');
 
         if (!grid || !catTitle) return;
 
-        function loadCategory(categoryName) {
-            // Update title
-            catTitle.textContent = categoryName;
+        let currentCategory = 'All Skills';
 
-            // Filter skills
-            const filteredSkills = SKILLS.filter(s => s.category === categoryName);
+        function renderSkills(skillsToRender, showHeaders = false) {
             grid.innerHTML = '';
+            
+            if (skillsToRender.length === 0) {
+                grid.innerHTML = '<div style="grid-column: 1/-1; padding: 20px; color: #888; text-align: center;">No skills found.</div>';
+                return;
+            }
 
-            filteredSkills.forEach(skill => {
+            let currentGroup = '';
+
+            skillsToRender.forEach(skill => {
+                if (showHeaders && skill.category !== currentGroup) {
+                    currentGroup = skill.category;
+                    const header = document.createElement('div');
+                    header.className = 'skills-group-header';
+                    header.textContent = currentGroup;
+                    grid.appendChild(header);
+                }
+
                 const card = document.createElement('div');
                 card.className = 'skills-card';
 
@@ -1589,11 +1687,37 @@ export const collaboration = {
             }, 50);
         }
 
+        function loadCategory(categoryName, searchQuery = '') {
+            currentCategory = categoryName;
+            catTitle.textContent = categoryName;
+            
+            let filteredSkills = SKILLS;
+            
+            if (categoryName !== 'All Skills') {
+                filteredSkills = filteredSkills.filter(s => s.category === categoryName);
+            }
+            
+            if (searchQuery) {
+                const query = searchQuery.toLowerCase();
+                filteredSkills = filteredSkills.filter(s => s.name.toLowerCase().includes(query) || s.category.toLowerCase().includes(query));
+            }
+
+            renderSkills(filteredSkills, categoryName === 'All Skills' && !searchQuery);
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                loadCategory(currentCategory, e.target.value);
+            });
+        }
+
         // Add Click Triggers to Categories Sidebar
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navItems.forEach(nav => nav.classList.remove('active'));
                 item.classList.add('active');
+
+                if (searchInput) searchInput.value = ''; // clear search when switching tabs
 
                 const category = item.getAttribute('data-category');
                 loadCategory(category);
@@ -1601,7 +1725,842 @@ export const collaboration = {
         });
 
         // Pre-load default active category
-        loadCategory('Languages');
+        loadCategory('All Skills');
+    }
+
+    // Initialize specific logic for Terminal app
+    function initTerminalApp(win) {
+        const inputField = win.querySelector('#term-input');
+        const cmdText = win.querySelector('#term-cmd-text');
+        const outputContainer = win.querySelector('#term-output');
+        const termContainer = win.querySelector('#terminal-container');
+        const bannerName = win.querySelector('#term-banner-name');
+
+        if (bannerName && typeof USER_CONFIG !== 'undefined' && USER_CONFIG.name) {
+            bannerName.textContent = USER_CONFIG.name;
+        }
+
+        let history = [];
+        let historyIndex = -1;
+
+        // Keep focus on input when clicking terminal
+        termContainer.addEventListener('click', () => {
+            inputField.focus();
+        });
+
+        // Sync visual text with hidden input
+        inputField.addEventListener('input', () => {
+            cmdText.textContent = inputField.value;
+        });
+
+        inputField.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = inputField.value.trim();
+                if (cmd) {
+                    history.push(cmd);
+                    if (history.length > 20) history.shift();
+                }
+                historyIndex = history.length;
+                processCommand(cmd);
+                inputField.value = '';
+                cmdText.textContent = '';
+                
+                // Auto-scroll to bottom
+                setTimeout(() => {
+                    termContainer.scrollTop = termContainer.scrollHeight;
+                }, 10);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    inputField.value = history[historyIndex];
+                    cmdText.textContent = inputField.value;
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex < history.length - 1) {
+                    historyIndex++;
+                    inputField.value = history[historyIndex];
+                    cmdText.textContent = inputField.value;
+                } else {
+                    historyIndex = history.length;
+                    inputField.value = '';
+                    cmdText.textContent = '';
+                }
+            }
+        });
+
+        function appendOutput(cmd, resultHTML) {
+            const entry = document.createElement('div');
+            entry.className = 'term-entry';
+            entry.innerHTML = `
+                <div class="term-entry-cmd">
+                    <span class="term-entry-prompt">PS C:\\Users\\Faizol></span>
+                    <span class="term-entry-text">${cmd}</span>
+                </div>
+                <div class="term-entry-result">${resultHTML}</div>
+            `;
+            outputContainer.appendChild(entry);
+        }
+
+        function processCommand(cmd) {
+            const lowerCmd = cmd.toLowerCase();
+            
+            if (lowerCmd === 'clear') {
+                outputContainer.innerHTML = '';
+                return;
+            }
+
+            let result = '';
+            
+            if (lowerCmd === 'help') {
+                result = `Available commands:
+  help           - Shows this help message
+  whoami         - Display user information
+  skills         - List top technical skills
+  projects       - List portfolio projects
+  contact        - Display contact information
+  open contact   - Open the Contact Me application
+  ls             - List directory contents
+  cat about.txt  - Print biography
+  date           - Display current date and time
+  echo [text]    - Print text to the terminal
+  start [app]    - Launch a portfolio app (e.g., start resume)
+  systeminfo     - Display system information
+  exit           - Close the terminal
+  clear          - Clear terminal screen
+  sudo hire-me   - Execute hire sequence`;
+            } else if (lowerCmd === 'whoami') {
+                result = `Name: ${USER_CONFIG.name}\nRole: ${RESUME.title}\nStatus: Online`;
+            } else if (lowerCmd === 'skills') {
+                const topSkills = SKILLS.filter(s => s.level >= 90).map(s => s.name).join(', ');
+                result = `Top Skills (Level 90%+):\n${topSkills}\n\nType 'openApp("Skills")' in console or click the desktop icon for full details.`;
+            } else if (lowerCmd === 'projects') {
+                result = PROJECTS.map(p => `${p.title.padEnd(25)} - ${p.description.substring(0, 50)}...`).join('\n');
+            } else if (lowerCmd === 'contact') {
+                result = `<a href="mailto:${RESUME.email}" style="color: #00A4EF; text-decoration: none;">Email: ${RESUME.email}</a>\n<a href="${RESUME.github}" target="_blank" style="color: #00A4EF; text-decoration: none;">GitHub: ${RESUME.github}</a>\n<a href="${RESUME.linkedin}" target="_blank" style="color: #00A4EF; text-decoration: none;">LinkedIn: ${RESUME.linkedin}</a>`;
+            } else if (lowerCmd === 'ls') {
+                result = `Directory: C:\\Users\\Faizol\\Portfolio\n\nMode                 LastWriteTime         Length Name\n----                 -------------         ------ ----\nd-----         5/19/2026   10:00 AM                about-me\nd-----         5/19/2026   10:00 AM                projects\nd-----         5/19/2026   10:00 AM                skills\n-a----         5/19/2026   10:00 AM            512 about.txt`;
+            } else if (lowerCmd === 'cat about.txt') {
+                result = RESUME.summary;
+            } else if (lowerCmd === 'sudo hire-me') {
+                result = `<span style="color: #4ec9b0; font-weight: bold;">Executing hire sequence... ✅ Request sent to your future employer!</span>`;
+            } else if (lowerCmd === 'date') {
+                result = new Date().toString();
+            } else if (lowerCmd === 'open contact' || lowerCmd === 'contact-me') {
+                if (window.openApp) window.openApp('Contact Me');
+                result = 'Opening Contact Me app...';
+            } else if (lowerCmd.startsWith('echo ')) {
+                result = cmd.substring(5);
+            } else if (lowerCmd.startsWith('start ')) {
+                const appToOpen = cmd.substring(6).trim().toLowerCase();
+                const appMap = {
+                    'resume': 'Resume',
+                    'about me': 'About Me',
+                    'skills': 'Skills',
+                    'projects': 'My Projects',
+                    'my projects': 'My Projects',
+                    'settings': 'Settings',
+                    'github': 'GitHub',
+                    'contact': 'Contact Me',
+                    'contact me': 'Contact Me',
+                    'contact-me': 'Contact Me'
+                };
+                if (appMap[appToOpen]) {
+                    if (window.openApp) window.openApp(appMap[appToOpen]);
+                    result = `Starting ${appMap[appToOpen]}...`;
+                } else {
+                    result = `App not found: ${appToOpen}. Available apps: Resume, About Me, Skills, Projects, Settings, Contact Me.`;
+                }
+            } else if (lowerCmd === 'systeminfo') {
+                result = `OS Name:                   Windows 11 Portfolio Edition
+OS Version:                10.0.22000 N/A Build 22000
+OS Manufacturer:           Faizol Aremu Corporation
+System Type:               x64-based Web Application
+Processor(s):              1 Processor(s) Installed. [High Performance AI Node]
+Total Physical Memory:     16,384 MB
+Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
+            } else if (lowerCmd === 'exit') {
+                if (window.closeApp) window.closeApp('Terminal');
+                return; // Exit out, terminal is closing
+            } else if (cmd === '') {
+                appendOutput('', '');
+                return;
+            } else {
+                result = `<span style="color: #f44336;">command not found: ${cmd}</span>`;
+            }
+
+            appendOutput(cmd, result);
+        }
+        
+        // Initial focus
+        setTimeout(() => inputField.focus(), 100);
+    }
+
+    function syncSettingsWallpaperUI(url) {
+        const settingsWin = document.getElementById('settings-window');
+        if (settingsWin) {
+            const items = settingsWin.querySelectorAll('.settings-wallpaper-item');
+            items.forEach((item, idx) => {
+                item.classList.remove('active');
+                const badge = item.querySelector('.settings-check-badge');
+                if (badge) badge.remove();
+
+                if (idx < WALLPAPERS.length && WALLPAPERS[idx].url === url) {
+                    item.classList.add('active');
+                    const newBadge = document.createElement('div');
+                    newBadge.className = 'settings-check-badge';
+                    newBadge.textContent = '✓';
+                    item.appendChild(newBadge);
+                }
+            });
+        }
+    }
+
+    function initBrowserApp(win) {
+        const backBtn = win.querySelector('#browser-back');
+        const forwardBtn = win.querySelector('#browser-forward');
+        const refreshBtn = win.querySelector('#browser-refresh');
+        const homeBtn = win.querySelector('#browser-home');
+        const addressInput = win.querySelector('#browser-address-input');
+        const goBtn = win.querySelector('#browser-go-btn');
+        
+        const searchInput = win.querySelector('#browser-search-box');
+        const searchBtn = win.querySelector('#browser-search-btn');
+        const searchTags = win.querySelectorAll('.browser-search-tag');
+        const backHomeBtn = win.querySelector('#browser-back-home');
+        
+        const homePage = win.querySelector('#browser-home-page');
+        const resultsSection = win.querySelector('#browser-results-section');
+        const resultsGrid = win.querySelector('#browser-results-grid');
+        const queryDisplay = win.querySelector('#browser-query-display');
+        const toast = win.querySelector('#browser-toast');
+
+        let historyStack = ['https://bing.com/wallpapers'];
+        let historyPointer = 0;
+
+        const BROWSER_WALLPAPERS = {
+            "coding": [
+                { title: "HTML Code Screen", url: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "TypeScript IDE", url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "JavaScript Editor", url: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Node.js Workspace", url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Python Dashboard", url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "AI Code Assistant", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+            ],
+            "workspace": [
+                { title: "Minimalist Coding Desk", url: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Neon Setup", url: "https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Dual Monitor Desk", url: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Developer Office", url: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Coffee & Code", url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Ultrawide Coding Setup", url: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+            ],
+            "cyberpunk": [
+                { title: "Neon Alleyways", url: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Circuit City", url: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Hacker Command Center", url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Grid Streets", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Cyber Terminal", url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "RGB Coding RIG", url: "https://images.unsplash.com/photo-1603481588273-2f908a9a7a1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+            ],
+            "matrix code": [
+                { title: "Digital Rain Matrix", url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Green Terminal Stream", url: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Cyber Protection Grid", url: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+            ],
+            "abstract dark": [
+                { title: "Minimal Abstract Wave", url: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Dark Obsidian Flow", url: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" },
+                { title: "Deep Space Nebula", url: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" }
+            ]
+        };
+
+        function updateNavState() {
+            if (backBtn) backBtn.disabled = historyPointer <= 0;
+            if (forwardBtn) forwardBtn.disabled = historyPointer >= historyStack.length - 1;
+            if (addressInput) addressInput.value = historyStack[historyPointer];
+        }
+
+        function navigateTo(url, addToHistory = true) {
+            if (addToHistory) {
+                historyStack = historyStack.slice(0, historyPointer + 1);
+                historyStack.push(url);
+                historyPointer = historyStack.length - 1;
+            }
+            updateNavState();
+
+            if (url.includes('bing.com/wallpapers') || url.includes('google.com')) {
+                const searchParams = new URLSearchParams(url.split('?')[1] || '');
+                const q = searchParams.get('q') || searchParams.get('query') || '';
+                if (q) {
+                    showQueryResults(q);
+                } else {
+                    showHome();
+                }
+            } else if (url.startsWith('http://') || url.startsWith('https://')) {
+                showDirectImageCard(url);
+            } else {
+                const searchUrl = `https://bing.com/wallpapers?q=${encodeURIComponent(url)}`;
+                navigateTo(searchUrl, addToHistory);
+            }
+        }
+
+        function showHome() {
+            if (homePage) homePage.classList.remove('hidden');
+            if (resultsSection) resultsSection.classList.add('hidden');
+            if (searchInput) searchInput.value = '';
+        }
+
+        function showQueryResults(query) {
+            if (homePage) homePage.classList.add('hidden');
+            if (resultsSection) resultsSection.classList.remove('hidden');
+            if (queryDisplay) queryDisplay.textContent = query;
+
+            if (!resultsGrid) return;
+            resultsGrid.innerHTML = '';
+            const normalizedQuery = query.trim().toLowerCase();
+            let items = [];
+
+            for (const key of Object.keys(BROWSER_WALLPAPERS)) {
+                if (normalizedQuery.includes(key) || key.includes(normalizedQuery)) {
+                    items = BROWSER_WALLPAPERS[key];
+                    break;
+                }
+            }
+
+            if (items.length === 0) {
+                for (let i = 1; i <= 6; i++) {
+                    const randomSig = Math.floor(Math.random() * 1000) + i;
+                    items.push({
+                        title: `${query.charAt(0).toUpperCase() + query.slice(1)} Wallpaper #${i}`,
+                        url: `https://images.unsplash.com/featured/800x600/?${encodeURIComponent(query)}&sig=${randomSig}`
+                    });
+                }
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'browser-result-card';
+                card.innerHTML = `
+                    <div style="aspect-ratio: 16/10; overflow: hidden; background: #222; position: relative;">
+                        <img src="${item.url}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="browser-result-info">
+                        <div class="browser-result-title">${item.title}</div>
+                        <button class="browser-set-bg-btn">Set as Background</button>
+                    </div>
+                `;
+                
+                card.querySelector('.browser-set-bg-btn').addEventListener('click', () => {
+                    setWallpaper(item.url);
+                });
+
+                resultsGrid.appendChild(card);
+            });
+        }
+
+        function showDirectImageCard(url) {
+            if (homePage) homePage.classList.add('hidden');
+            if (resultsSection) resultsSection.classList.remove('hidden');
+            if (queryDisplay) queryDisplay.textContent = `Direct URL`;
+
+            if (!resultsGrid) return;
+            resultsGrid.innerHTML = `
+                <div class="browser-result-card" style="grid-column: 1 / -1; max-width: 500px; margin: 20px auto 0 auto;">
+                    <div style="aspect-ratio: 16/10; overflow: hidden; background: #222; position: relative;">
+                        <img src="${url}" alt="Custom Wallpaper" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; alert('Could not load image. Loaded coding fallback instead.');">
+                    </div>
+                    <div class="browser-result-info">
+                        <div class="browser-result-title">Custom Wallpaper from URL</div>
+                        <button class="browser-set-bg-btn">Set as Background</button>
+                    </div>
+                </div>
+            `;
+
+            resultsGrid.querySelector('.browser-set-bg-btn').addEventListener('click', () => {
+                setWallpaper(url);
+            });
+        }
+
+        function setWallpaper(url) {
+            const desktopBgLayer1 = document.getElementById('desktop-bg-layer1');
+            const desktopBgLayer2 = document.getElementById('desktop-bg-layer2');
+            
+            if (desktopBgLayer1 && desktopBgLayer2) {
+                const style1 = window.getComputedStyle(desktopBgLayer1);
+                if (style1.opacity === '1') {
+                    desktopBgLayer2.style.backgroundImage = `url('${url}')`;
+                    desktopBgLayer2.style.opacity = '1';
+                    desktopBgLayer1.style.opacity = '0';
+                } else {
+                    desktopBgLayer1.style.backgroundImage = `url('${url}')`;
+                    desktopBgLayer1.style.opacity = '1';
+                    desktopBgLayer2.style.opacity = '0';
+                }
+            }
+
+            USER_CONFIG.currentWallpaperIndex = -1;
+            syncSettingsWallpaperUI(url);
+
+            if (toast) {
+                toast.classList.add('visible');
+                setTimeout(() => {
+                    toast.classList.remove('visible');
+                }, 3000);
+            }
+        }
+
+        if (backBtn) {
+            backBtn.addEventListener('click', () => {
+                if (historyPointer > 0) {
+                    historyPointer--;
+                    navigateTo(historyStack[historyPointer], false);
+                }
+            });
+        }
+
+        if (forwardBtn) {
+            forwardBtn.addEventListener('click', () => {
+                if (historyPointer < historyStack.length - 1) {
+                    historyPointer++;
+                    navigateTo(historyStack[historyPointer], false);
+                }
+            });
+        }
+
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                navigateTo(historyStack[historyPointer], false);
+            });
+        }
+
+        if (homeBtn) {
+            homeBtn.addEventListener('click', () => {
+                navigateTo('https://bing.com/wallpapers');
+            });
+        }
+
+        if (addressInput) {
+            addressInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const val = addressInput.value.trim();
+                    if (val) navigateTo(val);
+                }
+            });
+        }
+
+        if (goBtn) {
+            goBtn.addEventListener('click', () => {
+                const val = addressInput.value.trim();
+                if (val) navigateTo(val);
+            });
+        }
+
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener('click', () => {
+                const val = searchInput.value.trim();
+                if (val) {
+                    const searchUrl = `https://bing.com/wallpapers?q=${encodeURIComponent(val)}`;
+                    navigateTo(searchUrl);
+                }
+            });
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const val = searchInput.value.trim();
+                    if (val) {
+                        const searchUrl = `https://bing.com/wallpapers?q=${encodeURIComponent(val)}`;
+                        navigateTo(searchUrl);
+                    }
+                }
+            });
+        }
+
+        searchTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                const tagVal = tag.getAttribute('data-tag') || tag.textContent.trim();
+                const searchUrl = `https://bing.com/wallpapers?q=${encodeURIComponent(tagVal)}`;
+                navigateTo(searchUrl);
+            });
+        });
+
+        if (backHomeBtn) {
+            backHomeBtn.addEventListener('click', () => {
+                navigateTo('https://bing.com/wallpapers');
+            });
+        }
+
+        updateNavState();
+        showHome();
+    }
+
+    // Initialize specific logic for Contact Me app
+    function initContactMeApp(win) {
+        const avatarContainer = win.querySelector('.contact-avatar-container');
+        const nameDisplay = win.querySelector('.contact-user-name');
+        const roleDisplay = win.querySelector('.contact-user-role');
+        const statusDisplay = win.querySelector('.contact-status-indicator');
+        
+        const valEmail = win.querySelector('#contact-val-email');
+        const valGithub = win.querySelector('#contact-val-github');
+        const valLinkedin = win.querySelector('#contact-val-linkedin');
+        const valTwitter = win.querySelector('#contact-val-twitter');
+        const valLocation = win.querySelector('#contact-val-location');
+        
+        const btnSocialGithub = win.querySelector('#contact-social-github');
+        const btnSocialLinkedin = win.querySelector('#contact-social-linkedin');
+        const btnSocialTwitter = win.querySelector('#contact-social-twitter');
+        
+        const form = win.querySelector('.contact-form');
+        const formContainer = win.querySelector('.contact-form-container');
+        const successContainer = win.querySelector('.contact-success-container');
+        const resetBtn = win.querySelector('#contact-reset-btn');
+        
+        const inputName = win.querySelector('#contact-input-name');
+        const inputEmail = win.querySelector('#contact-input-email');
+        const inputSubject = win.querySelector('#contact-input-subject');
+        const budgetGroup = win.querySelector('#group-budget');
+        const budgetPillsContainer = win.querySelector('.contact-budget-pills');
+        const inputMessage = win.querySelector('#contact-input-message');
+        const charCounter = win.querySelector('.contact-char-counter');
+        const submitBtn = win.querySelector('#contact-submit-btn');
+        const submitText = win.querySelector('.contact-btn-text');
+        const submitIcon = win.querySelector('.contact-btn-icon');
+        
+        const aiReplyCard = win.querySelector('#contact-ai-reply');
+        const aiReplySender = win.querySelector('.contact-ai-sender-name');
+        const aiReplyText = win.querySelector('.contact-ai-text');
+        const aiReplyLoading = win.querySelector('.contact-ai-loading');
+        
+        // 1. Populate profile information
+        nameDisplay.textContent = CONFIG.user.name;
+        roleDisplay.textContent = CONFIG.user.title;
+        aiReplySender.textContent = CONFIG.user.name;
+        
+        if (CONFIG.user.avatar) {
+            avatarContainer.innerHTML = `<img class="contact-avatar-img" src="${CONFIG.user.avatar}" alt="${CONFIG.user.name}">`;
+        } else {
+            avatarContainer.innerHTML = `<div class="contact-avatar-initials" style="background-color: var(--accent);">${CONFIG.user.initials}</div>`;
+        }
+        
+        if (CONFIG.user.available) {
+            statusDisplay.textContent = "Available for work";
+            statusDisplay.className = "contact-status-indicator available";
+        } else {
+            statusDisplay.textContent = "Unavailable";
+            statusDisplay.className = "contact-status-indicator unavailable";
+        }
+        
+        // Setup values
+        valEmail.textContent = CONFIG.user.email;
+        valGithub.textContent = CONFIG.user.github;
+        valLinkedin.textContent = CONFIG.user.linkedin;
+        valTwitter.textContent = CONFIG.user.twitter;
+        valLocation.textContent = CONFIG.user.location;
+        
+        btnSocialGithub.href = CONFIG.user.githubUrl;
+        btnSocialLinkedin.href = CONFIG.user.linkedinUrl;
+        btnSocialTwitter.href = CONFIG.user.twitterUrl;
+        
+        // Clipboard helper
+        function setupClipboard(rowElement, textToCopy) {
+            rowElement.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A' || e.target.closest('a')) return;
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showCopiedTooltip(e);
+                }).catch(err => {
+                    console.error("Failed to copy text: ", err);
+                });
+            });
+        }
+        
+        function showCopiedTooltip(e) {
+            const tooltip = win.querySelector('#contact-tooltip');
+            if (!tooltip) return;
+            
+            tooltip.classList.remove('hidden');
+            
+            const winRect = win.getBoundingClientRect();
+            const posX = e.clientX - winRect.left;
+            const posY = e.clientY - winRect.top;
+            
+            tooltip.style.left = `${posX}px`;
+            tooltip.style.top = `${posY}px`;
+            
+            tooltip.style.animation = 'none';
+            tooltip.offsetHeight; // trigger reflow
+            tooltip.style.animation = '';
+            
+            setTimeout(() => {
+                tooltip.classList.add('hidden');
+            }, 1500);
+        }
+        
+        setupClipboard(win.querySelector('#contact-row-email'), CONFIG.user.email);
+        setupClipboard(win.querySelector('#contact-row-github'), CONFIG.user.githubUrl);
+        setupClipboard(win.querySelector('#contact-row-linkedin'), CONFIG.user.linkedinUrl);
+        setupClipboard(win.querySelector('#contact-row-twitter'), CONFIG.user.twitterUrl);
+        setupClipboard(win.querySelector('#contact-row-location'), CONFIG.user.location);
+        
+        // Populate subject options
+        inputSubject.innerHTML = `<option value="" disabled selected>Select a subject...</option>`;
+        CONFIG.contact.subjects.forEach(subject => {
+            const opt = document.createElement('option');
+            opt.value = subject;
+            opt.textContent = subject;
+            inputSubject.appendChild(opt);
+        });
+        
+        // Populate budget pills
+        budgetPillsContainer.innerHTML = '';
+        let selectedBudget = "";
+        CONFIG.contact.budgetOptions.forEach(budget => {
+            const pill = document.createElement('div');
+            pill.className = 'contact-budget-pill';
+            pill.textContent = budget;
+            pill.addEventListener('click', () => {
+                budgetPillsContainer.querySelectorAll('.contact-budget-pill').forEach(p => p.classList.remove('selected'));
+                if (selectedBudget === budget) {
+                    selectedBudget = ""; // deselect
+                } else {
+                    selectedBudget = budget;
+                    pill.classList.add('selected');
+                }
+                validateForm();
+            });
+            budgetPillsContainer.appendChild(pill);
+        });
+        
+        // Subject change budget logic
+        inputSubject.addEventListener('change', () => {
+            const val = inputSubject.value;
+            if (CONFIG.contact.showBudgetFor.includes(val)) {
+                budgetGroup.classList.remove('hidden');
+            } else {
+                budgetGroup.classList.add('hidden');
+                selectedBudget = "";
+                budgetPillsContainer.querySelectorAll('.contact-budget-pill').forEach(p => p.classList.remove('selected'));
+            }
+            validateForm();
+        });
+        
+        // Message char count
+        inputMessage.addEventListener('input', () => {
+            let val = inputMessage.value;
+            if (val.length > 500) {
+                val = val.substring(0, 500);
+                inputMessage.value = val;
+            }
+            const count = val.length;
+            charCounter.textContent = `${count} / 500`;
+            
+            charCounter.className = "contact-char-counter";
+            if (count >= 490) {
+                charCounter.classList.add('danger');
+            } else if (count >= 450) {
+                charCounter.classList.add('warning');
+            }
+            validateForm();
+        });
+        
+        // Form validations
+        function validateField(fieldGroup, inputElement, isValid, errorMsg) {
+            const errorSpan = fieldGroup.querySelector('.contact-field-error');
+            if (isValid) {
+                fieldGroup.classList.remove('error');
+                if (errorSpan) {
+                    errorSpan.classList.remove('visible');
+                    errorSpan.textContent = '';
+                }
+                return true;
+            } else {
+                fieldGroup.classList.add('error');
+                if (errorSpan) {
+                    errorSpan.classList.add('visible');
+                    errorSpan.textContent = errorMsg;
+                }
+                return false;
+            }
+        }
+        
+        function setupBlurValidation(inputElement, fieldGroup, validationFn, errorMsg) {
+            inputElement.addEventListener('blur', () => {
+                if (inputElement.value.trim() === '') {
+                    validateField(fieldGroup, inputElement, false, 'This field is required');
+                } else {
+                    const isValid = validationFn(inputElement.value);
+                    validateField(fieldGroup, inputElement, isValid, errorMsg);
+                }
+                validateForm();
+            });
+            
+            inputElement.addEventListener('input', () => {
+                if (fieldGroup.classList.contains('error')) {
+                    const isValid = validationFn(inputElement.value);
+                    validateField(fieldGroup, inputElement, isValid, errorMsg);
+                }
+                validateForm();
+            });
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        setupBlurValidation(inputName, win.querySelector('#group-name'), (val) => val.trim().length > 0, 'Name is required');
+        setupBlurValidation(inputEmail, win.querySelector('#group-email'), (val) => emailRegex.test(val.trim()), 'Please enter a valid email');
+        
+        inputSubject.addEventListener('change', () => {
+            validateField(win.querySelector('#group-subject'), inputSubject, inputSubject.value !== '', 'Please select a subject');
+            validateForm();
+        });
+        
+        inputMessage.addEventListener('blur', () => {
+            validateField(win.querySelector('#group-message'), inputMessage, inputMessage.value.trim().length > 0, 'Message cannot be empty');
+            validateForm();
+        });
+        inputMessage.addEventListener('input', () => {
+            if (win.querySelector('#group-message').classList.contains('error')) {
+                validateField(win.querySelector('#group-message'), inputMessage, inputMessage.value.trim().length > 0, 'Message cannot be empty');
+            }
+            validateForm();
+        });
+        
+        function checkAllValid() {
+            const nameVal = inputName.value.trim();
+            const emailVal = inputEmail.value.trim();
+            const subjectVal = inputSubject.value;
+            const messageVal = inputMessage.value.trim();
+            
+            return nameVal.length > 0 && 
+                   emailRegex.test(emailVal) && 
+                   subjectVal !== '' && 
+                   messageVal.length > 0;
+        }
+        
+        function validateForm() {
+            submitBtn.disabled = !checkAllValid();
+        }
+        
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (!checkAllValid()) {
+                const groups = [
+                    { elem: inputName, group: win.querySelector('#group-name'), valid: inputName.value.trim().length > 0 },
+                    { elem: inputEmail, group: win.querySelector('#group-email'), valid: emailRegex.test(inputEmail.value.trim()) },
+                    { elem: inputSubject, group: win.querySelector('#group-subject'), valid: inputSubject.value !== '' },
+                    { elem: inputMessage, group: win.querySelector('#group-message'), valid: inputMessage.value.trim().length > 0 }
+                ];
+                
+                groups.forEach(g => {
+                    if (!g.valid) {
+                        g.group.classList.add('error');
+                        g.group.classList.add('contact-shake');
+                        setTimeout(() => g.group.classList.remove('contact-shake'), 300);
+                    }
+                });
+                return;
+            }
+            
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            submitText.textContent = "Sending...";
+            submitIcon.innerHTML = `<div class="contact-spinner"></div>`;
+            
+            const nameVal = inputName.value.trim();
+            const emailVal = inputEmail.value.trim();
+            const subjectVal = inputSubject.value;
+            const messageVal = inputMessage.value.trim();
+            
+            let replyPrompt = `You are replying to a message sent to Faizol Aremu (a Fullstack Developer) through their portfolio website.
+Sender Name: ${nameVal}
+Sender Email: ${emailVal}
+Subject Chosen: ${subjectVal}
+`;
+            if (selectedBudget) {
+                replyPrompt += `Stated Budget: ${selectedBudget}\n`;
+            }
+            replyPrompt += `Message: "${messageVal}"
+
+Write a concise, professional, and friendly auto-reply in character as Faizol Aremu. Make it 2-3 sentences. Reassure them that you've received their email, directly mention their name, and briefly reference the subject or budget if relevant. Do not include email headers or salutations beyond a simple sign-off. Do not output anything other than the message text itself.`;
+
+            let fallbackReply = `Hi ${nameVal},\n\nThank you for reaching out regarding "${subjectVal}"${selectedBudget ? ' with a budget of ' + selectedBudget : ''}. I've received your message and will review it shortly. Let's stay in touch!\n\nBest regards,\nFaizol Aremu`;
+
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    messages: [
+                        { role: 'user', content: replyPrompt }
+                    ],
+                    system: `You are Faizol Aremu, a Fullstack Developer. Write a direct, warm, and highly professional email auto-reply. Keep it strictly between 2 to 3 sentences. Be friendly and conversational.`
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("API failed");
+                return res.json();
+            })
+            .then(data => {
+                const replyText = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content 
+                    ? data.choices[0].message.content.trim() 
+                    : data.reply || fallbackReply;
+                
+                showSuccess(nameVal, replyText);
+            })
+            .catch(err => {
+                console.warn("Using local auto-reply fallback:", err);
+                showSuccess(nameVal, fallbackReply);
+            });
+        });
+        
+        function showSuccess(senderName, replyTextVal) {
+            const desc = win.querySelector('.success-desc');
+            desc.textContent = `Thank you, ${senderName}! Your message has been successfully sent.`;
+            
+            formContainer.classList.add('hidden');
+            successContainer.classList.remove('hidden');
+            
+            aiReplyCard.classList.remove('hidden');
+            aiReplyLoading.style.display = 'flex';
+            aiReplyText.style.display = 'none';
+            aiReplyText.classList.remove('error');
+            
+            setTimeout(() => {
+                aiReplyLoading.style.display = 'none';
+                aiReplyText.style.display = 'block';
+                aiReplyText.textContent = replyTextVal;
+            }, 1200);
+        }
+        
+        resetBtn.addEventListener('click', () => {
+            inputName.value = '';
+            inputEmail.value = '';
+            inputSubject.value = '';
+            selectedBudget = '';
+            inputMessage.value = '';
+            charCounter.textContent = '0 / 500';
+            charCounter.className = 'contact-char-counter';
+            
+            win.querySelectorAll('.contact-field-group').forEach(g => {
+                g.classList.remove('error');
+                const err = g.querySelector('.contact-field-error');
+                if (err) err.classList.remove('visible');
+            });
+            
+            budgetGroup.classList.add('hidden');
+            budgetPillsContainer.querySelectorAll('.contact-budget-pill').forEach(p => p.classList.remove('selected'));
+            
+            submitBtn.disabled = true;
+            submitBtn.classList.remove('loading');
+            submitText.textContent = "Send Message";
+            submitIcon.innerHTML = `
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            `;
+            
+            successContainer.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+        });
     }
 
     const settingsAppBtn = document.getElementById('settings-app-btn');
@@ -1632,7 +2591,9 @@ window.openApp = function(appName) {
         'My Projects': { id: 'my-projects', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>' },
         'Resume': { id: 'resume', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>' },
         'Skills': { id: 'skills', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>' },
-        'Terminal': { id: 'terminal', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>' }
+        'Terminal': { id: 'terminal', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>' },
+        'Browser': { id: 'browser', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#0078d4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>' },
+        'Contact Me': { id: 'contact-me', icon: '<svg viewBox="0 0 24 24" width="14" height="14" fill="#0078d4"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>', width: 780, height: 580 }
     };
 
     const config = appConfigs[appName];
@@ -1643,7 +2604,9 @@ window.openApp = function(appName) {
                 id: config.id,
                 title: appName,
                 icon: config.icon,
-                content: template.innerHTML
+                content: template.innerHTML,
+                width: config.width,
+                height: config.height
             });
 
             // Close start menu after launching app (Windows 11 behavior)
