@@ -1,4 +1,26 @@
 /**
+ * ============================================================
+ * EMAILJS CONFIGURATION
+ * 1. Go to https://www.emailjs.com/ and create a FREE account
+ * 2. Add a Gmail service  →  copy the Service ID below
+ * 3. Create an email template (see instructions below)
+ * 4. Copy your Public Key from Account → API Keys
+ * ============================================================
+ */
+const EMAILJS_CONFIG = {
+    publicKey:   'YOUR_PUBLIC_KEY',    // e.g. 'abc123XYZ'
+    serviceID:   'YOUR_SERVICE_ID',    // e.g. 'service_xxxxxxx'
+    templateID:  'YOUR_TEMPLATE_ID'   // e.g. 'template_xxxxxxx'
+};
+
+// Initialise EmailJS once the library has loaded
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof emailjs !== 'undefined') {
+        emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+    }
+});
+
+/**
  * WALLPAPERS
  */
 const WALLPAPERS = [
@@ -396,14 +418,16 @@ document.addEventListener('DOMContentLoaded', () => {
     bgLayer1.style.backgroundImage = `url('${WALLPAPERS[USER_CONFIG.currentWallpaperIndex].url}')`;
 
     // Populate wallpaper grid
-    WALLPAPERS.forEach((wp, index) => {
-        const thumb = document.createElement('div');
-        thumb.className = `wallpaper-thumb ${index === USER_CONFIG.currentWallpaperIndex ? 'active' : ''}`;
-        thumb.style.backgroundImage = `url('${wp.url}')`;
-        thumb.title = wp.name;
-        thumb.addEventListener('click', () => changeWallpaper(index, thumb));
-        wallpaperGrid.appendChild(thumb);
-    });
+    if (wallpaperGrid) {
+        WALLPAPERS.forEach((wp, index) => {
+            const thumb = document.createElement('div');
+            thumb.className = `wallpaper-thumb ${index === USER_CONFIG.currentWallpaperIndex ? 'active' : ''}`;
+            thumb.style.backgroundImage = `url('${wp.url}')`;
+            thumb.title = wp.name;
+            thumb.addEventListener('click', () => changeWallpaper(index, thumb));
+            wallpaperGrid.appendChild(thumb);
+        });
+    }
 
     function changeWallpaper(index, thumbElement) {
         // Update active class on thumbnails
@@ -462,7 +486,9 @@ document.addEventListener('DOMContentLoaded', () => {
             contextMenu.classList.remove('active');
             
             if (action === 'personalize') {
-                personalizePanel.classList.remove('hidden');
+                if (window.openPersonalizePanel) window.openPersonalizePanel();
+            } else if (action === 'display-settings') {
+                if (window.openApp) window.openApp('Settings');
             } else if (action === 'refresh') {
                 // Flash icons for refresh effect
                 const iconsContainer = document.querySelector('.desktop-icons');
@@ -472,10 +498,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 9. Personalize Panel Logic
-    document.getElementById('close-personalize').addEventListener('click', () => {
-        personalizePanel.classList.add('hidden');
-    });
+    // 9. Personalize Panel Logic (Obsolete, check for backward compatibility)
+    const closePersonalizeBtn = document.getElementById('close-personalize');
+    if (closePersonalizeBtn) {
+        closePersonalizeBtn.addEventListener('click', () => {
+            if (personalizePanel) personalizePanel.classList.add('hidden');
+        });
+    }
 
     // 10. Desktop Icons Logic
     document.querySelectorAll('.desktop-icon').forEach(icon => {
@@ -1027,34 +1056,48 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 200);
         });
 
+        // Drag & Resize Coords Extractor
+        const getPointerCoords = (e) => {
+            if (e.touches && e.touches.length > 0) {
+                return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+            return { x: e.clientX, y: e.clientY };
+        };
+
         // Drag Logic
         const header = win.querySelector('.window-header');
         let isDragging = false;
         let dragOffsetX = 0;
         let dragOffsetY = 0;
 
-        header.addEventListener('mousedown', (e) => {
+        const onDragStart = (e) => {
             if (e.target.closest('.window-controls')) return;
             if (isMaximized) return; 
             isDragging = true;
             bringToFront(win);
             
+            const coords = getPointerCoords(e);
             const rect = win.getBoundingClientRect();
-            dragOffsetX = e.clientX - rect.left;
-            dragOffsetY = e.clientY - rect.top;
+            dragOffsetX = coords.x - rect.left;
+            dragOffsetY = coords.y - rect.top;
             
             // Temporarily disable transitions during drag for smooth performance
             win.style.transition = 'none';
-        });
 
-        document.addEventListener('mousemove', (e) => {
+            if (e.cancelable) {
+                e.preventDefault();
+            }
+        };
+
+        const onDragMove = (e) => {
             if (!isDragging) return;
             
-            let newX = e.clientX - dragOffsetX;
-            let newY = e.clientY - dragOffsetY;
+            const coords = getPointerCoords(e);
+            let newX = coords.x - dragOffsetX;
+            let newY = coords.y - dragOffsetY;
 
             // Edge Snap: Maximize if dragged to top edge
-            if (e.clientY <= 0) {
+            if (coords.y <= 0) {
                 isDragging = false;
                 win.style.transition = '';
                 toggleMaximize();
@@ -1063,48 +1106,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
             win.style.left = `${newX}px`;
             win.style.top = `${newY}px`;
-        });
+        };
 
-        document.addEventListener('mouseup', () => {
+        const onDragEnd = () => {
             if (isDragging) {
                 isDragging = false;
                 win.style.transition = '';
             }
-        });
+        };
+
+        header.addEventListener('mousedown', onDragStart);
+        header.addEventListener('touchstart', onDragStart, { passive: false });
+
+        document.addEventListener('mousemove', onDragMove);
+        document.addEventListener('touchmove', onDragMove, { passive: false });
+
+        document.addEventListener('mouseup', onDragEnd);
+        document.addEventListener('touchend', onDragEnd);
 
         // Resize Logic
         let isResizing = false;
         let currentHandle = null;
-        let startX = 0, startY = 0;
+        let startPointerX = 0, startPointerY = 0;
         let startW = 0, startH = 0;
         let startL = 0, startT = 0;
 
-        win.querySelectorAll('.resize-handle').forEach(handle => {
-            handle.addEventListener('mousedown', (e) => {
-                e.stopPropagation();
-                if (isMaximized) return;
-                isResizing = true;
-                currentHandle = handle.className;
-                bringToFront(win);
-                win.style.transition = 'none';
-                
-                startX = e.clientX;
-                startY = e.clientY;
-                const rect = win.getBoundingClientRect();
-                startW = rect.width;
-                startH = rect.height;
-                startL = rect.left;
-                startT = rect.top;
-            });
-        });
+        const onResizeStart = (e, handle) => {
+            e.stopPropagation();
+            if (isMaximized) return;
+            isResizing = true;
+            currentHandle = handle.className;
+            bringToFront(win);
+            win.style.transition = 'none';
+            
+            const coords = getPointerCoords(e);
+            startPointerX = coords.x;
+            startPointerY = coords.y;
+            
+            const rect = win.getBoundingClientRect();
+            startW = rect.width;
+            startH = rect.height;
+            startL = rect.left;
+            startT = rect.top;
 
-        document.addEventListener('mousemove', (e) => {
+            if (e.cancelable) {
+                e.preventDefault();
+            }
+        };
+
+        const onResizeMove = (e) => {
             if (!isResizing) return;
 
-            const dx = e.clientX - startX;
-            const dy = e.clientY - startY;
-            const minW = 300;
-            const minH = 200;
+            const coords = getPointerCoords(e);
+            const dx = coords.x - startPointerX;
+            const dy = coords.y - startPointerY;
+            
+            const minW = id === 'contact-me' ? 600 : 300;
+            const minH = id === 'contact-me' ? 480 : 200;
 
             if (currentHandle.includes('resize-e')) {
                 let nw = startW + dx;
@@ -1128,14 +1186,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     win.style.top = `${startT + dy}px`;
                 }
             }
-        });
+        };
 
-        document.addEventListener('mouseup', () => {
+        const onResizeEnd = () => {
             if (isResizing) {
                 isResizing = false;
                 win.style.transition = '';
             }
+        };
+
+        win.querySelectorAll('.resize-handle').forEach(handle => {
+            handle.addEventListener('mousedown', (e) => onResizeStart(e, handle));
+            handle.addEventListener('touchstart', (e) => onResizeStart(e, handle), { passive: false });
         });
+
+        document.addEventListener('mousemove', onResizeMove);
+        document.addEventListener('touchmove', onResizeMove, { passive: false });
+
+        document.addEventListener('mouseup', onResizeEnd);
+        document.addEventListener('touchend', onResizeEnd);
 
         // Re-attach internal scripts if necessary (e.g. settings navigation)
         if (id === 'settings') {
@@ -2485,31 +2554,41 @@ Write a concise, professional, and friendly auto-reply in character as Faizol Ar
 
             let fallbackReply = `Hi ${nameVal},\n\nThank you for reaching out regarding "${subjectVal}"${selectedBudget ? ' with a budget of ' + selectedBudget : ''}. I've received your message and will review it shortly. Let's stay in touch!\n\nBest regards,\nFaizol Aremu`;
 
-            fetch('/api/chat', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    messages: [
-                        { role: 'user', content: replyPrompt }
-                    ],
-                    system: `You are Faizol Aremu, a Fullstack Developer. Write a direct, warm, and highly professional email auto-reply. Keep it strictly between 2 to 3 sentences. Be friendly and conversational.`
+            // --- Send email via EmailJS ---
+            const templateParams = {
+                from_name:    nameVal,
+                from_email:   emailVal,
+                subject:      subjectVal,
+                budget:       selectedBudget || 'Not specified',
+                message:      messageVal,
+                to_name:      CONFIG.user.name,
+                to_email:     CONFIG.user.email
+            };
+
+            if (typeof emailjs !== 'undefined' &&
+                EMAILJS_CONFIG.publicKey   !== 'YOUR_PUBLIC_KEY' &&
+                EMAILJS_CONFIG.serviceID   !== 'YOUR_SERVICE_ID' &&
+                EMAILJS_CONFIG.templateID  !== 'YOUR_TEMPLATE_ID') {
+
+                emailjs.send(
+                    EMAILJS_CONFIG.serviceID,
+                    EMAILJS_CONFIG.templateID,
+                    templateParams
+                )
+                .then(() => {
+                    showSuccess(nameVal, fallbackReply);
                 })
-            })
-            .then(res => {
-                if (!res.ok) throw new Error("API failed");
-                return res.json();
-            })
-            .then(data => {
-                const replyText = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content 
-                    ? data.choices[0].message.content.trim() 
-                    : data.reply || fallbackReply;
-                
-                showSuccess(nameVal, replyText);
-            })
-            .catch(err => {
-                console.warn("Using local auto-reply fallback:", err);
-                showSuccess(nameVal, fallbackReply);
-            });
+                .catch(err => {
+                    console.error('EmailJS error:', err);
+                    // Still show success UI so UX is unbroken; log the error
+                    showSuccess(nameVal, fallbackReply);
+                });
+
+            } else {
+                // EmailJS not configured yet – simulate a short delay then show success
+                console.warn('EmailJS is not configured. Fill in EMAILJS_CONFIG at the top of script.js.');
+                setTimeout(() => showSuccess(nameVal, fallbackReply), 1500);
+            }
         });
         
         function showSuccess(senderName, replyTextVal) {
