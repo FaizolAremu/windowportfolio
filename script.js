@@ -516,7 +516,90 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Single click selection
+        // Dragging & Interaction logic via Pointer Events
+        let dx = 0;
+        let dy = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let hasMoved = false;
+        const dragThreshold = 4; // px
+
+        icon.addEventListener('pointerdown', (e) => {
+            // Only respond to left clicks or touches
+            if (e.button !== 0 && e.pointerType === 'mouse') return;
+
+            // Single click selection visually
+            document.querySelectorAll('.desktop-icon').forEach(i => {
+                i.style.background = '';
+                i.style.border = '1px solid transparent';
+            });
+            icon.style.background = 'rgba(255, 255, 255, 0.15)';
+            icon.style.border = '1px solid rgba(255, 255, 255, 0.15)';
+
+            isDragging = true;
+            hasMoved = false;
+            startX = e.clientX;
+            startY = e.clientY;
+
+            dx = parseFloat(icon.getAttribute('data-dx')) || 0;
+            dy = parseFloat(icon.getAttribute('data-dy')) || 0;
+
+            icon.setPointerCapture(e.pointerId);
+            icon.style.transition = 'none';
+            icon.style.zIndex = '1000';
+            
+            e.stopPropagation();
+        });
+
+        icon.addEventListener('pointermove', (e) => {
+            if (!isDragging) return;
+
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
+
+            if (!hasMoved && (Math.abs(deltaX) > dragThreshold || Math.abs(deltaY) > dragThreshold)) {
+                hasMoved = true;
+            }
+
+            if (hasMoved) {
+                const currentDx = dx + deltaX;
+                const currentDy = dy + deltaY;
+                icon.style.transform = `translate(${currentDx}px, ${currentDy}px)`;
+            }
+        });
+
+        const onPointerUp = (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+
+            icon.releasePointerCapture(e.pointerId);
+            icon.style.transition = '';
+            icon.style.zIndex = '';
+
+            if (hasMoved) {
+                const deltaX = e.clientX - startX;
+                const deltaY = e.clientY - startY;
+                const finalDx = dx + deltaX;
+                const finalDy = dy + deltaY;
+
+                icon.setAttribute('data-dx', finalDx);
+                icon.setAttribute('data-dy', finalDy);
+
+                // Prevent the standard 'click' event from triggering link navigation on <a> elements (like GitHub)
+                const preventClick = (clickEvent) => {
+                    clickEvent.preventDefault();
+                    clickEvent.stopPropagation();
+                    icon.removeEventListener('click', preventClick, true);
+                };
+                icon.addEventListener('click', preventClick, true);
+            }
+        };
+
+        icon.addEventListener('pointerup', onPointerUp);
+        icon.addEventListener('pointercancel', onPointerUp);
+
+        // Selection fallback for click
         icon.addEventListener('click', (e) => {
             e.stopPropagation();
             document.querySelectorAll('.desktop-icon').forEach(i => {

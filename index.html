@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <!-- EmailJS: sends contact form messages directly to Gmail -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
+
 <body>
     <!-- Boot Screen -->
     <div id="boot-screen" class="screen">
@@ -49,7 +51,8 @@
                 <div class="input-wrapper">
                     <input type="password" id="password-input" placeholder="PIN" required />
                     <button type="submit" id="submit-btn">
-                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
@@ -68,45 +71,73 @@
         <!-- Desktop Icons Grid -->
         <div class="desktop-icons">
             <div class="desktop-icon" data-app="My Projects">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#FCCA3F">
+                    <path
+                        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                </svg>
                 <span>My Projects</span>
             </div>
             <div class="desktop-icon" data-app="Resume">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#4B89D6">
+                    <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg>
                 <span>Resume</span>
             </div>
             <div class="desktop-icon" data-app="About Me">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#32B579">
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
                 <span>About Me</span>
             </div>
             <div class="desktop-icon" data-app="Skills">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#E65A4A">
+                    <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
                 <span>Skills</span>
             </div>
             <div class="desktop-icon" data-app="Terminal">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#555">
+                    <path
+                        d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z" />
+                </svg>
                 <span>Terminal</span>
             </div>
-            <a class="desktop-icon" href="https://github.com/faizolaremu" target="_blank" data-app="GitHub" style="text-decoration: none; color: inherit;">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#FFF"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            <a class="desktop-icon" href="https://github.com/faizolaremu" target="_blank" data-app="GitHub"
+                style="text-decoration: none; color: inherit;">
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#FFF">
+                    <path
+                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                </svg>
                 <span>GitHub</span>
             </a>
             <div class="desktop-icon" data-app="Settings">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#888"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#888">
+                    <path
+                        d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                </svg>
                 <span>Settings</span>
             </div>
             <div class="desktop-icon" data-app="Browser">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#0078d4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#0078d4">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                </svg>
                 <span>Browser</span>
             </div>
             <div class="desktop-icon" data-app="Contact Me">
                 <svg viewBox="0 0 24 24" width="40" height="40" fill="#0078d4">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                 </svg>
                 <span>Contact Me</span>
             </div>
             <div class="desktop-icon" data-app="Recycle Bin">
-                <svg viewBox="0 0 24 24" width="40" height="40" fill="#aaa"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="#aaa">
+                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                </svg>
                 <span>Recycle Bin</span>
             </div>
         </div>
@@ -114,21 +145,33 @@
         <!-- Context Menu -->
         <div id="context-menu" class="context-menu hidden">
             <div class="menu-item" data-action="view">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                </svg>
                 <span>View</span>
                 <span class="arrow">›</span>
             </div>
             <div class="menu-item" data-action="refresh">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                </svg>
                 <span>Refresh</span>
             </div>
             <hr class="menu-divider" />
             <div class="menu-item" data-action="display-settings">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-2-2H5V7h14v10z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zm-2-2H5V7h14v10z" />
+                </svg>
                 <span>Display Settings</span>
             </div>
             <div class="menu-item" data-action="personalize">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                </svg>
                 <span>Personalize</span>
             </div>
         </div>
@@ -148,1031 +191,1322 @@
                 <h3>Choose a wallpaper</h3>
                 <div class="wallpaper-grid" id="wallpaper-grid">
                     <!-- Thumbnails generated by JS -->
-                </div>
+    </div>
+    </div>
+    </div>
+    -->
+
+    <!-- Taskbar -->
+    <div id="taskbar" class="taskbar">
+        <div class="taskbar-center">
+            <div class="taskbar-icon start-btn" id="start-btn">
+                <svg viewBox="0 0 88 88" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="40" height="40" fill="#0078D4" />
+                    <rect x="44" y="0" width="40" height="40" fill="#0078D4" />
+                    <rect x="0" y="44" width="40" height="40" fill="#0078D4" />
+                    <rect x="44" y="44" width="40" height="40" fill="#0078D4" />
+                </svg>
+            </div>
+            <div class="taskbar-icon search-btn" id="search-btn">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+            </div>
+            <!-- Pinned Apps -->
+            <div class="taskbar-icon app-btn" data-app="My Projects" title="My Projects">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#FCCA3F">
+                    <path
+                        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="Resume" title="Resume">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#4B89D6">
+                    <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="About Me" title="About Me">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#32B579">
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="Skills" title="Skills">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#E65A4A">
+                    <path
+                        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="Terminal" title="Terminal">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#555">
+                    <path
+                        d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="Settings" title="Settings">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#888">
+                    <path
+                        d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="Browser" title="Browser">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#0078d4">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                </svg>
+                <div class="indicator"></div>
+            </div>
+            <div class="taskbar-icon app-btn" data-app="Contact Me" title="Contact Me">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#0078d4">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+                <div class="indicator"></div>
             </div>
         </div>
-        -->
+        <div class="taskbar-right">
+            <div class="tray-icons" id="tray-icons-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon">
+                    <path
+                        d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z" />
+                </svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon">
+                    <path
+                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                </svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon">
+                    <path
+                        d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+                </svg>
+            </div>
+            <div class="tray-time" id="tray-time-btn" title="Monday, May 17, 2026">
+                <div id="taskbar-time">10:45 AM</div>
+                <div id="taskbar-date">5/17/2026</div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Taskbar -->
-        <div id="taskbar" class="taskbar">
-            <div class="taskbar-center">
-                <div class="taskbar-icon start-btn" id="start-btn">
-                    <svg viewBox="0 0 88 88" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="0" y="0" width="40" height="40" fill="#0078D4" />
-                        <rect x="44" y="0" width="40" height="40" fill="#0078D4" />
-                        <rect x="0" y="44" width="40" height="40" fill="#0078D4" />
-                        <rect x="44" y="44" width="40" height="40" fill="#0078D4" />
+    <!-- Calendar / Clock Panel -->
+    <div id="calendar-panel" class="sys-panel hidden">
+        <div class="calendar-header">
+            <h2 id="calendar-date-display">Monday, May 17, 2026</h2>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-grid-header">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="calendar-grid" id="cal-days-container">
+                <!-- Days generated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Settings Panel -->
+    <div id="quick-settings-panel" class="sys-panel hidden">
+        <div class="qs-grid">
+            <div class="qs-btn active" id="qs-wifi">
+                <div class="qs-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z" />
                     </svg>
                 </div>
-                <div class="taskbar-icon search-btn" id="search-btn">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                </div>
-                <!-- Pinned Apps -->
-                <div class="taskbar-icon app-btn" data-app="My Projects" title="My Projects">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="Resume" title="Resume">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="About Me" title="About Me">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="Skills" title="Skills">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="Terminal" title="Terminal">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="Settings" title="Settings">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#888"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="Browser" title="Browser">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#0078d4"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    <div class="indicator"></div>
-                </div>
-                <div class="taskbar-icon app-btn" data-app="Contact Me" title="Contact Me">
-                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#0078d4">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                <span>Wi-Fi</span>
+            </div>
+            <div class="qs-btn active" id="qs-bluetooth">
+                <div class="qs-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z" />
                     </svg>
-                    <div class="indicator"></div>
+                </div>
+                <span>Bluetooth</span>
+            </div>
+            <div class="qs-btn" id="qs-airplane">
+                <div class="qs-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
+                    </svg>
+                </div>
+                <span>Airplane mode</span>
+            </div>
+            <div class="qs-btn" id="qs-battery-saver">
+                <div class="qs-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+                    </svg>
+                </div>
+                <span>Battery saver</span>
+            </div>
+            <div class="qs-btn" id="qs-night-light">
+                <div class="qs-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z" />
+                    </svg>
+                </div>
+                <span>Night light</span>
+            </div>
+            <div class="qs-btn" id="qs-accessibility">
+                <div class="qs-icon">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z" />
+                    </svg>
+                </div>
+                <span>Accessibility</span>
+            </div>
+        </div>
+
+        <div class="qs-sliders">
+            <!-- Brightness Slider -->
+            <div class="slider-row">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z" />
+                </svg>
+                <input type="range" id="brightness-slider" min="10" max="100" value="100">
+                <span id="brightness-pct"
+                    style="width: 25px; text-align: right; font-size: 12px; margin-left: 5px;">100</span>
+            </div>
+            <!-- Volume Slider -->
+            <div class="slider-row">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                </svg>
+                <input type="range" id="volume-slider" min="0" max="100" value="65">
+                <span id="volume-pct"
+                    style="width: 25px; text-align: right; font-size: 12px; margin-left: 5px;">65</span>
+            </div>
+        </div>
+
+        <div class="qs-footer">
+            <div class="qs-battery-info">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+                </svg>
+                <span>85%</span>
+            </div>
+            <div class="qs-settings-btn" id="settings-app-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path
+                        d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Start Menu -->
+    <div id="start-menu" class="sys-panel hidden">
+
+        <div style="position: relative; margin-bottom: 30px;">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="#aaa"
+                style="position: absolute; left: 15px; top: 12px;">
+                <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+            <input type="text" id="start-search-input" placeholder="Type here to search"
+                style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: white; outline: none; box-sizing: border-box; transition: background 0.2s;"
+                onfocus="this.style.background='rgba(255,255,255,0.05)'"
+                onblur="this.style.background='rgba(0,0,0,0.3)'" />
+        </div>
+
+        <!-- Pinned Section -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="margin: 0; font-size: 14px; font-weight: 600;">Pinned</h3>
+            <button
+                style="background: rgba(255,255,255,0.05); border: none; color: white; border-radius: 4px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='rgba(255,255,255,0.05)'">All apps ></button>
+        </div>
+
+        <div id="start-pinned-grid"
+            style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; text-align: center; margin-bottom: 30px;">
+            <div class="start-icon" data-name="projects" onclick="openApp('My Projects')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#FCCA3F">
+                        <path
+                            d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Projects</span>
+            </div>
+            <div class="start-icon" data-name="resume" onclick="openApp('Resume')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#4B89D6">
+                        <path
+                            d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Resume</span>
+            </div>
+            <div class="start-icon" data-name="about me" onclick="openApp('About Me')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#32B579">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">About Me</span>
+            </div>
+            <div class="start-icon" data-name="skills" onclick="openApp('Skills')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#E65A4A">
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Skills</span>
+            </div>
+            <div class="start-icon" data-name="terminal" onclick="openApp('Terminal')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#555">
+                        <path
+                            d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Terminal</span>
+            </div>
+            <div class="start-icon" data-name="settings" onclick="openApp('Settings')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#888">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Settings</span>
+            </div>
+            <div class="start-icon" data-name="contact me" onclick="openApp('Contact Me')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#0078d4">
+                        <path
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Contact Me</span>
+            </div>
+            <a class="start-icon" href="https://github.com/faizolaremu" target="_blank" data-name="github"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s; text-decoration: none; color: inherit; display: block;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#fff">
+                        <path
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">GitHub</span>
+            </a>
+            <div class="start-icon" data-name="recycle bin" onclick="openApp('Recycle Bin')"
+                style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
+                    <svg viewBox="0 0 24 24" width="32" height="32" fill="#E65A4A">
+                        <path
+                            d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13zM9 8h2v9H9zm4 0h2v9h-2z" />
+                    </svg>
+                </div>
+                <span style="font-size: 11px;">Recycle Bin</span>
+            </div>
+        </div>
+
+        <!-- Recommended Section -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="margin: 0; font-size: 14px; font-weight: 600;">Recommended</h3>
+            <button
+                style="background: rgba(255,255,255,0.05); border: none; color: white; border-radius: 4px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='rgba(255,255,255,0.05)'">More ></button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px;">
+            <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 4px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.08)'"
+                onmouseout="this.style.background='transparent'">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="#0078D4">
+                    <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg>
+                <div>
+                    <div style="font-size: 13px; font-weight: 500;">Resume_Final.pdf</div>
+                    <div style="font-size: 11px; color: #aaa;">Recently added</div>
                 </div>
             </div>
-            <div class="taskbar-right">
-                <div class="tray-icons" id="tray-icons-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon"><path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/></svg>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="tray-icon"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+            <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 4px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.08)'"
+                onmouseout="this.style.background='transparent'">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="#FCCA3F">
+                    <path
+                        d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                </svg>
+                <div>
+                    <div style="font-size: 13px; font-weight: 500;">Portfolio V2</div>
+                    <div style="font-size: 11px; color: #aaa;">Modified 2h ago</div>
                 </div>
-                <div class="tray-time" id="tray-time-btn" title="Monday, May 17, 2026">
-                    <div id="taskbar-time">10:45 AM</div>
-                    <div id="taskbar-date">5/17/2026</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 4px; cursor: pointer; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.08)'"
+                onmouseout="this.style.background='transparent'">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="#32B579">
+                    <path
+                        d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+                <div>
+                    <div style="font-size: 13px; font-weight: 500;">Biography</div>
+                    <div style="font-size: 11px; color: #aaa;">Modified yesterday</div>
                 </div>
             </div>
         </div>
 
-        <!-- Calendar / Clock Panel -->
-        <div id="calendar-panel" class="sys-panel hidden">
-            <div class="calendar-header">
-                <h2 id="calendar-date-display">Monday, May 17, 2026</h2>
+        <!-- Bottom Bar -->
+        <div
+            style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; position: relative;">
+            <div style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 4px; transition: background 0.1s;"
+                onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                onmouseout="this.style.background='transparent'">
+                <div
+                    style="width: 32px; height: 32px; background: linear-gradient(135deg, #00A4EF, #0078D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">
+                    FA</div>
+                <span style="font-size: 13px; font-weight: 500;">Faizol Aremu</span>
             </div>
-            <div class="calendar-body">
-                <div class="calendar-grid-header">
-                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            <div style="position: relative;">
+                <div id="power-btn"
+                    style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                    onmouseout="this.style.background='transparent'">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path
+                            d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z" />
+                    </svg>
                 </div>
-                <div class="calendar-grid" id="cal-days-container">
-                    <!-- Days generated by JS -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Quick Settings Panel -->
-        <div id="quick-settings-panel" class="sys-panel hidden">
-            <div class="qs-grid">
-                <div class="qs-btn active" id="qs-wifi">
-                    <div class="qs-icon">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z"/></svg>
-                    </div>
-                    <span>Wi-Fi</span>
-                </div>
-                <div class="qs-btn active" id="qs-bluetooth">
-                    <div class="qs-icon">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.71 7.71L12 2h-1v7.59L6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 11 14.41V22h1l5.71-5.71-4.3-4.29 4.3-4.29zM13 5.83l1.88 1.88L13 9.59V5.83zm1.88 10.46L13 18.17v-3.76l1.88 1.88z"/></svg>
-                    </div>
-                    <span>Bluetooth</span>
-                </div>
-                <div class="qs-btn" id="qs-airplane">
-                    <div class="qs-icon">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-                    </div>
-                    <span>Airplane mode</span>
-                </div>
-                <div class="qs-btn" id="qs-battery-saver">
-                    <div class="qs-icon">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                    </div>
-                    <span>Battery saver</span>
-                </div>
-                <div class="qs-btn" id="qs-night-light">
-                    <div class="qs-icon">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm0-10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"/></svg>
-                    </div>
-                    <span>Night light</span>
-                </div>
-                <div class="qs-btn" id="qs-accessibility">
-                    <div class="qs-icon">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
-                    </div>
-                    <span>Accessibility</span>
-                </div>
-            </div>
-
-            <div class="qs-sliders">
-                <!-- Brightness Slider -->
-                <div class="slider-row">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/></svg>
-                    <input type="range" id="brightness-slider" min="10" max="100" value="100">
-                    <span id="brightness-pct" style="width: 25px; text-align: right; font-size: 12px; margin-left: 5px;">100</span>
-                </div>
-                <!-- Volume Slider -->
-                <div class="slider-row">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                    <input type="range" id="volume-slider" min="0" max="100" value="65">
-                    <span id="volume-pct" style="width: 25px; text-align: right; font-size: 12px; margin-left: 5px;">65</span>
-                </div>
-            </div>
-
-            <div class="qs-footer">
-                <div class="qs-battery-info">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
-                    <span>85%</span>
-                </div>
-                <div class="qs-settings-btn" id="settings-app-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
+                <!-- Power Dropdown -->
+                <div id="power-menu" class="hidden"
+                    style="position: absolute; bottom: 45px; right: 0; background: rgba(40,40,40,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 5px; width: 150px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    <div class="power-option" id="po-sleep"
+                        style="padding: 10px 15px; font-size: 13px; border-radius: 4px; cursor: pointer; transition: background 0.1s;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                        onmouseout="this.style.background='transparent'">Sleep</div>
+                    <div class="power-option" id="po-restart"
+                        style="padding: 10px 15px; font-size: 13px; border-radius: 4px; cursor: pointer; transition: background 0.1s;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                        onmouseout="this.style.background='transparent'">Restart</div>
+                    <div class="power-option" id="po-shutdown"
+                        style="padding: 10px 15px; font-size: 13px; border-radius: 4px; cursor: pointer; transition: background 0.1s;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.1)'"
+                        onmouseout="this.style.background='transparent'">Shut Down</div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Start Menu -->
-        <div id="start-menu" class="sys-panel hidden">
-            
-            <div style="position: relative; margin-bottom: 30px;">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="#aaa" style="position: absolute; left: 15px; top: 12px;"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                <input type="text" id="start-search-input" placeholder="Type here to search" style="width: 100%; padding: 12px 12px 12px 45px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(0,0,0,0.3); color: white; outline: none; box-sizing: border-box; transition: background 0.2s;" onfocus="this.style.background='rgba(255,255,255,0.05)'" onblur="this.style.background='rgba(0,0,0,0.3)'" />
-            </div>
-            
-            <!-- Pinned Section -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3 style="margin: 0; font-size: 14px; font-weight: 600;">Pinned</h3>
-                <button style="background: rgba(255,255,255,0.05); border: none; color: white; border-radius: 4px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">All apps ></button>
-            </div>
-            
-            <div id="start-pinned-grid" style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; text-align: center; margin-bottom: 30px;">
-                <div class="start-icon" data-name="projects" onclick="openApp('My Projects')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+    <template id="tpl-settings">
+        <div class="settings-layout">
+            <div class="settings-sidebar">
+                <div class="settings-profile-header">
+                    <div class="settings-avatar">FA</div>
+                    <div class="settings-profile-info">
+                        <span class="settings-username">Faizol Aremu</span>
+                        <span class="settings-email">waliufaizol@gmail.com</span>
                     </div>
-                    <span style="font-size: 11px;">Projects</span>
                 </div>
-                <div class="start-icon" data-name="resume" onclick="openApp('Resume')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#4B89D6"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">Resume</span>
-                </div>
-                <div class="start-icon" data-name="about me" onclick="openApp('About Me')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">About Me</span>
-                </div>
-                <div class="start-icon" data-name="skills" onclick="openApp('Skills')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#E65A4A"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">Skills</span>
-                </div>
-                <div class="start-icon" data-name="terminal" onclick="openApp('Terminal')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#555"><path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.11-.9-2-2-2zm-8.5 13H4v-2h7.5v2zm2.3-4.1l-1.4 1.4L7.5 9.4 12.4 4.5l1.4 1.4-3.5 3.5 3.5 3.5z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">Terminal</span>
-                </div>
-                <div class="start-icon" data-name="settings" onclick="openApp('Settings')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#888"><path d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69-.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07-.49-.12-.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">Settings</span>
-                </div>
-                <div class="start-icon" data-name="contact me" onclick="openApp('Contact Me')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#0078d4">
-                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                <div class="settings-nav-items">
+                    <div class="settings-nav-item active" data-page="page-system">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M4 6h16v10H4zM3 4c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h5v2H6v2h12v-2h-2v-2h5c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1H3z" />
                         </svg>
+                        <span>System</span>
                     </div>
-                    <span style="font-size: 11px;">Contact Me</span>
-                </div>
-                <a class="start-icon" href="https://github.com/faizolaremu" target="_blank" data-name="github" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s; text-decoration: none; color: inherit; display: block;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#fff"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">GitHub</span>
-                </a>
-                <div class="start-icon" data-name="recycle bin" onclick="openApp('Recycle Bin')" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" width="32" height="32" fill="#E65A4A"><path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13zM9 8h2v9H9zm4 0h2v9h-2z"/></svg>
-                    </div>
-                    <span style="font-size: 11px;">Recycle Bin</span>
-                </div>
-            </div>
-
-            <!-- Recommended Section -->
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3 style="margin: 0; font-size: 14px; font-weight: 600;">Recommended</h3>
-                <button style="background: rgba(255,255,255,0.05); border: none; color: white; border-radius: 4px; padding: 4px 10px; font-size: 12px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">More ></button>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 30px;">
-                <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 4px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#0078D4"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                    <div>
-                        <div style="font-size: 13px; font-weight: 500;">Resume_Final.pdf</div>
-                        <div style="font-size: 11px; color: #aaa;">Recently added</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 4px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#FCCA3F"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-                    <div>
-                        <div style="font-size: 13px; font-weight: 500;">Portfolio V2</div>
-                        <div style="font-size: 11px; color: #aaa;">Modified 2h ago</div>
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 15px; padding: 10px; border-radius: 4px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-                    <svg viewBox="0 0 24 24" width="24" height="24" fill="#32B579"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                    <div>
-                        <div style="font-size: 13px; font-weight: 500;">Biography</div>
-                        <div style="font-size: 11px; color: #aaa;">Modified yesterday</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bottom Bar -->
-            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: auto; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; position: relative;">
-                <div style="display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 5px 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                    <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #00A4EF, #0078D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold;">FA</div>
-                    <span style="font-size: 13px; font-weight: 500;">Faizol Aremu</span>
-                </div>
-                <div style="position: relative;">
-                    <div id="power-btn" style="cursor: pointer; padding: 10px; border-radius: 4px; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/></svg>
-                    </div>
-                    <!-- Power Dropdown -->
-                    <div id="power-menu" class="hidden" style="position: absolute; bottom: 45px; right: 0; background: rgba(40,40,40,0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 5px; width: 150px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-                        <div class="power-option" id="po-sleep" style="padding: 10px 15px; font-size: 13px; border-radius: 4px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Sleep</div>
-                        <div class="power-option" id="po-restart" style="padding: 10px 15px; font-size: 13px; border-radius: 4px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Restart</div>
-                        <div class="power-option" id="po-shutdown" style="padding: 10px 15px; font-size: 13px; border-radius: 4px; cursor: pointer; transition: background 0.1s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Shut Down</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <template id="tpl-settings">
-            <div class="settings-layout">
-                <div class="settings-sidebar">
-                    <div class="settings-profile-header">
-                        <div class="settings-avatar">FA</div>
-                        <div class="settings-profile-info">
-                            <span class="settings-username">Faizol Aremu</span>
-                            <span class="settings-email">waliufaizol@gmail.com</span>
-                        </div>
-                    </div>
-                    <div class="settings-nav-items">
-                        <div class="settings-nav-item active" data-page="page-system">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M4 6h16v10H4zM3 4c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h5v2H6v2h12v-2h-2v-2h5c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1H3z"/></svg>
-                            <span>System</span>
-                        </div>
-                        <div class="settings-nav-item" data-page="page-personalization">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-                            <span>Personalization</span>
-                        </div>
-                        <div class="settings-nav-item" data-page="page-about">
-                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                            <span>About</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="settings-content">
-                    <!-- SYSTEM PAGE -->
-                    <div id="page-system" class="settings-page active">
-                        <h2>System</h2>
-                        
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
-                                <span>Display</span>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">Brightness</span>
-                                    <span class="settings-control-desc">Adjust screen brightness level</span>
-                                </div>
-                                <div class="settings-control-value slider-value">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/></svg>
-                                    <input type="range" id="settings-brightness" min="10" max="100" value="90">
-                                </div>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">Display Resolution</span>
-                                    <span class="settings-control-desc">Change the display dimensions</span>
-                                </div>
-                                <div class="settings-control-value">
-                                    <select class="settings-select" id="settings-resolution">
-                                        <option value="1920x1080">1920 x 1080 (Recommended)</option>
-                                        <option value="1600x900">1600 x 900</option>
-                                        <option value="1366x768">1366 x 768</option>
-                                        <option value="1280x720">1280 x 720</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">Light Mode Theme</span>
-                                    <span class="settings-control-desc">Toggles light/dark system interface</span>
-                                </div>
-                                <div class="settings-control-value">
-                                    <label class="settings-switch">
-                                        <input type="checkbox" id="settings-lightmode">
-                                        <span class="settings-switch-slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-                                <span>Sound</span>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">Volume</span>
-                                    <span class="settings-control-desc">Adjust master volume slider</span>
-                                </div>
-                                <div class="settings-control-value slider-value">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                                    <input type="range" id="settings-volume" min="0" max="100" value="65">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PERSONALIZATION PAGE -->
-                    <div id="page-personalization" class="settings-page">
-                        <h2>Personalization</h2>
-                        
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z"/></svg>
-                                <span>Background Wallpaper</span>
-                            </div>
-                            <div class="settings-wallpaper-row" id="settings-wallpapers-row">
-                                <!-- Generated by JS: shows 5 wallpaper thumbnails -->
-                            </div>
-                        </div>
-
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
-                                <span>Accent Color Picker</span>
-                            </div>
-                            <div class="settings-accent-row" id="settings-accent-row">
-                                <!-- Generated by JS: 8 color swatches -->
-                            </div>
-                        </div>
-                        
-
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M3 13h18c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1zm0 9h18c.55 0 1-.45 1-1v-5c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v5c0 .55.45 1 1 1z"/></svg>
-                                <span>Transparency</span>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">Transparency Effects</span>
-                                    <span class="settings-control-desc">Toggles window backdrop-filter blur</span>
-                                </div>
-                                <div class="settings-control-value">
-                                    <label class="settings-switch">
-                                        <input type="checkbox" id="settings-transparency" checked>
-                                        <span class="settings-switch-slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ABOUT PAGE -->
-                    <div id="page-about" class="settings-page">
-                        <h2>About</h2>
-                        
-                        <div class="settings-section-card about-hero-card">
-                            <div class="settings-logo-11">11</div>
-                            <div class="settings-about-hero-text">
-                                <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Portfolio OS 11</h3>
-                                <p style="margin: 3px 0 0 0; color: #888; font-size: 12px;">Version 26H2 (Build 2026.05.19)</p>
-                            </div>
-                        </div>
-
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
-                                <span>System Specifications</span>
-                            </div>
-                            <div class="settings-spec-row">
-                                <span class="settings-spec-label">Registered Owner</span>
-                                <span class="settings-spec-val">Faizol Aremu</span>
-                            </div>
-                            <div class="settings-spec-row">
-                                <span class="settings-spec-label">Processor</span>
-                                <span class="settings-spec-val">Coffee-fueled brain @ 3.5 GHz (4 Cores, 8 Threads)</span>
-                            </div>
-                            <div class="settings-spec-row">
-                                <span class="settings-spec-label">Installed RAM</span>
-                                <span class="settings-spec-val">16.0 GB of creative thinking power</span>
-                            </div>
-                            <div class="settings-spec-row">
-                                <span class="settings-spec-label">Storage Capacity</span>
-                                <span class="settings-spec-val">512 GB Fast Learning Memory (NVMe SSD)</span>
-                            </div>
-                        </div>
-
-                        <div class="settings-section-card">
-                            <div class="settings-section-title">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
-                                <span>Developer Links</span>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">GitHub Profile</span>
-                                    <span class="settings-control-desc">Explore open-source repositories</span>
-                                </div>
-                                <div class="settings-control-value">
-                                    <a href="https://github.com/faizolaremu" target="_blank" class="settings-action-btn">Visit GitHub</a>
-                                </div>
-                            </div>
-                            <div class="settings-control-row">
-                                <div class="settings-control-info">
-                                    <span class="settings-control-name">LinkedIn Profile</span>
-                                    <span class="settings-control-desc">Connect professionally and view experiences</span>
-                                </div>
-                                <div class="settings-control-value">
-                                    <a href="https://linkedin.com/in/faizolaremu" target="_blank" class="settings-action-btn">Visit LinkedIn</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </template>
-        </div>
-
-        <template id="tpl-about-me">
-            <div class="about-dashboard">
-
-                <!-- === LEFT COLUMN === -->
-                <div class="about-col-left">
-
-                    <!-- Profile Card -->
-                    <div class="about-card about-profile-card">
-                        <div class="about-avatar-ring">
-                            <div class="about-avatar">FA</div>
-                            <div class="about-status-dot"></div>
-                        </div>
-                        <h2 class="about-name">Faizol Aremu</h2>
-                        <p class="about-title">Fullstack Developer</p>
-                        <p class="about-location">
-                            <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                            Ogbomoso, Oyo State
-                        </p>
-                        <div class="about-badges">
-                            <span class="about-badge">CSC Student</span>
-                            <span class="about-badge about-badge-blue">Open to Work</span>
-                        </div>
-                        <div class="about-socials">
-                            <a class="about-social-btn" href="https://github.com/faizolaremu" target="_blank" title="GitHub" id="about-github-btn">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                                GitHub
-                            </a>
-                            <a class="about-social-btn" href="https://linkedin.com/in/faizolaremu" target="_blank" title="LinkedIn" id="about-linkedin-btn">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                                LinkedIn
-                            </a>
-                            <a class="about-social-btn about-social-btn-email" href="mailto:waliufaizol@gmail.com" title="Email" id="about-email-btn">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                                Email
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Fast Facts Card -->
-                    <div class="about-card about-facts-card">
-                        <div class="about-card-label">⚡ Fast Facts</div>
-                        <ul class="about-facts-list">
-                            <li><span class="about-fact-icon">🚀</span><span>Fast learner & AI-first developer</span></li>
-                            <li><span class="about-fact-icon">💡</span><span>Obsessed with physics-based UI motion</span></li>
-                            <li><span class="about-fact-icon">🤖</span><span>Uses LLMs to ship products 3x faster</span></li>
-                            <li><span class="about-fact-icon">🎨</span><span>Studies Apple & Windows UI aesthetics</span></li>
-                            <li><span class="about-fact-icon">🌟</span><span>Chasing elegant web engineering</span></li>
-                        </ul>
-                    </div>
-
-                </div>
-
-                <!-- === RIGHT COLUMN === -->
-                <div class="about-col-right">
-
-                    <!-- Bio / Mission Card -->
-                    <div class="about-card about-bio-card">
-                        <div class="about-card-label">👋 My Mission</div>
-                        <p class="about-bio-text">I'm a <strong>Computer Science student at LAUTECH</strong> and a <strong>Fullstack Developer Intern at SQI College of ICT</strong>. I don't just write code — I build <em>responsive, modern, and highly interactive digital experiences</em> that feel alive. I integrate cutting-edge AI tools into my workflow to accelerate coding velocity and structure premium products at lightspeed.</p>
-                        <div class="about-stat-row">
-                            <div class="about-stat">
-                                <span class="about-stat-num">3x</span> 
-                                <span class="about-stat-label">Faster with AI</span>
-                            </div>
-                            <div class="about-stat-divider"></div>
-                            <div class="about-stat">
-                                <span class="about-stat-num">10+</span>
-                                <span class="about-stat-label">Projects Built</span>
-                            </div>
-                            <div class="about-stat-divider"></div>
-                            <div class="about-stat">
-                                <span class="about-stat-num">∞</span>
-                                <span class="about-stat-label">Drive to Learn</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Timeline Card -->
-                    <div class="about-card about-timeline-card">
-                        <div class="about-card-label">🗺️ My Journey</div>
-                        <div class="about-timeline">
-                            <div class="about-tl-item">
-                                <div class="about-tl-dot about-tl-dot-active"></div>
-                                <div class="about-tl-content">
-                                    <div class="about-tl-header">
-                                        <span class="about-tl-role">Fullstack Developer Intern</span>
-                                        <span class="about-tl-badge">Present</span>
-                                    </div>
-                                    <div class="about-tl-org">SQI College of ICT</div>
-                                    <ul class="about-tl-desc">
-                                        <li>Building scalable web apps with React & Node.js</li>
-                                        <li>Designing premium, responsive UI components</li>
-                                        <li>Integrating AI tools to accelerate delivery by 3x</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="about-tl-item">
-                                <div class="about-tl-dot"></div>
-                                <div class="about-tl-content">
-                                    <div class="about-tl-header">
-                                        <span class="about-tl-role">B.Tech. Computer Science (CSC)</span>
-                                        <span class="about-tl-badge about-tl-badge-purple">In Progress</span>
-                                    </div>
-                                    <div class="about-tl-org">Ladoke Akintola University of Technology (LAUTECH)</div>
-                                    <ul class="about-tl-desc">
-                                        <li>Software Engineering & Algorithms</li>
-                                        <li>Web Architectures & Artificial Intelligence</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </template>
-
-        <template id="tpl-my-projects">
-            <div class="proj-layout">
-                <aside class="proj-sidebar">
-                    <div class="proj-sidebar-header">Folders</div>
-                    <ul class="proj-folder-list">
-                        <li class="proj-folder active" data-cat="All Projects">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
-                            All Projects
-                        </li>
-                        <li class="proj-folder" data-cat="Web Apps">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10z"/></svg>
-                            Web Apps
-                        </li>
-                        <li class="proj-folder" data-cat="Mobile">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-                            Mobile
-                        </li>
-                        <li class="proj-folder" data-cat="Open Source">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                            Open Source
-                        </li>
-                        <li class="proj-folder" data-cat="Experiments">
-                            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z"/></svg>
-                            Experiments
-                        </li>
-                    </ul>
-                </aside>
-                <main class="proj-main">
-                    <div class="proj-toolbar">
-                        <span class="proj-location" id="proj-location">All Projects</span>
-                        <span class="proj-count" id="proj-count"></span>
-                    </div>
-                    <div class="proj-grid" id="proj-grid"></div>
-                </main>
-            </div>
-        </template>
-
-
-        <template id="tpl-resume">
-            <div class="pdf-viewer">
-                <div class="pdf-toolbar">
-                    <div class="pdf-toolbar-left">
-                        <svg class="pdf-doc-icon" viewBox="0 0 24 24" width="18" height="18" fill="#E65A4A">
-                            <path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H10v-2h8v2zm0-4H10V6h8v2zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>
+                    <div class="settings-nav-item" data-page="page-personalization">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
                         </svg>
-                        <span class="pdf-title">Resume.pdf</span>
+                        <span>Personalization</span>
                     </div>
-                    <div class="pdf-toolbar-center">
-                        <button class="pdf-zoom-btn zoom-out" title="Zoom Out">−</button>
-                        <span class="pdf-zoom-val">100%</span>
-                        <button class="pdf-zoom-btn zoom-in" title="Zoom In">+</button>
+                    <div class="settings-nav-item" data-page="page-about">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                        </svg>
+                        <span>About</span>
                     </div>
-                    <div class="pdf-toolbar-right">
-                        <button class="pdf-download-btn" id="resume-download-btn">
+                </div>
+            </div>
+            <div class="settings-content">
+                <!-- SYSTEM PAGE -->
+                <div id="page-system" class="settings-page active">
+                    <h2>System</h2>
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" />
+                            </svg>
+                            <span>Display</span>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">Brightness</span>
+                                <span class="settings-control-desc">Adjust screen brightness level</span>
+                            </div>
+                            <div class="settings-control-value slider-value">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path
+                                        d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z" />
+                                </svg>
+                                <input type="range" id="settings-brightness" min="10" max="100" value="90">
+                            </div>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">Display Resolution</span>
+                                <span class="settings-control-desc">Change the display dimensions</span>
+                            </div>
+                            <div class="settings-control-value">
+                                <select class="settings-select" id="settings-resolution">
+                                    <option value="1920x1080">1920 x 1080 (Recommended)</option>
+                                    <option value="1600x900">1600 x 900</option>
+                                    <option value="1366x768">1366 x 768</option>
+                                    <option value="1280x720">1280 x 720</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">Light Mode Theme</span>
+                                <span class="settings-control-desc">Toggles light/dark system interface</span>
+                            </div>
+                            <div class="settings-control-value">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="settings-lightmode">
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                            </svg>
+                            <span>Sound</span>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">Volume</span>
+                                <span class="settings-control-desc">Adjust master volume slider</span>
+                            </div>
+                            <div class="settings-control-value slider-value">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path
+                                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                                </svg>
+                                <input type="range" id="settings-volume" min="0" max="100" value="65">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERSONALIZATION PAGE -->
+                <div id="page-personalization" class="settings-page">
+                    <h2>Personalization</h2>
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8z" />
+                            </svg>
+                            <span>Background Wallpaper</span>
+                        </div>
+                        <div class="settings-wallpaper-row" id="settings-wallpapers-row">
+                            <!-- Generated by JS: shows 5 wallpaper thumbnails -->
+                        </div>
+                    </div>
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" />
+                            </svg>
+                            <span>Accent Color Picker</span>
+                        </div>
+                        <div class="settings-accent-row" id="settings-accent-row">
+                            <!-- Generated by JS: 8 color swatches -->
+                        </div>
+                    </div>
+
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M3 13h18c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1zm0 9h18c.55 0 1-.45 1-1v-5c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v5c0 .55.45 1 1 1z" />
+                            </svg>
+                            <span>Transparency</span>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">Transparency Effects</span>
+                                <span class="settings-control-desc">Toggles window backdrop-filter blur</span>
+                            </div>
+                            <div class="settings-control-value">
+                                <label class="settings-switch">
+                                    <input type="checkbox" id="settings-transparency" checked>
+                                    <span class="settings-switch-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ABOUT PAGE -->
+                <div id="page-about" class="settings-page">
+                    <h2>About</h2>
+
+                    <div class="settings-section-card about-hero-card">
+                        <div class="settings-logo-11">11</div>
+                        <div class="settings-about-hero-text">
+                            <h3 style="margin: 0; font-size: 18px; font-weight: 600;">Portfolio OS 11</h3>
+                            <p style="margin: 3px 0 0 0; color: #888; font-size: 12px;">Version 26H2 (Build 2026.05.19)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" />
+                            </svg>
+                            <span>System Specifications</span>
+                        </div>
+                        <div class="settings-spec-row">
+                            <span class="settings-spec-label">Registered Owner</span>
+                            <span class="settings-spec-val">Faizol Aremu</span>
+                        </div>
+                        <div class="settings-spec-row">
+                            <span class="settings-spec-label">Processor</span>
+                            <span class="settings-spec-val">Coffee-fueled brain @ 3.5 GHz (4 Cores, 8 Threads)</span>
+                        </div>
+                        <div class="settings-spec-row">
+                            <span class="settings-spec-label">Installed RAM</span>
+                            <span class="settings-spec-val">16.0 GB of creative thinking power</span>
+                        </div>
+                        <div class="settings-spec-row">
+                            <span class="settings-spec-label">Storage Capacity</span>
+                            <span class="settings-spec-val">512 GB Fast Learning Memory (NVMe SSD)</span>
+                        </div>
+                    </div>
+
+                    <div class="settings-section-card">
+                        <div class="settings-section-title">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--accent)">
+                                <path
+                                    d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" />
+                            </svg>
+                            <span>Developer Links</span>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">GitHub Profile</span>
+                                <span class="settings-control-desc">Explore open-source repositories</span>
+                            </div>
+                            <div class="settings-control-value">
+                                <a href="https://github.com/faizolaremu" target="_blank"
+                                    class="settings-action-btn">Visit GitHub</a>
+                            </div>
+                        </div>
+                        <div class="settings-control-row">
+                            <div class="settings-control-info">
+                                <span class="settings-control-name">LinkedIn Profile</span>
+                                <span class="settings-control-desc">Connect professionally and view experiences</span>
+                            </div>
+                            <div class="settings-control-value">
+                                <a href="https://linkedin.com/in/faizolaremu" target="_blank"
+                                    class="settings-action-btn">Visit LinkedIn</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    </div>
+
+    <template id="tpl-about-me">
+        <div class="about-dashboard">
+
+            <!-- === LEFT COLUMN === -->
+            <div class="about-col-left">
+
+                <!-- Profile Card -->
+                <div class="about-card about-profile-card">
+                    <div class="about-avatar-ring">
+                        <div class="about-avatar">FA</div>
+                        <div class="about-status-dot"></div>
+                    </div>
+                    <h2 class="about-name">Faizol Aremu</h2>
+                    <p class="about-title">Fullstack Developer</p>
+                    <p class="about-location">
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                        </svg>
+                        Ogbomoso, Oyo State
+                    </p>
+                    <div class="about-badges">
+                        <span class="about-badge">CSC Student</span>
+                        <span class="about-badge about-badge-blue">Open to Work</span>
+                    </div>
+                    <div class="about-socials">
+                        <a class="about-social-btn" href="https://github.com/faizolaremu" target="_blank" title="GitHub"
+                            id="about-github-btn">
                             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                <path
+                                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
                             </svg>
-                            <span>Download PDF</span>
-                        </button>
+                            GitHub
+                        </a>
+                        <a class="about-social-btn" href="https://linkedin.com/in/faizolaremu" target="_blank"
+                            title="LinkedIn" id="about-linkedin-btn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                        <a class="about-social-btn about-social-btn-email" href="mailto:waliufaizol@gmail.com"
+                            title="Email" id="about-email-btn">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                            Email
+                        </a>
                     </div>
                 </div>
-                <div class="pdf-body">
-                    <div class="resume-document">
-                        <!-- Dynamically populated from JS config -->
-                    </div>
-                </div>
-            </div>
-        </template>
 
-
-        <template id="tpl-skills">
-            <div class="skills-app">
-                <!-- Sidebar Category Navigation -->
-                <aside class="skills-sidebar">
-                    <div class="skills-sidebar-header">
-                        <div class="skills-user-profile">
-                            <div class="skills-user-avatar">FA</div>
-                            <div class="skills-user-info">
-                                <div class="skills-user-name">Faizol Aremu</div>
-                                <div class="skills-user-role">Fullstack Developer</div>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="skills-nav-list">
-                        <li class="skills-nav-item active" data-category="All Skills">
-                            <span class="skills-nav-icon">⭐</span>
-                            <span class="skills-nav-text">All Skills</span>
+                <!-- Fast Facts Card -->
+                <div class="about-card about-facts-card">
+                    <div class="about-card-label">⚡ Fast Facts</div>
+                    <ul class="about-facts-list">
+                        <li><span class="about-fact-icon">🚀</span><span>Fast learner & AI-first developer</span></li>
+                        <li><span class="about-fact-icon">💡</span><span>Obsessed with physics-based UI motion</span>
                         </li>
-                        <li class="skills-nav-item" data-category="Languages">
-                            <span class="skills-nav-icon">💻</span>
-                            <span class="skills-nav-text">Languages</span>
+                        <li><span class="about-fact-icon">🤖</span><span>Uses LLMs to ship products 3x faster</span>
                         </li>
-                        <li class="skills-nav-item" data-category="Frameworks & Libraries">
-                            <span class="skills-nav-icon">📦</span>
-                            <span class="skills-nav-text">Frameworks & Libraries</span>
+                        <li><span class="about-fact-icon">🎨</span><span>Studies Apple & Windows UI aesthetics</span>
                         </li>
-                        <li class="skills-nav-item" data-category="Tools & Platforms">
-                            <span class="skills-nav-icon">🛠️</span>
-                            <span class="skills-nav-text">Tools & Platforms</span>
-                        </li>
-                        <li class="skills-nav-item" data-category="Cloud & DevOps">
-                            <span class="skills-nav-icon">☁️</span>
-                            <span class="skills-nav-text">Cloud & DevOps</span>
-                        </li>
-                        <li class="skills-nav-item" data-category="Soft Skills">
-                            <span class="skills-nav-icon">🤝</span>
-                            <span class="skills-nav-text">Soft Skills</span>
-                        </li>
+                        <li><span class="about-fact-icon">🌟</span><span>Chasing elegant web engineering</span></li>
                     </ul>
-                </aside>
+                </div>
 
-                <!-- Main Grid Panel -->
-                <main class="skills-main">
-                    <div class="skills-main-header">
-                        <h2 class="skills-category-title" id="skills-cat-title">All Skills</h2>
-                        <div class="skills-search-wrapper">
-                            <span class="skills-search-icon">🔍</span>
-                            <input type="text" id="skills-search-input" class="skills-search-input" placeholder="Find a skill..." />
-                        </div>
-                    </div>
-                    <div class="skills-grid" id="skills-grid">
-                        <!-- Populated dynamically by script.js -->
-                    </div>
-                </main>
             </div>
-        </template>
 
-        <template id="tpl-terminal">
-            <div class="terminal-container app-content" id="terminal-container">
-                <div class="term-banner">
-                    <p>Windows PowerShell<br/>Copyright (C) Microsoft Corporation. All rights reserved.</p>
-                    <p style="margin-bottom: 15px; color: #aaa;">Welcome, <span id="term-banner-name">User</span>! Type 'help' to get started.</p>
+            <!-- === RIGHT COLUMN === -->
+            <div class="about-col-right">
+
+                <!-- Bio / Mission Card -->
+                <div class="about-card about-bio-card">
+                    <div class="about-card-label">👋 My Mission</div>
+                    <p class="about-bio-text">I'm a <strong>Computer Science student at LAUTECH</strong> and a
+                        <strong>Fullstack Developer Intern at SQI College of ICT</strong>. I don't just write code — I
+                        build <em>responsive, modern, and highly interactive digital experiences</em> that feel alive. I
+                        integrate cutting-edge AI tools into my workflow to accelerate coding velocity and structure
+                        premium products at lightspeed.</p>
+                    <div class="about-stat-row">
+                        <div class="about-stat">
+                            <span class="about-stat-num">3x</span>
+                            <span class="about-stat-label">Faster with AI</span>
+                        </div>
+                        <div class="about-stat-divider"></div>
+                        <div class="about-stat">
+                            <span class="about-stat-num">10+</span>
+                            <span class="about-stat-label">Projects Built</span>
+                        </div>
+                        <div class="about-stat-divider"></div>
+                        <div class="about-stat">
+                            <span class="about-stat-num">∞</span>
+                            <span class="about-stat-label">Drive to Learn</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="term-output" id="term-output"></div>
-                <div class="term-input-line">
-                    <span class="term-prompt" id="term-prompt">PS C:\Users\Faizol></span>
-                    <div class="term-input-wrapper">
-                        <span class="term-cmd-text" id="term-cmd-text"></span><span class="term-cursor"></span>
-                        <input type="text" id="term-input" class="term-hidden-input" autocomplete="off" spellcheck="false" />
+
+                <!-- Timeline Card -->
+                <div class="about-card about-timeline-card">
+                    <div class="about-card-label">🗺️ My Journey</div>
+                    <div class="about-timeline">
+                        <div class="about-tl-item">
+                            <div class="about-tl-dot about-tl-dot-active"></div>
+                            <div class="about-tl-content">
+                                <div class="about-tl-header">
+                                    <span class="about-tl-role">Fullstack Developer Intern</span>
+                                    <span class="about-tl-badge">Present</span>
+                                </div>
+                                <div class="about-tl-org">SQI College of ICT</div>
+                                <ul class="about-tl-desc">
+                                    <li>Building scalable web apps with React & Node.js</li>
+                                    <li>Designing premium, responsive UI components</li>
+                                    <li>Integrating AI tools to accelerate delivery by 3x</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="about-tl-item">
+                            <div class="about-tl-dot"></div>
+                            <div class="about-tl-content">
+                                <div class="about-tl-header">
+                                    <span class="about-tl-role">B.Tech. Computer Science (CSC)</span>
+                                    <span class="about-tl-badge about-tl-badge-purple">In Progress</span>
+                                </div>
+                                <div class="about-tl-org">Ladoke Akintola University of Technology (LAUTECH)</div>
+                                <ul class="about-tl-desc">
+                                    <li>Software Engineering & Algorithms</li>
+                                    <li>Web Architectures & Artificial Intelligence</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </template>
+
+    <template id="tpl-my-projects">
+        <div class="proj-layout">
+            <aside class="proj-sidebar">
+                <div class="proj-sidebar-header">Folders</div>
+                <ul class="proj-folder-list">
+                    <li class="proj-folder active" data-cat="All Projects">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                            <path
+                                d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                        </svg>
+                        All Projects
+                    </li>
+                    <li class="proj-folder" data-cat="Web Apps">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                            <path
+                                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8h16v10z" />
+                        </svg>
+                        Web Apps
+                    </li>
+                    <li class="proj-folder" data-cat="Mobile">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                            <path
+                                d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+                        </svg>
+                        Mobile
+                    </li>
+                    <li class="proj-folder" data-cat="Open Source">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                        </svg>
+                        Open Source
+                    </li>
+                    <li class="proj-folder" data-cat="Experiments">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                            <path
+                                d="M19.8 18.4L14 10.67V6.5l1.35-1.69c.26-.33.03-.81-.39-.81H9.04c-.42 0-.65.48-.39.81L10 6.5v4.17L4.2 18.4c-.49.66-.02 1.6.8 1.6h14c.82 0 1.29-.94.8-1.6z" />
+                        </svg>
+                        Experiments
+                    </li>
+                </ul>
+            </aside>
+            <main class="proj-main">
+                <div class="proj-toolbar">
+                    <span class="proj-location" id="proj-location">All Projects</span>
+                    <span class="proj-count" id="proj-count"></span>
+                </div>
+                <div class="proj-grid" id="proj-grid"></div>
+            </main>
+        </div>
+    </template>
+
+
+    <template id="tpl-resume">
+        <div class="pdf-viewer">
+            <div class="pdf-toolbar">
+                <div class="pdf-toolbar-left">
+                    <svg class="pdf-doc-icon" viewBox="0 0 24 24" width="18" height="18" fill="#E65A4A">
+                        <path
+                            d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 10H10v-2h8v2zm0-4H10V6h8v2zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z" />
+                    </svg>
+                    <span class="pdf-title">Resume.pdf</span>
+                </div>
+                <div class="pdf-toolbar-center">
+                    <button class="pdf-zoom-btn zoom-out" title="Zoom Out">−</button>
+                    <span class="pdf-zoom-val">100%</span>
+                    <button class="pdf-zoom-btn zoom-in" title="Zoom In">+</button>
+                </div>
+                <div class="pdf-toolbar-right">
+                    <button class="pdf-download-btn" id="resume-download-btn">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                        </svg>
+                        <span>Download PDF</span>
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-body">
+                <div class="resume-document">
+                    <!-- Dynamically populated from JS config -->
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <template id="tpl-skills">
+        <div class="skills-app">
+            <!-- Sidebar Category Navigation -->
+            <aside class="skills-sidebar">
+                <div class="skills-sidebar-header">
+                    <div class="skills-user-profile">
+                        <div class="skills-user-avatar">FA</div>
+                        <div class="skills-user-info">
+                            <div class="skills-user-name">Faizol Aremu</div>
+                            <div class="skills-user-role">Fullstack Developer</div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="skills-nav-list">
+                    <li class="skills-nav-item active" data-category="All Skills">
+                        <span class="skills-nav-icon">⭐</span>
+                        <span class="skills-nav-text">All Skills</span>
+                    </li>
+                    <li class="skills-nav-item" data-category="Languages">
+                        <span class="skills-nav-icon">💻</span>
+                        <span class="skills-nav-text">Languages</span>
+                    </li>
+                    <li class="skills-nav-item" data-category="Frameworks & Libraries">
+                        <span class="skills-nav-icon">📦</span>
+                        <span class="skills-nav-text">Frameworks & Libraries</span>
+                    </li>
+                    <li class="skills-nav-item" data-category="Tools & Platforms">
+                        <span class="skills-nav-icon">🛠️</span>
+                        <span class="skills-nav-text">Tools & Platforms</span>
+                    </li>
+                    <li class="skills-nav-item" data-category="Cloud & DevOps">
+                        <span class="skills-nav-icon">☁️</span>
+                        <span class="skills-nav-text">Cloud & DevOps</span>
+                    </li>
+                    <li class="skills-nav-item" data-category="Soft Skills">
+                        <span class="skills-nav-icon">🤝</span>
+                        <span class="skills-nav-text">Soft Skills</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- Main Grid Panel -->
+            <main class="skills-main">
+                <div class="skills-main-header">
+                    <h2 class="skills-category-title" id="skills-cat-title">All Skills</h2>
+                    <div class="skills-search-wrapper">
+                        <span class="skills-search-icon">🔍</span>
+                        <input type="text" id="skills-search-input" class="skills-search-input"
+                            placeholder="Find a skill..." />
+                    </div>
+                </div>
+                <div class="skills-grid" id="skills-grid">
+                    <!-- Populated dynamically by script.js -->
+                </div>
+            </main>
+        </div>
+    </template>
+
+    <template id="tpl-terminal">
+        <div class="terminal-container app-content" id="terminal-container">
+            <div class="term-banner">
+                <p>Windows PowerShell<br />Copyright (C) Microsoft Corporation. All rights reserved.</p>
+                <p style="margin-bottom: 15px; color: #aaa;">Welcome, <span id="term-banner-name">User</span>! Type
+                    'help' to get started.</p>
+            </div>
+            <div class="term-output" id="term-output"></div>
+            <div class="term-input-line">
+                <span class="term-prompt" id="term-prompt">PS C:\Users\Faizol></span>
+                <div class="term-input-wrapper">
+                    <span class="term-cmd-text" id="term-cmd-text"></span><span class="term-cursor"></span>
+                    <input type="text" id="term-input" class="term-hidden-input" autocomplete="off"
+                        spellcheck="false" />
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="tpl-browser">
+        <div class="browser-layout">
+            <!-- Browser Title bar / Tabs -->
+            <div class="browser-tabs-bar">
+                <div class="browser-tab active">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="#0078d4" style="margin-right: 6px;">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                    </svg>
+                    <span>Edge Search</span>
+                    <span class="browser-tab-close">×</span>
+                </div>
+                <div class="browser-tab-new">+</div>
+            </div>
+
+            <!-- Browser Address Bar -->
+            <div class="browser-nav-bar">
+                <button class="browser-nav-btn" id="browser-back" title="Back">←</button>
+                <button class="browser-nav-btn" id="browser-forward" title="Forward">→</button>
+                <button class="browser-nav-btn" id="browser-refresh" title="Refresh">⟳</button>
+                <button class="browser-nav-btn" id="browser-home" title="Home">🏠</button>
+                <div class="browser-address-container">
+                    <span class="browser-address-lock">🔒</span>
+                    <input type="text" id="browser-address-input" value="https://bing.com/wallpapers"
+                        placeholder="Search web or enter image URL" />
+                </div>
+                <button class="browser-action-btn" id="browser-go-btn"
+                    style="background: var(--accent); color: white; border: none; border-radius: 4px; padding: 6px 14px; font-size: 12px; cursor: pointer;">Go</button>
+            </div>
+
+            <!-- Browser Content Area -->
+            <div class="browser-viewport">
+                <!-- Bing Home / Search View -->
+                <div class="browser-home-page" id="browser-home-page">
+                    <div class="browser-search-hero">
+                        <div class="browser-search-logo">Edge Search</div>
+                        <div class="browser-search-box-row">
+                            <input type="text" id="browser-search-box"
+                                placeholder="Search developer coding wallpapers..." />
+                            <button id="browser-search-btn" style="background: var(--accent);">Search</button>
+                        </div>
+                        <div class="browser-search-tags">
+                            <span class="browser-search-tag" data-query="coding">Coding</span>
+                            <span class="browser-search-tag" data-query="workspace">Workspace</span>
+                            <span class="browser-search-tag" data-query="cyberpunk">Cyberpunk</span>
+                            <span class="browser-search-tag" data-query="matrix code">Matrix</span>
+                            <span class="browser-search-tag" data-query="abstract dark">Abstract</span>
+                        </div>
+                    </div>
+
+                    <!-- Search Results Grid -->
+                    <div class="browser-results-section" id="browser-results-section"
+                        style="display: none; padding: 20px; width: 100%;">
+                        <div class="browser-results-header"
+                            style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; margin-bottom: 20px;">
+                            <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Search Results</h3>
+                            <button class="browser-action-btn" id="browser-back-home"
+                                style="padding: 6px 12px; font-size: 12px; background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer;">Back
+                                to Home</button>
+                        </div>
+                        <div class="browser-results-grid" id="browser-results-grid"
+                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
+                            <!-- Dynamically generated by JS -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </template>
 
-        <template id="tpl-browser">
-            <div class="browser-layout">
-                <!-- Browser Title bar / Tabs -->
-                <div class="browser-tabs-bar">
-                    <div class="browser-tab active">
-                        <svg viewBox="0 0 24 24" width="12" height="12" fill="#0078d4" style="margin-right: 6px;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        <span>Edge Search</span>
-                        <span class="browser-tab-close">×</span>
-                    </div>
-                    <div class="browser-tab-new">+</div>
+            <!-- Toast alert inside window -->
+            <div class="browser-toast hidden" id="browser-toast">
+                Wallpaper set successfully! 🎉
+            </div>
+        </div>
+    </template>
+
+    <template id="tpl-contact-me">
+        <div class="contact-layout">
+            <!-- Left Panel -->
+            <div class="contact-left-panel">
+                <div class="contact-avatar-container">
+                    <!-- Filled by JS -->
                 </div>
-                
-                <!-- Browser Address Bar -->
-                <div class="browser-nav-bar">
-                    <button class="browser-nav-btn" id="browser-back" title="Back">←</button>
-                    <button class="browser-nav-btn" id="browser-forward" title="Forward">→</button>
-                    <button class="browser-nav-btn" id="browser-refresh" title="Refresh">⟳</button>
-                    <button class="browser-nav-btn" id="browser-home" title="Home">🏠</button>
-                    <div class="browser-address-container">
-                        <span class="browser-address-lock">🔒</span>
-                        <input type="text" id="browser-address-input" value="https://bing.com/wallpapers" placeholder="Search web or enter image URL" />
-                    </div>
-                    <button class="browser-action-btn" id="browser-go-btn" style="background: var(--accent); color: white; border: none; border-radius: 4px; padding: 6px 14px; font-size: 12px; cursor: pointer;">Go</button>
-                </div>
-                
-                <!-- Browser Content Area -->
-                <div class="browser-viewport">
-                    <!-- Bing Home / Search View -->
-                    <div class="browser-home-page" id="browser-home-page">
-                        <div class="browser-search-hero">
-                            <div class="browser-search-logo">Edge Search</div>
-                            <div class="browser-search-box-row">
-                                <input type="text" id="browser-search-box" placeholder="Search developer coding wallpapers..." />
-                                <button id="browser-search-btn" style="background: var(--accent);">Search</button>
-                            </div>
-                            <div class="browser-search-tags">
-                                <span class="browser-search-tag" data-query="coding">Coding</span>
-                                <span class="browser-search-tag" data-query="workspace">Workspace</span>
-                                <span class="browser-search-tag" data-query="cyberpunk">Cyberpunk</span>
-                                <span class="browser-search-tag" data-query="matrix code">Matrix</span>
-                                <span class="browser-search-tag" data-query="abstract dark">Abstract</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Search Results Grid -->
-                        <div class="browser-results-section" id="browser-results-section" style="display: none; padding: 20px; width: 100%;">
-                            <div class="browser-results-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 10px; margin-bottom: 20px;">
-                                <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Search Results</h3>
-                                <button class="browser-action-btn" id="browser-back-home" style="padding: 6px 12px; font-size: 12px; background: rgba(255,255,255,0.05); color: white; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; cursor: pointer;">Back to Home</button>
-                            </div>
-                            <div class="browser-results-grid" id="browser-results-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;">
-                                <!-- Dynamically generated by JS -->
-                            </div>
+                <h3 class="contact-user-name"></h3>
+                <p class="contact-user-role"></p>
+                <div class="contact-status-indicator"></div>
+
+                <div class="contact-divider"></div>
+
+                <div class="contact-details-list">
+                    <!-- email row -->
+                    <div class="contact-detail-row" id="contact-row-email">
+                        <span class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                        </span>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Email</div>
+                            <div class="contact-detail-val" id="contact-val-email"></div>
                         </div>
                     </div>
+                    <!-- github row -->
+                    <div class="contact-detail-row" id="contact-row-github">
+                        <span class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                            </svg>
+                        </span>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">GitHub</div>
+                            <div class="contact-detail-val" id="contact-val-github"></div>
+                        </div>
+                    </div>
+                    <!-- linkedin row -->
+                    <div class="contact-detail-row" id="contact-row-linkedin">
+                        <span class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                            </svg>
+                        </span>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">LinkedIn</div>
+                            <div class="contact-detail-val" id="contact-val-linkedin"></div>
+                        </div>
+                    </div>
+                    <!-- twitter row -->
+                    <div class="contact-detail-row" id="contact-row-twitter">
+                        <span class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </span>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Twitter</div>
+                            <div class="contact-detail-val" id="contact-val-twitter"></div>
+                        </div>
+                    </div>
+                    <!-- location row -->
+                    <div class="contact-detail-row" id="contact-row-location">
+                        <span class="contact-detail-icon">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                        </span>
+                        <div class="contact-detail-text">
+                            <div class="contact-detail-label">Location</div>
+                            <div class="contact-detail-val" id="contact-val-location"></div>
+                        </div>
+                    </div>
                 </div>
-                
-                <!-- Toast alert inside window -->
-                <div class="browser-toast hidden" id="browser-toast">
-                    Wallpaper set successfully! 🎉
+
+                <!-- Response time card -->
+                <div class="contact-response-card">
+                    <div class="contact-response-header">
+                        <span class="contact-response-icon">⚡</span>
+                        <span>Typical response time</span>
+                    </div>
+                    <div class="contact-response-val">Within 24 hours</div>
+                </div>
+
+                <!-- Social links row -->
+                <div class="contact-social-row">
+                    <a href="" target="_blank" class="contact-social-btn" id="contact-social-github">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+                        </svg>
+                    </a>
+                    <a href="" target="_blank" class="contact-social-btn" id="contact-social-linkedin">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                    </a>
+                    <a href="" target="_blank" class="contact-social-btn" id="contact-social-twitter">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </template>
 
-        <template id="tpl-contact-me">
-            <div class="contact-layout">
-                <!-- Left Panel -->
-                <div class="contact-left-panel">
-                    <div class="contact-avatar-container">
-                        <!-- Filled by JS -->
+            <!-- Right Panel -->
+            <div class="contact-right-panel">
+                <!-- Form Container -->
+                <div class="contact-form-container">
+                    <div class="contact-form-header">
+                        <h2>Send a Message</h2>
+                        <p>I'll get back to you as soon as possible.</p>
                     </div>
-                    <h3 class="contact-user-name"></h3>
-                    <p class="contact-user-role"></p>
-                    <div class="contact-status-indicator"></div>
-                    
-                    <div class="contact-divider"></div>
-                    
-                    <div class="contact-details-list">
-                        <!-- email row -->
-                        <div class="contact-detail-row" id="contact-row-email">
-                            <span class="contact-detail-icon">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                                </svg>
-                            </span>
-                            <div class="contact-detail-text">
-                                <div class="contact-detail-label">Email</div>
-                                <div class="contact-detail-val" id="contact-val-email"></div>
+
+                    <form class="contact-form" novalidate>
+                        <!-- Name Field -->
+                        <div class="contact-field-group" id="group-name">
+                            <input type="text" id="contact-input-name" class="contact-input"
+                                placeholder="Your full name" required autocomplete="name">
+                            <span class="contact-field-error"></span>
+                        </div>
+
+                        <!-- Email Field -->
+                        <div class="contact-field-group" id="group-email">
+                            <input type="email" id="contact-input-email" class="contact-input"
+                                placeholder="your@email.com" required autocomplete="email">
+                            <span class="contact-field-error"></span>
+                        </div>
+
+                        <!-- Subject Field -->
+                        <div class="contact-field-group" id="group-subject">
+                            <div class="contact-select-wrapper">
+                                <select id="contact-input-subject" class="contact-select" required>
+                                    <option value="" disabled selected>Select a subject...</option>
+                                    <!-- Will populate dynamically -->
+                                </select>
+                            </div>
+                            <span class="contact-field-error"></span>
+                        </div>
+
+                        <!-- Budget Range Field (Dynamic container) -->
+                        <div class="contact-budget-group hidden" id="group-budget">
+                            <label class="contact-budget-label">Budget Range (optional)</label>
+                            <div class="contact-budget-pills">
+                                <!-- Populated by JS -->
                             </div>
                         </div>
-                        <!-- github row -->
-                        <div class="contact-detail-row" id="contact-row-github">
-                            <span class="contact-detail-icon">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-                                </svg>
-                            </span>
-                            <div class="contact-detail-text">
-                                <div class="contact-detail-label">GitHub</div>
-                                <div class="contact-detail-val" id="contact-val-github"></div>
+
+                        <!-- Message Field -->
+                        <div class="contact-field-group" id="group-message">
+                            <textarea id="contact-input-message" class="contact-textarea"
+                                placeholder="Write your message here..." required></textarea>
+                            <div class="contact-textarea-footer">
+                                <span class="contact-field-error"></span>
+                                <span class="contact-char-counter">0 / 500</span>
                             </div>
                         </div>
-                        <!-- linkedin row -->
-                        <div class="contact-detail-row" id="contact-row-linkedin">
-                            <span class="contact-detail-icon">
+
+                        <!-- Send Button -->
+                        <button type="submit" class="contact-submit-btn" id="contact-submit-btn" disabled>
+                            <span class="contact-btn-text">Send Message</span>
+                            <span class="contact-btn-icon">
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                                 </svg>
                             </span>
-                            <div class="contact-detail-text">
-                                <div class="contact-detail-label">LinkedIn</div>
-                                <div class="contact-detail-val" id="contact-val-linkedin"></div>
-                            </div>
-                        </div>
-                        <!-- twitter row -->
-                        <div class="contact-detail-row" id="contact-row-twitter">
-                            <span class="contact-detail-icon">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                                </svg>
-                            </span>
-                            <div class="contact-detail-text">
-                                <div class="contact-detail-label">Twitter</div>
-                                <div class="contact-detail-val" id="contact-val-twitter"></div>
-                            </div>
-                        </div>
-                        <!-- location row -->
-                        <div class="contact-detail-row" id="contact-row-location">
-                            <span class="contact-detail-icon">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                                </svg>
-                            </span>
-                            <div class="contact-detail-text">
-                                <div class="contact-detail-label">Location</div>
-                                <div class="contact-detail-val" id="contact-val-location"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Response time card -->
-                    <div class="contact-response-card">
-                        <div class="contact-response-header">
-                            <span class="contact-response-icon">⚡</span>
-                            <span>Typical response time</span>
-                        </div>
-                        <div class="contact-response-val">Within 24 hours</div>
-                    </div>
-                    
-                    <!-- Social links row -->
-                    <div class="contact-social-row">
-                        <a href="" target="_blank" class="contact-social-btn" id="contact-social-github">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-                            </svg>
-                        </a>
-                        <a href="" target="_blank" class="contact-social-btn" id="contact-social-linkedin">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                            </svg>
-                        </a>
-                        <a href="" target="_blank" class="contact-social-btn" id="contact-social-twitter">
-                            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                            </svg>
-                        </a>
-                    </div>
+                        </button>
+                    </form>
                 </div>
 
-                <!-- Right Panel -->
-                <div class="contact-right-panel">
-                    <!-- Form Container -->
-                    <div class="contact-form-container">
-                        <div class="contact-form-header">
-                            <h2>Send a Message</h2>
-                            <p>I'll get back to you as soon as possible.</p>
+                <!-- Success View Container -->
+                <div class="contact-success-container hidden">
+                    <div class="contact-success-card">
+                        <div class="success-checkmark-wrapper">
+                            <svg class="success-checkmark-svg" viewBox="0 0 52 52">
+                                <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                                <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                            </svg>
                         </div>
-                        
-                        <form class="contact-form" novalidate>
-                            <!-- Name Field -->
-                            <div class="contact-field-group" id="group-name">
-                                <input type="text" id="contact-input-name" class="contact-input" placeholder="Your full name" required autocomplete="name">
-                                <span class="contact-field-error"></span>
-                            </div>
+                        <h2 class="success-title">Message Sent!</h2>
+                        <p class="success-desc"></p>
 
-                            <!-- Email Field -->
-                            <div class="contact-field-group" id="group-email">
-                                <input type="email" id="contact-input-email" class="contact-input" placeholder="your@email.com" required autocomplete="email">
-                                <span class="contact-field-error"></span>
-                            </div>
-
-                            <!-- Subject Field -->
-                            <div class="contact-field-group" id="group-subject">
-                                <div class="contact-select-wrapper">
-                                    <select id="contact-input-subject" class="contact-select" required>
-                                        <option value="" disabled selected>Select a subject...</option>
-                                        <!-- Will populate dynamically -->
-                                    </select>
-                                </div>
-                                <span class="contact-field-error"></span>
-                            </div>
-
-                            <!-- Budget Range Field (Dynamic container) -->
-                            <div class="contact-budget-group hidden" id="group-budget">
-                                <label class="contact-budget-label">Budget Range (optional)</label>
-                                <div class="contact-budget-pills">
-                                    <!-- Populated by JS -->
-                                </div>
-                            </div>
-
-                            <!-- Message Field -->
-                            <div class="contact-field-group" id="group-message">
-                                <textarea id="contact-input-message" class="contact-textarea" placeholder="Write your message here..." required></textarea>
-                                <div class="contact-textarea-footer">
-                                    <span class="contact-field-error"></span>
-                                    <span class="contact-char-counter">0 / 500</span>
-                                </div>
-                            </div>
-
-                            <!-- Send Button -->
-                            <button type="submit" class="contact-submit-btn" id="contact-submit-btn" disabled>
-                                <span class="contact-btn-text">Send Message</span>
-                                <span class="contact-btn-icon">
-                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        <!-- AI Reply Preview Card -->
+                        <div class="contact-ai-reply-card hidden" id="contact-ai-reply">
+                            <div class="contact-ai-header">
+                                <span>📨 Auto-reply from <span class="contact-ai-sender-name"></span></span>
+                                <span class="contact-ai-logo-tag">
+                                    Powered by Claude AI
+                                    <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor"
+                                        style="vertical-align: middle; margin-left: 2px;">
+                                        <path d="M12 2L2 22h20L12 2zm0 4.8l6.2 12.4H5.8L12 6.8z" />
                                     </svg>
                                 </span>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- Success View Container -->
-                    <div class="contact-success-container hidden">
-                        <div class="contact-success-card">
-                            <div class="success-checkmark-wrapper">
-                                <svg class="success-checkmark-svg" viewBox="0 0 52 52">
-                                    <circle class="success-checkmark-circle" cx="26" cy="26" r="25" fill="none" />
-                                    <path class="success-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                                </svg>
                             </div>
-                            <h2 class="success-title">Message Sent!</h2>
-                            <p class="success-desc"></p>
-                            
-                            <!-- AI Reply Preview Card -->
-                            <div class="contact-ai-reply-card hidden" id="contact-ai-reply">
-                                <div class="contact-ai-header">
-                                    <span>📨 Auto-reply from <span class="contact-ai-sender-name"></span></span>
-                                    <span class="contact-ai-logo-tag">
-                                        Powered by Claude AI
-                                        <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor" style="vertical-align: middle; margin-left: 2px;">
-                                            <path d="M12 2L2 22h20L12 2zm0 4.8l6.2 12.4H5.8L12 6.8z"/>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <div class="contact-ai-divider"></div>
-                                <div class="contact-ai-body">
-                                    <div class="contact-ai-loading">Generating reply...</div>
-                                    <div class="contact-ai-text"></div>
-                                </div>
+                            <div class="contact-ai-divider"></div>
+                            <div class="contact-ai-body">
+                                <div class="contact-ai-loading">Generating reply...</div>
+                                <div class="contact-ai-text"></div>
                             </div>
-
-                            <button class="contact-reset-btn" id="contact-reset-btn">Send another message</button>
                         </div>
+
+                        <button class="contact-reset-btn" id="contact-reset-btn">Send another message</button>
                     </div>
                 </div>
-                
-                <!-- Tiny copied tooltip -->
-                <div class="contact-copied-tooltip hidden" id="contact-tooltip">Copied!</div>
             </div>
-        </template>
 
-        <!-- Window Layer where dynamic windows will be spawned -->
-        <div id="window-layer"></div>
-        
-        <!-- Sleep Overlay -->
-        <div id="sleep-screen" class="hidden" style="position: fixed; inset: 0; background: black; z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; cursor: pointer;"></div>
-
-        <!-- Shutdown Overlay -->
-        <div id="shutdown-screen" class="hidden" style="position: fixed; inset: 0; background: black; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; opacity: 0; pointer-events: none; transition: opacity 2s ease;">
-            <div id="shutdown-spinner" style="width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #0078D4; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;"></div>
-            <div id="shutdown-text" style="font-size: 20px; font-weight: 300;">Shutting down...</div>
-            <button id="turn-on-btn" class="hidden" style="margin-top: 40px; background: #0078D4; color: white; border: none; padding: 10px 30px; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#005a9e'" onmouseout="this.style.background='#0078D4'">Turn back on</button>
+            <!-- Tiny copied tooltip -->
+            <div class="contact-copied-tooltip hidden" id="contact-tooltip">Copied!</div>
         </div>
+    </template>
 
-        <!-- Brightness Overlay -->
-        <div id="brightness-overlay" style="position: fixed; inset: 0; background: black; opacity: 0; pointer-events: none; z-index: 999999; transition: opacity 0.15s ease;"></div>
+    <!-- Window Layer where dynamic windows will be spawned -->
+    <div id="window-layer"></div>
+
+    <!-- Sleep Overlay -->
+    <div id="sleep-screen" class="hidden"
+        style="position: fixed; inset: 0; background: black; z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.5s ease; cursor: pointer;">
+    </div>
+
+    <!-- Shutdown Overlay -->
+    <div id="shutdown-screen" class="hidden"
+        style="position: fixed; inset: 0; background: black; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; opacity: 0; pointer-events: none; transition: opacity 2s ease;">
+        <div id="shutdown-spinner"
+            style="width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid #0078D4; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px;">
+        </div>
+        <div id="shutdown-text" style="font-size: 20px; font-weight: 300;">Shutting down...</div>
+        <button id="turn-on-btn" class="hidden"
+            style="margin-top: 40px; background: #0078D4; color: white; border: none; padding: 10px 30px; border-radius: 4px; font-size: 16px; cursor: pointer; transition: background 0.2s;"
+            onmouseover="this.style.background='#005a9e'" onmouseout="this.style.background='#0078D4'">Turn back
+            on</button>
+    </div>
+
+    <!-- Brightness Overlay -->
+    <div id="brightness-overlay"
+        style="position: fixed; inset: 0; background: black; opacity: 0; pointer-events: none; z-index: 999999; transition: opacity 0.15s ease;">
+    </div>
 
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
