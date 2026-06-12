@@ -134,58 +134,49 @@ const RESUME = {
  */
 const PROJECTS = [
     {
-        title: "Cowrywise",
-        description: "A premium responsive clone cowrywise website.",
+        title: "Cowrywise Clone (Level 1)",
+        description: "A responsive clone of the Cowrywise landing page, built using HTML, CSS, and Bootstrap during Level 1 Web Development.",
         tags: ["HTML", "CSS", "Bootstrap"],
-        category: "Web Apps",
+        category: "Level 1",
         image: "",
         demo: "https://proxycowrywise.netlify.app/",
         repo: "https://github.com/FaizolAremu/Cowry-wise"
     },
     {
-        title: "E-Commerce Suite",
-        description: "A premium responsive shop with dynamic widgets, fast analytics dashboard, and stripe integration.",
-        tags: ["React", "Node.js", "JS"],
-        category: "Web Apps",
+        title: "Level 1 Portfolio",
+        description: "A basic portfolio website built using HTML and CSS during Level 1 Web Development.",
+        tags: ["HTML", "CSS"],
+        category: "Level 1",
         image: "",
         demo: "https://github.com/faizolaremu",
         repo: "https://github.com/faizolaremu"
     },
     {
-        title: "Fintech Mobile Wallet",
-        description: "Secure cross-platform wallet application featuring dynamic multi-currency conversions and swift payments.",
-        tags: ["Flutter", "Firebase", "CSS"],
-        category: "Mobile",
+        title: "Cowrywise Clone (Level 2)",
+        description: "A premium responsive clone of Cowrywise with interactive JavaScript features and dynamic forms, built during Level 2 Web Development.",
+        tags: ["HTML", "CSS", "JS", "Bootstrap"],
+        category: "Level 2",
         image: "",
         demo: "https://github.com/faizolaremu",
         repo: "https://github.com/faizolaremu"
     },
     {
-        title: "Auto-Code CLI Tool",
-        description: "High-speed developer CLI utility that structuralizes complex folders and auto-generates custom setup templates.",
-        tags: ["Python", "JS", "Node.js"],
-        category: "Open Source",
+        title: "Level 2 Final Project",
+        description: "The final project for Level 2 Web Development, featuring advanced interactive components and robust layout designs.",
+        tags: ["HTML", "CSS", "JS", "Bootstrap"],
+        category: "Level 2",
         image: "",
         demo: "https://github.com/faizolaremu",
         repo: "https://github.com/faizolaremu"
     },
     {
-        title: "WebGL Fluid Simulation",
-        description: "Ultra smooth vector flow particle system utilizing dynamic fragment shaders for realistic liquid physics.",
-        tags: ["JS", "HTML", "CSS"],
-        category: "Experiments",
+        title: "Portfolio Window (Level 2)",
+        description: "A desktop-style web OS portfolio featuring draggable windows, customizable desktop wallpapers, a clock, calendar, and interactive applications.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2",
         image: "",
-        demo: "https://github.com/faizolaremu",
-        repo: "https://github.com/faizolaremu"
-    },
-    {
-        title: "AI Chat Assistant",
-        description: "Intelligent offline assistant running state-of-the-art quantized large language models completely in-browser.",
-        tags: ["React", "Python", "TS"],
-        category: "Web Apps",
-        image: "",
-        demo: "https://github.com/faizolaremu",
-        repo: "https://github.com/faizolaremu"
+        demo: "https://faizolaremu.github.io/windowportfolio/",
+        repo: "https://github.com/faizolaremu/windowportfolio"
     }
 ];
 
