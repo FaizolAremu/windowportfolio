@@ -133,6 +133,7 @@ const RESUME = {
  * Easily add or edit projects here
  */
 const PROJECTS = [
+    // Level 1 Projects
     {
         title: "Cowrywise Clone (Level 1)",
         description: "A responsive clone of the Cowrywise landing page, built using HTML, CSS, and Bootstrap during Level 1 Web Development.",
@@ -151,20 +152,78 @@ const PROJECTS = [
         demo: "https://github.com/faizolaremu",
         repo: "https://github.com/faizolaremu"
     },
+
+    // Level 2 - Assignment Projects
     {
-        title: "Cowrywise Clone (Level 2)",
-        description: "A premium responsive clone of Cowrywise with interactive JavaScript features and dynamic forms, built during Level 2 Web Development.",
-        tags: ["HTML", "CSS", "JS", "Bootstrap"],
-        category: "Level 2",
+        title: "Standard Calculator",
+        description: "A fully functional browser-based calculator supporting addition, subtraction, multiplication, and division operations with a clean UI.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/faizolaremu",
-        repo: "https://github.com/faizolaremu"
+        demo: "https://github.com/FaizolAremu/Standard-calculator",
+        repo: "https://github.com/FaizolAremu/Standard-calculator"
     },
+    {
+        title: "Character Counter",
+        description: "A real-time character counter tool that tracks text length as you type, with live feedback and styled indicators.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://github.com/FaizolAremu/Character-counter",
+        repo: "https://github.com/FaizolAremu/Character-counter"
+    },
+    {
+        title: "CGPA Grading System",
+        description: "An interactive CGPA calculator that computes a student's cumulative grade point average from multiple course scores and credit units.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://github.com/FaizolAremu/Grading-system",
+        repo: "https://github.com/FaizolAremu/Grading-system"
+    },
+    {
+        title: "Discount Calculator",
+        description: "A discount calculator app that computes sale price and savings based on the original price and discount percentage entered by the user.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://github.com/FaizolAremu/Discount-calculator",
+        repo: "https://github.com/FaizolAremu/Discount-calculator"
+    },
+    {
+        title: "Grading System",
+        description: "A student grading system that maps numerical scores to letter grades and remarks, helping evaluate performance across subjects.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://github.com/FaizolAremu/Grading-system",
+        repo: "https://github.com/FaizolAremu/Grading-system"
+    },
+    {
+        title: "Unit Converter",
+        description: "A multi-category unit converter app supporting conversions for length, weight, and temperature with instant real-time results.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://github.com/FaizolAremu/Unit-converter",
+        repo: "https://github.com/FaizolAremu/Unit-converter"
+    },
+    {
+        title: "Conditional Statement Practice",
+        description: "An interactive practice project exploring JavaScript conditional logic, including if-else chains, switch statements, and ternary expressions.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://github.com/FaizolAremu/Conditional-statement",
+        repo: "https://github.com/FaizolAremu/Conditional-statement"
+    },
+
+    // Level 2 - Final Projects
     {
         title: "Level 2 Final Project",
         description: "The final project for Level 2 Web Development, featuring advanced interactive components and robust layout designs.",
         tags: ["HTML", "CSS", "JS", "Bootstrap"],
-        category: "Level 2",
+        category: "Level 2 - Final Project",
         image: "",
         demo: "https://github.com/faizolaremu",
         repo: "https://github.com/faizolaremu"
@@ -173,7 +232,7 @@ const PROJECTS = [
         title: "Portfolio Window (Level 2)",
         description: "A desktop-style web OS portfolio featuring draggable windows, customizable desktop wallpapers, a clock, calendar, and interactive applications.",
         tags: ["HTML", "CSS", "JS"],
-        category: "Level 2",
+        category: "Level 2 - Final Project",
         image: "",
         demo: "https://faizolaremu.github.io/windowportfolio/",
         repo: "https://github.com/faizolaremu/windowportfolio"
@@ -498,9 +557,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 10. Desktop Icons Logic
+    const savedIconPositions = JSON.parse(localStorage.getItem('desktop_icon_positions') || '{}');
+
     document.querySelectorAll('.desktop-icon').forEach(icon => {
+        const appName = icon.getAttribute('data-app');
+        
+        // Restore position from localStorage if it exists
+        if (appName && savedIconPositions[appName]) {
+            const pos = savedIconPositions[appName];
+            icon.setAttribute('data-dx', pos.dx);
+            icon.setAttribute('data-dy', pos.dy);
+            icon.style.transform = `translate(${pos.dx}px, ${pos.dy}px)`;
+        }
+
         icon.addEventListener('dblclick', () => {
-            const appName = icon.getAttribute('data-app');
             console.log(`Opening app: ${appName}`);
             if (window.openApp) {
                 window.openApp(appName);
@@ -576,6 +646,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 icon.setAttribute('data-dx', finalDx);
                 icon.setAttribute('data-dy', finalDy);
+
+                // Save position to localStorage
+                if (appName) {
+                    const currentPositions = JSON.parse(localStorage.getItem('desktop_icon_positions') || '{}');
+                    currentPositions[appName] = { dx: finalDx, dy: finalDy };
+                    localStorage.setItem('desktop_icon_positions', JSON.stringify(currentPositions));
+                }
 
                 // Prevent the standard 'click' event from triggering link navigation on <a> elements (like GitHub)
                 const preventClick = (clickEvent) => {
@@ -1487,6 +1564,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize specific logic for My Projects app
     function initProjectsApp(win) {
         const folderItems = win.querySelectorAll('.proj-folder');
+        const subFolderItems = win.querySelectorAll('.proj-sub-folder');
         const grid = win.querySelector('#proj-grid');
         const locationSpan = win.querySelector('#proj-location');
         const countSpan = win.querySelector('#proj-count');
@@ -1515,14 +1593,55 @@ document.addEventListener('DOMContentLoaded', () => {
             'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)'
         ];
 
-        function render(cat) {
+        // Sub-folder definitions for parent categories
+        const subFolderMap = {
+            'Level 2': [
+                { cat: 'Level 2 - Assignment', label: 'Assignment', icon: '📁' },
+                { cat: 'Level 2 - Final Project', label: 'Final Project', icon: '📁' }
+            ]
+        };
+
+        function renderFolderCards(subFolders) {
             if (!grid) return;
             grid.innerHTML = '';
-            if (locationSpan) locationSpan.textContent = cat;
+
+            subFolders.forEach((sf, idx) => {
+                const count = PROJECTS.filter(p => p.category === sf.cat || p.category.startsWith(sf.cat + ' - ')).length;
+                const card = document.createElement('div');
+                card.className = 'proj-card proj-folder-card';
+                card.setAttribute('data-subfolder', sf.cat);
+                card.style.cursor = 'pointer';
+                card.innerHTML = `
+                    <div class="proj-thumb" style="background: ${gradients[idx % gradients.length]}; display:flex; align-items:center; justify-content:center; font-size: 48px; height: 110px;">
+                        <svg viewBox="0 0 24 24" width="64" height="64" fill="rgba(255,255,255,0.85)"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+                    </div>
+                    <div class="proj-body">
+                        <h4 class="proj-title">${sf.label}</h4>
+                        <p class="proj-desc">${count} project${count !== 1 ? 's' : ''} inside</p>
+                    </div>
+                `;
+                // Clicking a folder card navigates into that subfolder
+                card.addEventListener('click', () => {
+                    const target = win.querySelector(`.proj-folder[data-cat="${sf.cat}"]`);
+                    if (target) target.click();
+                });
+                grid.appendChild(card);
+            });
+
+            if (countSpan) {
+                countSpan.textContent = `(${subFolders.length} folder${subFolders.length !== 1 ? 's' : ''})`;
+            }
+        }
+
+        function renderProjects(cat) {
+            if (!grid) return;
+            grid.innerHTML = '';
+            if (locationSpan) locationSpan.textContent = cat === 'Level 2 - Assignment' ? 'Assignment' :
+                cat === 'Level 2 - Final Project' ? 'Final Project' : cat;
 
             const filtered = cat === 'All Projects'
                 ? PROJECTS
-                : PROJECTS.filter(p => p.category === cat);
+                : PROJECTS.filter(p => p.category === cat || p.category.startsWith(cat + ' - '));
 
             if (countSpan) {
                 countSpan.textContent = `(${filtered.length} item${filtered.length !== 1 ? 's' : ''})`;
@@ -1574,17 +1693,59 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        function render(cat) {
+            // If this category has subfolders, show folder cards instead of projects
+            if (subFolderMap[cat]) {
+                if (locationSpan) locationSpan.textContent = cat;
+                renderFolderCards(subFolderMap[cat]);
+            } else {
+                renderProjects(cat);
+            }
+        }
+
+        let level2SubfoldersOpen = false;
+
         folderItems.forEach(item => {
             item.addEventListener('click', () => {
+                const cat = item.getAttribute('data-cat');
+
+                // Handle Level 2 parent folder toggle
+                if (cat === 'Level 2') {
+                    level2SubfoldersOpen = !level2SubfoldersOpen;
+                    subFolderItems.forEach(sf => {
+                        if (level2SubfoldersOpen) {
+                            sf.classList.remove('collapsed');
+                        } else {
+                            sf.classList.add('collapsed');
+                            // If a subfolder was active, deactivate it
+                            sf.classList.remove('active');
+                        }
+                    });
+                    // Mark Level 2 active
+                    folderItems.forEach(f => f.classList.remove('active'));
+                    item.classList.add('active');
+                    render(cat);
+                    return;
+                }
+
+                // Normal folder click
                 folderItems.forEach(f => f.classList.remove('active'));
                 item.classList.add('active');
-                render(item.getAttribute('data-cat'));
+
+                // If clicking a Level 2 subfolder, make sure parent subfolders are open
+                if (cat.startsWith('Level 2 - ')) {
+                    level2SubfoldersOpen = true;
+                    subFolderItems.forEach(sf => sf.classList.remove('collapsed'));
+                }
+
+                render(cat);
             });
         });
 
         // Initial load
         render('All Projects');
     }
+
 
     // Initialize specific logic for Resume app
     function initResumeApp(win) {
