@@ -156,65 +156,65 @@ const PROJECTS = [
     // Level 2 - Assignment Projects
     {
         title: "Standard Calculator",
-        description: "A fully functional browser-based calculator supporting addition, subtraction, multiplication, and division operations with a clean UI.",
+        description: "A fully functional browser-based calculator with clear, delete, percentage, and arithmetic operations (÷, ×, −, +) — featuring a clean grid layout and responsive display.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Standard-calculator",
+        demo: "https://faizolaremu.github.io/Standard-calculator/",
         repo: "https://github.com/FaizolAremu/Standard-calculator"
     },
     {
         title: "Character Counter",
-        description: "A real-time character counter tool that tracks text length as you type, with live feedback and styled indicators.",
+        description: "A real-time character counter that tracks total characters as you type in a textarea, with live count updates and a clean, styled interface.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Character-counter",
+        demo: "https://faizolaremu.github.io/Character-counter/",
         repo: "https://github.com/FaizolAremu/Character-counter"
     },
     {
         title: "CGPA Grading System",
-        description: "An interactive CGPA calculator that computes a student's cumulative grade point average from multiple course scores and credit units.",
+        description: "A university CGPA classification tool with a progress bar, animated marquee tags, and instant academic class feedback based on your cumulative GPA.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Grading-system",
+        demo: "https://faizolaremu.github.io/Grading-system/",
         repo: "https://github.com/FaizolAremu/Grading-system"
     },
     {
         title: "Discount Calculator",
-        description: "A discount calculator app that computes sale price and savings based on the original price and discount percentage entered by the user.",
+        description: "A discount calculator that computes the sale price and total savings from an original amount and discount percentage, with a clean minimal UI.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Discount-calculator",
+        demo: "https://faizolaremu.github.io/Discount-calculator/",
         repo: "https://github.com/FaizolAremu/Discount-calculator"
     },
     {
-        title: "Grading System",
-        description: "A student grading system that maps numerical scores to letter grades and remarks, helping evaluate performance across subjects.",
+        title: "Grading System V2",
+        description: "An enhanced CGPA classification system with animated background blobs, progress bar visualization, and scrolling motivational marquee tags.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Grading-system",
+        demo: "https://faizolaremu.github.io/Grading-system/",
         repo: "https://github.com/FaizolAremu/Grading-system"
     },
     {
         title: "Unit Converter",
-        description: "A multi-category unit converter app supporting conversions for length, weight, and temperature with instant real-time results.",
+        description: "A dual-category unit converter supporting real-time temperature (Celsius ↔ Fahrenheit) and distance (Kilometers ↔ Miles) conversions with instant results.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Unit-converter",
+        demo: "https://faizolaremu.github.io/Unit-converter/",
         repo: "https://github.com/FaizolAremu/Unit-converter"
     },
     {
         title: "Conditional Statement Practice",
-        description: "An interactive practice project exploring JavaScript conditional logic, including if-else chains, switch statements, and ternary expressions.",
+        description: "A collection of 8 interactive JS exercises — address converter, even-item discount checker, weather checker, BMI calculator, username validator, luggage checker, OAU email validator, and essay space cleaner.",
         tags: ["HTML", "CSS", "JS"],
         category: "Level 2 - Assignment",
         image: "",
-        demo: "https://github.com/FaizolAremu/Conditional-statement",
+        demo: "https://faizolaremu.github.io/Conditional-statement/",
         repo: "https://github.com/FaizolAremu/Conditional-statement"
     },
 
