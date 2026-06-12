@@ -154,7 +154,69 @@ const PROJECTS = [
     },
 
     // Level 2 - Assignment Projects
-    // (Empty)
+    {
+        title: "Standard Calculator",
+        description: "A fully functional browser-based calculator with clear, delete, percentage, and arithmetic operations (÷, ×, −, +) — featuring a clean grid layout and responsive display.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Standard-calculator/",
+        repo: "https://github.com/FaizolAremu/Standard-calculator"
+    },
+    {
+        title: "Character Counter",
+        description: "A real-time character counter that tracks total characters as you type in a textarea, with live count updates and a clean, styled interface.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Character-counter/",
+        repo: "https://github.com/FaizolAremu/Character-counter"
+    },
+    {
+        title: "CGPA Grading System",
+        description: "A university CGPA classification tool with a progress bar, animated marquee tags, and instant academic class feedback based on your cumulative GPA.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Grading-system/",
+        repo: "https://github.com/FaizolAremu/Grading-system"
+    },
+    {
+        title: "Discount Calculator",
+        description: "A discount calculator that computes the sale price and total savings from an original amount and discount percentage, with a clean minimal UI.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Discount-calculator/",
+        repo: "https://github.com/FaizolAremu/Discount-calculator"
+    },
+    {
+        title: "Grading System V2",
+        description: "An enhanced CGPA classification system with animated background blobs, progress bar visualization, and scrolling motivational marquee tags.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Grading-system/",
+        repo: "https://github.com/FaizolAremu/Grading-system"
+    },
+    {
+        title: "Unit Converter",
+        description: "A dual-category unit converter supporting real-time temperature (Celsius ↔ Fahrenheit) and distance (Kilometers ↔ Miles) conversions with instant results.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Unit-converter/",
+        repo: "https://github.com/FaizolAremu/Unit-converter"
+    },
+    {
+        title: "Conditional Statement Practice",
+        description: "A collection of 8 interactive JS exercises — address converter, even-item discount checker, weather checker, BMI calculator, username validator, luggage checker, OAU email validator, and essay space cleaner.",
+        tags: ["HTML", "CSS", "JS"],
+        category: "Level 2 - Assignment",
+        image: "",
+        demo: "https://faizolaremu.github.io/Conditional-statement/",
+        repo: "https://github.com/FaizolAremu/Conditional-statement"
+    },
 
     // Level 2 - Final Projects
     {
