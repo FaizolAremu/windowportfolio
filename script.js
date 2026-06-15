@@ -133,46 +133,23 @@ const RESUME = {
  * Easily add or edit projects here
  */
 const PROJECTS = [
-    // Level 1 Projects
     {
-        title: "Cowrywise Clone (Level 1)",
-        description: "A responsive clone of the Cowrywise landing page, built using HTML, CSS, and Bootstrap during Level 1 Web Development.",
+        title: "Printivo Clone",
+        category: "All Projects",
+        image: "./projects/Printivo/Media/Card3_n9kqin.webp",
         tags: ["HTML", "CSS", "Bootstrap"],
-        category: "Level 1",
-        image: "",
-        demo: "https://proxycowrywise.netlify.app/",
-        repo: "https://github.com/FaizolAremu/Cowry-wise"
+        description: "A pixel-perfect recreation of the Printivo homepage header, navigation, and landing elements, demonstrating responsive UI and bootstrap layout design.",
+        demo: "https://proxyprintivo.netlify.app/",
+        repo: "https://github.com/FaizolAremu/Printivo"
     },
     {
-        title: "Level 1 Portfolio",
-        description: "A basic portfolio website built using HTML and CSS during Level 1 Web Development.",
+        title: "Webdev Clone",
+        category: "All Projects",
+        image: "./projects/Webdev/Media/home-blue_2880.png",
         tags: ["HTML", "CSS"],
-        category: "Level 1",
-        image: "",
-        demo: "https://github.com/faizolaremu",
-        repo: "https://github.com/faizolaremu"
-    },
-
-    // Level 2 - Assignment Projects
-
-    // Level 2 - Final Projects
-    {
-        title: "Level 2 Final Project",
-        description: "The final project for Level 2 Web Development, featuring advanced interactive components and robust layout designs.",
-        tags: ["HTML", "CSS", "JS", "Bootstrap"],
-        category: "Level 2 - Final Project",
-        image: "",
-        demo: "https://github.com/faizolaremu",
-        repo: "https://github.com/faizolaremu"
-    },
-    {
-        title: "Portfolio Window (Level 2)",
-        description: "A desktop-style web OS portfolio featuring draggable windows, customizable desktop wallpapers, a clock, calendar, and interactive applications.",
-        tags: ["HTML", "CSS", "JS"],
-        category: "Level 2 - Final Project",
-        image: "",
-        demo: "https://faizolaremu.github.io/windowportfolio/",
-        repo: "https://github.com/faizolaremu/windowportfolio"
+        description: "A comprehensive clone of Google's web.dev homepage, featuring complex layouts, grid systems, custom typography, and high-fidelity responsiveness.",
+        demo: "https://proxywebdev.netlify.app/",
+        repo: "https://github.com/FaizolAremu/webdev"
     }
 ];
 
@@ -1531,12 +1508,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         // Sub-folder definitions for parent categories
-        const subFolderMap = {
-            'Level 2': [
-                { cat: 'Level 2 - Assignment', label: 'Assignment', icon: '📁' },
-                { cat: 'Level 2 - Final Project', label: 'Final Project', icon: '📁' }
-            ]
-        };
+        const subFolderMap = {};
 
         function renderFolderCards(subFolders) {
             if (!grid) return;
@@ -1549,7 +1521,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.setAttribute('data-subfolder', sf.cat);
                 card.style.cursor = 'pointer';
                 card.innerHTML = `
-                    <div class="proj-thumb" style="background: ${gradients[idx % gradients.length]}; display:flex; align-items:center; justify-content:center; font-size: 48px; height: 110px;">
+                    <div class="proj-thumb" style="background: ${gradients[idx % gradients.length]}; display:flex; align-items:center; justify-content:center; font-size: 48px;">
                         <svg viewBox="0 0 24 24" width="64" height="64" fill="rgba(255,255,255,0.85)"><path d="M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
                     </div>
                     <div class="proj-body">
@@ -1573,8 +1545,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function renderProjects(cat) {
             if (!grid) return;
             grid.innerHTML = '';
-            if (locationSpan) locationSpan.textContent = cat === 'Level 2 - Assignment' ? 'Assignment' :
-                cat === 'Level 2 - Final Project' ? 'Final Project' : cat;
+            if (locationSpan) locationSpan.textContent = cat;
 
             const filtered = cat === 'All Projects'
                 ? PROJECTS
@@ -1603,7 +1574,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 let thumbHTML = '';
                 if (p.image) {
-                    thumbHTML = `<div class="proj-thumb" style="background-image: url('${p.image}'); background-size: cover; background-position: center; height: 110px;"></div>`;
+                    thumbHTML = `<div class="proj-thumb" style="background-image: url('${p.image}');"></div>`;
                 } else {
                     thumbHTML = `<div class="proj-thumb" style="background: ${grad};">${initials}</div>`;
                 }
@@ -1640,40 +1611,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        let level2SubfoldersOpen = false;
-
         folderItems.forEach(item => {
             item.addEventListener('click', () => {
                 const cat = item.getAttribute('data-cat');
 
-                // Handle Level 2 parent folder toggle
-                if (cat === 'Level 2') {
-                    level2SubfoldersOpen = !level2SubfoldersOpen;
-                    subFolderItems.forEach(sf => {
-                        if (level2SubfoldersOpen) {
-                            sf.classList.remove('collapsed');
-                        } else {
-                            sf.classList.add('collapsed');
-                            // If a subfolder was active, deactivate it
-                            sf.classList.remove('active');
-                        }
-                    });
-                    // Mark Level 2 active
-                    folderItems.forEach(f => f.classList.remove('active'));
-                    item.classList.add('active');
-                    render(cat);
-                    return;
-                }
-
                 // Normal folder click
                 folderItems.forEach(f => f.classList.remove('active'));
                 item.classList.add('active');
-
-                // If clicking a Level 2 subfolder, make sure parent subfolders are open
-                if (cat.startsWith('Level 2 - ')) {
-                    level2SubfoldersOpen = true;
-                    subFolderItems.forEach(sf => sf.classList.remove('collapsed'));
-                }
 
                 render(cat);
             });

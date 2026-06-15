@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section1 {
+    padding: 20px 100px;
+    background-color: #f7f6f4;
+}
+
+.links {
+    gap: 20px;
+}
+
+.links a {
+    color: #506683;
+}
+
+.div2 {
+    gap: 20px;
+}
+
+.div2 button {
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid #cbcac8;
+}
+
+
+
+@media screen and (max-width:768px) {
+    .links{
+        display: none;
+    }
+}

@@ -1127,6 +1127,7 @@ input[type=range]::-webkit-slider-thumb:hover {
     background: #333;
 }
 
+/* Default project card layout styling (for minimized/small screen) */
 .proj-thumb {
     height: 110px;
     display: flex;
@@ -1137,6 +1138,8 @@ input[type=range]::-webkit-slider-thumb:hover {
     color: rgba(255,255,255,0.7);
     letter-spacing: 2px;
     flex-shrink: 0;
+    background-size: cover;
+    background-position: top center;
 }
 
 .proj-body {
@@ -1149,14 +1152,14 @@ input[type=range]::-webkit-slider-thumb:hover {
 
 .proj-title {
     margin: 0;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: #f0f0f0;
 }
 
 .proj-desc {
     margin: 0;
-    font-size: 12px;
+    font-size: 11px;
     color: #999;
     line-height: 1.5;
     flex: 1;
@@ -1169,11 +1172,43 @@ input[type=range]::-webkit-slider-thumb:hover {
 }
 
 .proj-tag {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     padding: 2px 8px;
     border-radius: 20px;
     color: #000;
+}
+
+/* Large/Maximized project card layout styling (screen width > 1000px) */
+@media (min-width: 1001px) {
+    .proj-thumb {
+        height: 160px;
+    }
+
+    .proj-body {
+        padding: 16px;
+        gap: 10px;
+    }
+
+    .proj-title {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .proj-desc {
+        font-size: 14px;
+        color: #ccc;
+        line-height: 1.6;
+    }
+
+    .proj-tags {
+        gap: 6px;
+    }
+
+    .proj-tag {
+        font-size: 11px;
+        padding: 3px 10px;
+    }
 }
 
 .proj-actions {
