@@ -8,9 +8,9 @@
  * ============================================================
  */
 const EMAILJS_CONFIG = {
-    publicKey:   'YOUR_PUBLIC_KEY',    // e.g. 'abc123XYZ'
-    serviceID:   'YOUR_SERVICE_ID',    // e.g. 'service_xxxxxxx'
-    templateID:  'YOUR_TEMPLATE_ID'   // e.g. 'template_xxxxxxx'
+    publicKey: 'YOUR_PUBLIC_KEY',    // e.g. 'abc123XYZ'
+    serviceID: 'YOUR_SERVICE_ID',    // e.g. 'service_xxxxxxx'
+    templateID: 'YOUR_TEMPLATE_ID'   // e.g. 'template_xxxxxxx'
 };
 
 // Initialise EmailJS once the library has loaded
@@ -150,7 +150,23 @@ const PROJECTS = [
         description: "A comprehensive clone of Google's web.dev homepage, featuring complex layouts, grid systems, custom typography, and high-fidelity responsiveness.",
         demo: "https://proxywebdev.netlify.app/",
         repo: "https://github.com/FaizolAremu/webdev"
-    }
+    },
+    {
+        title: "Standard Calculator",
+        category: "All Projects",
+        tags: ["HTML", "CSS", "JavaScript"],
+        description: "A fully functional standard calculator with an interactive user interface built using HTML, CSS, and vanilla JavaScript.",
+        demo: "https://proxycalculator.netlify.app/",
+        repo: "https://github.com/FaizolAremu/Standard-calculator"
+    },
+    // {
+    //     title: "CGPA Grading System",
+    //     category: "All Projects",
+    //     tags: ["HTML", "CSS", "JavaScript"],
+    //     description: "A web-based academic grading tool that calculates a student's Cumulative Grade Point Average based on course credits and grades.",
+    //     demo: "https://proxygradingsystem.netlify.app/",
+    //     repo: "https://github.com/FaizolAremu/Grading-system"
+    // }
 ];
 
 /**
@@ -201,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const lockScreen = document.getElementById('lock-screen');
     const loginScreen = document.getElementById('login-screen');
     const desktopScreen = document.getElementById('desktop-screen');
-    
+
     const timeDisplay = document.getElementById('time-display');
     const dateDisplay = document.getElementById('date-display');
     const loginForm = document.getElementById('login-form');
@@ -212,17 +228,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const now = new Date();
         let hours = now.getHours();
         const minutes = now.getMinutes().toString().padStart(2, '0');
-        
+
         // Convert to 12-hour format for the lock screen
         hours = hours % 12;
         hours = hours ? hours : 12; // the hour '0' should be '12'
-        
+
         timeDisplay.textContent = `${hours}:${minutes}`;
 
         const options = { weekday: 'long', month: 'long', day: 'numeric' };
         dateDisplay.textContent = now.toLocaleDateString('en-US', options);
     }
-    
+
     setInterval(updateTime, 1000);
     updateTime(); // Initial call
 
@@ -238,11 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!lockScreen.classList.contains('slide-up') && !lockScreen.classList.contains('hidden')) {
             lockScreen.classList.add('slide-up');
             loginScreen.classList.remove('hidden');
-            
+
             // Focus the password input after the slide animation completes
             setTimeout(() => {
                 passwordInput.focus();
-            }, 600); 
+            }, 600);
         }
     }
 
@@ -258,15 +274,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Login to Desktop Transition
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Prevent page reload
-        
+
         // Accept any password, transition to desktop
         loginScreen.classList.add('hidden');
         desktopScreen.classList.remove('hidden');
-        
+
         // Show taskbar now that we are on the desktop
         const taskbar = document.getElementById('taskbar');
         if (taskbar) taskbar.style.display = 'flex';
-        
+
         // Optional: clear password field
         passwordInput.value = '';
     });
@@ -403,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (thumbElement) thumbElement.classList.add('active');
 
         const newUrl = WALLPAPERS[index].url;
-        
+
         // Update CSS variable so lock/login match if reopened
         document.documentElement.style.setProperty('--bg-url', `url('${newUrl}')`);
 
@@ -424,14 +440,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 8. Desktop Context Menu
     desktopScreen.addEventListener('contextmenu', (e) => {
         e.preventDefault(); // Prevent default browser menu
-        
+
         // Position menu
         let x = e.clientX;
         let y = e.clientY;
-        
+
         // Boundary checks to keep menu on screen
         const menuWidth = 250;
-        const menuHeight = 175; 
+        const menuHeight = 175;
         if (x + menuWidth > window.innerWidth) x = window.innerWidth - menuWidth;
         if (y + menuHeight > window.innerHeight) y = window.innerHeight - menuHeight;
 
@@ -452,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
         item.addEventListener('click', () => {
             const action = item.getAttribute('data-action');
             contextMenu.classList.remove('active');
-            
+
             if (action === 'personalize') {
                 if (window.openPersonalizePanel) window.openPersonalizePanel();
             } else if (action === 'display-settings') {
@@ -479,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.desktop-icon').forEach(icon => {
         const appName = icon.getAttribute('data-app');
-        
+
         // Restore position from localStorage if it exists
         if (appName && savedIconPositions[appName]) {
             const pos = savedIconPositions[appName];
@@ -494,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.openApp(appName);
             }
         });
-        
+
         // Dragging & Interaction logic via Pointer Events
         let dx = 0;
         let dy = 0;
@@ -527,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
             icon.setPointerCapture(e.pointerId);
             icon.style.transition = 'none';
             icon.style.zIndex = '1000';
-            
+
             e.stopPropagation();
         });
 
@@ -618,10 +634,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const ampm = hours >= 12 ? 'PM' : 'AM';
         hours = hours % 12;
         hours = hours ? hours : 12; // '0' should be '12'
-        
+
         taskbarTime.textContent = `${hours}:${minutes} ${ampm}`;
         taskbarDate.textContent = `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`;
-        
+
         const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
         trayTimeBtn.title = now.toLocaleDateString('en-US', options);
         document.getElementById('calendar-date-display').textContent = now.toLocaleDateString('en-US', options);
@@ -634,17 +650,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const calGrid = document.getElementById('cal-days-container');
         if (!calGrid) return;
         calGrid.innerHTML = '';
-        
+
         const now = new Date();
         const firstDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
         const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-        
-        for(let i=0; i<firstDay; i++) {
+
+        for (let i = 0; i < firstDay; i++) {
             const empty = document.createElement('div');
             calGrid.appendChild(empty);
         }
-        
-        for(let i=1; i<=daysInMonth; i++) {
+
+        for (let i = 1; i <= daysInMonth; i++) {
             const dayDiv = document.createElement('div');
             dayDiv.className = `cal-day ${i === now.getDate() ? 'today' : ''}`;
             dayDiv.textContent = i;
@@ -709,7 +725,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const desktopBgLayer1 = document.getElementById('desktop-bg-layer1');
     const desktopBgLayer2 = document.getElementById('desktop-bg-layer2');
-    
+
     let currentBrightness = 1.0;
     let isNightLightOn = false;
 
@@ -845,7 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startBtn.addEventListener('click', (e) => {
         e.stopPropagation();
-        
+
         // Reset Search & Power Menu
         if (startSearchInput) {
             startSearchInput.value = '';
@@ -893,7 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
             powerMenu.classList.add('hidden');
             startMenu.classList.remove('active');
             startMenu.classList.add('hidden');
-            
+
             sleepScreen.classList.remove('hidden');
             sleepScreen.style.pointerEvents = 'auto';
             setTimeout(() => sleepScreen.style.opacity = '1', 50);
@@ -907,13 +923,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 sleepScreen.style.pointerEvents = 'none';
                 setTimeout(() => {
                     sleepScreen.classList.add('hidden');
-                    
+
                     // Go to lock screen on wake up
                     const lockScreen = document.getElementById('lock-screen');
                     const loginScreen = document.getElementById('login-screen');
                     const desktopScreen = document.getElementById('desktop-screen');
                     const taskbar = document.getElementById('taskbar');
-                    
+
                     if (desktopScreen) desktopScreen.classList.add('hidden');
                     if (loginScreen) loginScreen.classList.add('hidden');
                     if (taskbar) taskbar.style.display = 'none';
@@ -931,7 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
             powerMenu.classList.add('hidden');
             startMenu.classList.remove('active');
             startMenu.classList.add('hidden');
-            
+
             // "Restart": Close all open windows
             Object.values(openWindows).forEach(win => {
                 win.querySelector('.close-btn').click();
@@ -941,7 +957,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bootScreen) {
                 const taskbar = document.getElementById('taskbar');
                 if (taskbar) taskbar.style.display = 'none';
-                
+
                 bootScreen.classList.remove('hidden');
                 setTimeout(() => {
                     bootScreen.classList.add('hidden');
@@ -962,7 +978,7 @@ document.addEventListener('DOMContentLoaded', () => {
             powerMenu.classList.add('hidden');
             startMenu.classList.remove('active');
             startMenu.classList.add('hidden');
-            
+
             shutdownScreen.classList.remove('hidden');
             shutdownScreen.style.pointerEvents = 'auto';
             setTimeout(() => {
@@ -982,7 +998,7 @@ document.addEventListener('DOMContentLoaded', () => {
         turnOnBtn.addEventListener('click', () => {
             // Turn back on
             turnOnBtn.classList.add('hidden');
-            
+
             // Reset spinner/text for next time
             const spinner = document.getElementById('shutdown-spinner');
             const text = document.getElementById('shutdown-text');
@@ -993,14 +1009,14 @@ document.addEventListener('DOMContentLoaded', () => {
             shutdownScreen.style.pointerEvents = 'none';
             setTimeout(() => {
                 shutdownScreen.classList.add('hidden');
-                
+
                 // Show boot sequence like a fresh start
                 const bootScreen = document.getElementById('boot-screen');
                 const lockScreen = document.getElementById('lock-screen');
                 const loginScreen = document.getElementById('login-screen');
                 const desktopScreen = document.getElementById('desktop-screen');
                 const taskbar = document.getElementById('taskbar');
-                
+
                 if (desktopScreen) desktopScreen.classList.add('hidden');
                 if (lockScreen) lockScreen.classList.remove('slide-up');
                 if (loginScreen) loginScreen.classList.add('hidden');
@@ -1037,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
         winElem.classList.add('active');
     }
 
-    window.createWindow = function({ id, title, icon, content, width=800, height=550, x, y }) {
+    window.createWindow = function ({ id, title, icon, content, width = 800, height = 550, x, y }) {
         if (openWindows[id]) {
             const win = openWindows[id];
             if (win.classList.contains('minimized') || win.classList.contains('hidden')) {
@@ -1051,11 +1067,11 @@ document.addEventListener('DOMContentLoaded', () => {
         win.className = 'app-window active';
         win.id = `${id}-window`;
         win.setAttribute('data-app-name', title);
-        
+
         // Default centering if no x/y provided
         if (x === undefined) x = (window.innerWidth - width) / 2;
         if (y === undefined) y = (window.innerHeight - height) / 2;
-        
+
         win.style.width = `${width}px`;
         win.style.height = `${height}px`;
         win.style.left = `${x}px`;
@@ -1170,15 +1186,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target.closest('.window-controls')) return;
             if (isMaximized) return;
             // Disable drag on mobile — windows are always full-screen
-            if (isMobile()) return; 
+            if (isMobile()) return;
             isDragging = true;
             bringToFront(win);
-            
+
             const coords = getPointerCoords(e);
             const rect = win.getBoundingClientRect();
             dragOffsetX = coords.x - rect.left;
             dragOffsetY = coords.y - rect.top;
-            
+
             // Temporarily disable transitions during drag for smooth performance
             win.style.transition = 'none';
 
@@ -1189,7 +1205,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const onDragMove = (e) => {
             if (!isDragging) return;
-            
+
             const coords = getPointerCoords(e);
             let newX = coords.x - dragOffsetX;
             let newY = coords.y - dragOffsetY;
@@ -1238,11 +1254,11 @@ document.addEventListener('DOMContentLoaded', () => {
             currentHandle = handle.className;
             bringToFront(win);
             win.style.transition = 'none';
-            
+
             const coords = getPointerCoords(e);
             startPointerX = coords.x;
             startPointerY = coords.y;
-            
+
             const rect = win.getBoundingClientRect();
             startW = rect.width;
             startH = rect.height;
@@ -1260,7 +1276,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const coords = getPointerCoords(e);
             const dx = coords.x - startPointerX;
             const dy = coords.y - startPointerY;
-            
+
             const minW = id === 'contact-me' ? 600 : 300;
             const minH = id === 'contact-me' ? 480 : 200;
 
@@ -1372,7 +1388,7 @@ document.addEventListener('DOMContentLoaded', () => {
             volumeSlider.addEventListener('input', () => {
                 const val = volumeSlider.value;
                 volumeSlider.style.setProperty('--val', `${val}%`);
-                
+
                 // Sync with taskbar Quick Settings panel if open/rendered
                 const qsVolume = document.getElementById('qs-volume-slider');
                 if (qsVolume) {
@@ -1412,7 +1428,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 wpItem.addEventListener('click', () => {
                     USER_CONFIG.currentWallpaperIndex = index;
                     document.documentElement.style.setProperty('--bg-url', `url('${wp.url}')`);
-                    
+
                     // Crossfade using bg layers on desktop if present
                     const bgLayer1 = document.getElementById('desktop-bg-layer1');
                     const bgLayer2 = document.getElementById('desktop-bg-layer2');
@@ -1455,10 +1471,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const accentRow = win.querySelector('#settings-accent-row');
         if (accentRow) {
             accentRow.innerHTML = '';
-            
+
             // Get current accent color from CSS variables (default to #0078d4)
             const currentAccent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#0078d4';
-            
+
             accentColors.forEach(color => {
                 const accentItem = document.createElement('div');
                 accentItem.className = 'settings-accent-item';
@@ -1466,10 +1482,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentAccent.toLowerCase() === color.toLowerCase()) {
                     accentItem.classList.add('active');
                 }
-                
+
                 accentItem.addEventListener('click', () => {
                     document.documentElement.style.setProperty('--accent', color);
-                    
+
                     // Highlight selected swatch in Settings
                     win.querySelectorAll('.settings-accent-item').forEach(item => {
                         item.classList.remove('active');
@@ -1479,7 +1495,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             item.classList.add('active');
                         }
                     });
-                    
+
                     // Highlight active indicators
                     const activeIndicator = document.querySelector('.taskbar-icon.active .indicator');
                     if (activeIndicator) {
@@ -1495,7 +1511,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (transparencySwitch) {
             const currentBlur = getComputedStyle(document.documentElement).getPropertyValue('--window-blur').trim();
             transparencySwitch.checked = currentBlur !== 'none';
-            
+
             transparencySwitch.addEventListener('change', () => {
                 if (transparencySwitch.checked) {
                     document.documentElement.style.setProperty('--window-bg', 'rgba(32, 32, 32, 0.85)');
@@ -1603,10 +1619,10 @@ document.addEventListener('DOMContentLoaded', () => {
             filtered.forEach((p, idx) => {
                 const initials = p.title.split(' ').map(w => w[0]).join('').substring(0, 3).toUpperCase();
                 const grad = gradients[idx % gradients.length];
-                
+
                 const card = document.createElement('div');
                 card.className = 'proj-card';
-                
+
                 let thumbHTML = '';
                 if (p.image) {
                     thumbHTML = `<div class="proj-thumb" style="background-image: url('${p.image}');"></div>`;
@@ -1791,10 +1807,10 @@ document.addEventListener('DOMContentLoaded', () => {
             emailBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const emailAddress = 'waliufaizol@gmail.com';
-                
+
                 // Open mail composition
                 window.location.href = `mailto:${emailAddress}`;
-                
+
                 // Also copy for convenience
                 navigator.clipboard.writeText(emailAddress).then(() => {
                     const originalHTML = emailBtn.innerHTML;
@@ -1845,7 +1861,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function renderSkills(skillsToRender, showHeaders = false) {
             grid.innerHTML = '';
-            
+
             if (skillsToRender.length === 0) {
                 grid.innerHTML = '<div style="grid-column: 1/-1; padding: 20px; color: #888; text-align: center;">No skills found.</div>';
                 return;
@@ -1910,13 +1926,13 @@ document.addEventListener('DOMContentLoaded', () => {
         function loadCategory(categoryName, searchQuery = '') {
             currentCategory = categoryName;
             catTitle.textContent = categoryName;
-            
+
             let filteredSkills = SKILLS;
-            
+
             if (categoryName !== 'All Skills') {
                 filteredSkills = filteredSkills.filter(s => s.category === categoryName);
             }
-            
+
             if (searchQuery) {
                 const query = searchQuery.toLowerCase();
                 filteredSkills = filteredSkills.filter(s => s.name.toLowerCase().includes(query) || s.category.toLowerCase().includes(query));
@@ -1984,7 +2000,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 processCommand(cmd);
                 inputField.value = '';
                 cmdText.textContent = '';
-                
+
                 // Auto-scroll to bottom
                 setTimeout(() => {
                     termContainer.scrollTop = termContainer.scrollHeight;
@@ -2025,14 +2041,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function processCommand(cmd) {
             const lowerCmd = cmd.toLowerCase();
-            
+
             if (lowerCmd === 'clear') {
                 outputContainer.innerHTML = '';
                 return;
             }
 
             let result = '';
-            
+
             if (lowerCmd === 'help') {
                 result = `Available commands:
   help           - Shows this help message
@@ -2112,7 +2128,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
 
             appendOutput(cmd, result);
         }
-        
+
         // Initial focus
         setTimeout(() => inputField.focus(), 100);
     }
@@ -2144,12 +2160,12 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
         const homeBtn = win.querySelector('#browser-home');
         const addressInput = win.querySelector('#browser-address-input');
         const goBtn = win.querySelector('#browser-go-btn');
-        
+
         const searchInput = win.querySelector('#browser-search-box');
         const searchBtn = win.querySelector('#browser-search-btn');
         const searchTags = win.querySelectorAll('.browser-search-tag');
         const backHomeBtn = win.querySelector('#browser-back-home');
-        
+
         const homePage = win.querySelector('#browser-home-page');
         const resultsSection = win.querySelector('#browser-results-section');
         const resultsGrid = win.querySelector('#browser-results-grid');
@@ -2271,7 +2287,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                         <button class="browser-set-bg-btn">Set as Background</button>
                     </div>
                 `;
-                
+
                 card.querySelector('.browser-set-bg-btn').addEventListener('click', () => {
                     setWallpaper(item.url);
                 });
@@ -2306,7 +2322,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
         function setWallpaper(url) {
             const desktopBgLayer1 = document.getElementById('desktop-bg-layer1');
             const desktopBgLayer2 = document.getElementById('desktop-bg-layer2');
-            
+
             if (desktopBgLayer1 && desktopBgLayer2) {
                 const style1 = window.getComputedStyle(desktopBgLayer1);
                 if (style1.opacity === '1') {
@@ -2420,22 +2436,22 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
         const nameDisplay = win.querySelector('.contact-user-name');
         const roleDisplay = win.querySelector('.contact-user-role');
         const statusDisplay = win.querySelector('.contact-status-indicator');
-        
+
         const valEmail = win.querySelector('#contact-val-email');
         const valGithub = win.querySelector('#contact-val-github');
         const valLinkedin = win.querySelector('#contact-val-linkedin');
         const valTwitter = win.querySelector('#contact-val-twitter');
         const valLocation = win.querySelector('#contact-val-location');
-        
+
         const btnSocialGithub = win.querySelector('#contact-social-github');
         const btnSocialLinkedin = win.querySelector('#contact-social-linkedin');
         const btnSocialTwitter = win.querySelector('#contact-social-twitter');
-        
+
         const form = win.querySelector('.contact-form');
         const formContainer = win.querySelector('.contact-form-container');
         const successContainer = win.querySelector('.contact-success-container');
         const resetBtn = win.querySelector('#contact-reset-btn');
-        
+
         const inputName = win.querySelector('#contact-input-name');
         const inputEmail = win.querySelector('#contact-input-email');
         const inputSubject = win.querySelector('#contact-input-subject');
@@ -2446,23 +2462,23 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
         const submitBtn = win.querySelector('#contact-submit-btn');
         const submitText = win.querySelector('.contact-btn-text');
         const submitIcon = win.querySelector('.contact-btn-icon');
-        
+
         const aiReplyCard = win.querySelector('#contact-ai-reply');
         const aiReplySender = win.querySelector('.contact-ai-sender-name');
         const aiReplyText = win.querySelector('.contact-ai-text');
         const aiReplyLoading = win.querySelector('.contact-ai-loading');
-        
+
         // 1. Populate profile information
         nameDisplay.textContent = CONFIG.user.name;
         roleDisplay.textContent = CONFIG.user.title;
         aiReplySender.textContent = CONFIG.user.name;
-        
+
         if (CONFIG.user.avatar) {
             avatarContainer.innerHTML = `<img class="contact-avatar-img" src="${CONFIG.user.avatar}" alt="${CONFIG.user.name}">`;
         } else {
             avatarContainer.innerHTML = `<div class="contact-avatar-initials" style="background-color: var(--accent);">${CONFIG.user.initials}</div>`;
         }
-        
+
         if (CONFIG.user.available) {
             statusDisplay.textContent = "Available for work";
             statusDisplay.className = "contact-status-indicator available";
@@ -2470,23 +2486,23 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             statusDisplay.textContent = "Unavailable";
             statusDisplay.className = "contact-status-indicator unavailable";
         }
-        
+
         // Setup values
         valEmail.textContent = CONFIG.user.email;
         valGithub.textContent = CONFIG.user.github;
         valLinkedin.textContent = CONFIG.user.linkedin;
         valTwitter.textContent = CONFIG.user.twitter;
         valLocation.textContent = CONFIG.user.location;
-        
+
         btnSocialGithub.href = CONFIG.user.githubUrl;
         btnSocialLinkedin.href = CONFIG.user.linkedinUrl;
         btnSocialTwitter.href = CONFIG.user.twitterUrl;
-        
+
         // Clipboard helper
         function setupClipboard(rowElement, textToCopy) {
             rowElement.addEventListener('click', (e) => {
                 if (e.target.tagName === 'A' || e.target.closest('a')) return;
-                
+
                 navigator.clipboard.writeText(textToCopy).then(() => {
                     showCopiedTooltip(e);
                 }).catch(err => {
@@ -2494,35 +2510,35 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                 });
             });
         }
-        
+
         function showCopiedTooltip(e) {
             const tooltip = win.querySelector('#contact-tooltip');
             if (!tooltip) return;
-            
+
             tooltip.classList.remove('hidden');
-            
+
             const winRect = win.getBoundingClientRect();
             const posX = e.clientX - winRect.left;
             const posY = e.clientY - winRect.top;
-            
+
             tooltip.style.left = `${posX}px`;
             tooltip.style.top = `${posY}px`;
-            
+
             tooltip.style.animation = 'none';
             tooltip.offsetHeight; // trigger reflow
             tooltip.style.animation = '';
-            
+
             setTimeout(() => {
                 tooltip.classList.add('hidden');
             }, 1500);
         }
-        
+
         setupClipboard(win.querySelector('#contact-row-email'), CONFIG.user.email);
         setupClipboard(win.querySelector('#contact-row-github'), CONFIG.user.githubUrl);
         setupClipboard(win.querySelector('#contact-row-linkedin'), CONFIG.user.linkedinUrl);
         setupClipboard(win.querySelector('#contact-row-twitter'), CONFIG.user.twitterUrl);
         setupClipboard(win.querySelector('#contact-row-location'), CONFIG.user.location);
-        
+
         // Populate subject options
         inputSubject.innerHTML = `<option value="" disabled selected>Select a subject...</option>`;
         CONFIG.contact.subjects.forEach(subject => {
@@ -2531,7 +2547,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             opt.textContent = subject;
             inputSubject.appendChild(opt);
         });
-        
+
         // Populate budget pills
         budgetPillsContainer.innerHTML = '';
         let selectedBudget = "";
@@ -2551,7 +2567,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             });
             budgetPillsContainer.appendChild(pill);
         });
-        
+
         // Subject change budget logic
         inputSubject.addEventListener('change', () => {
             const val = inputSubject.value;
@@ -2564,7 +2580,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             }
             validateForm();
         });
-        
+
         // Message char count
         inputMessage.addEventListener('input', () => {
             let val = inputMessage.value;
@@ -2574,7 +2590,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             }
             const count = val.length;
             charCounter.textContent = `${count} / 500`;
-            
+
             charCounter.className = "contact-char-counter";
             if (count >= 490) {
                 charCounter.classList.add('danger');
@@ -2583,7 +2599,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             }
             validateForm();
         });
-        
+
         // Form validations
         function validateField(fieldGroup, inputElement, isValid, errorMsg) {
             const errorSpan = fieldGroup.querySelector('.contact-field-error');
@@ -2603,7 +2619,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                 return false;
             }
         }
-        
+
         function setupBlurValidation(inputElement, fieldGroup, validationFn, errorMsg) {
             inputElement.addEventListener('blur', () => {
                 if (inputElement.value.trim() === '') {
@@ -2614,7 +2630,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                 }
                 validateForm();
             });
-            
+
             inputElement.addEventListener('input', () => {
                 if (fieldGroup.classList.contains('error')) {
                     const isValid = validationFn(inputElement.value);
@@ -2623,16 +2639,16 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                 validateForm();
             });
         }
-        
+
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         setupBlurValidation(inputName, win.querySelector('#group-name'), (val) => val.trim().length > 0, 'Name is required');
         setupBlurValidation(inputEmail, win.querySelector('#group-email'), (val) => emailRegex.test(val.trim()), 'Please enter a valid email');
-        
+
         inputSubject.addEventListener('change', () => {
             validateField(win.querySelector('#group-subject'), inputSubject, inputSubject.value !== '', 'Please select a subject');
             validateForm();
         });
-        
+
         inputMessage.addEventListener('blur', () => {
             validateField(win.querySelector('#group-message'), inputMessage, inputMessage.value.trim().length > 0, 'Message cannot be empty');
             validateForm();
@@ -2643,26 +2659,26 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
             }
             validateForm();
         });
-        
+
         function checkAllValid() {
             const nameVal = inputName.value.trim();
             const emailVal = inputEmail.value.trim();
             const subjectVal = inputSubject.value;
             const messageVal = inputMessage.value.trim();
-            
-            return nameVal.length > 0 && 
-                   emailRegex.test(emailVal) && 
-                   subjectVal !== '' && 
-                   messageVal.length > 0;
+
+            return nameVal.length > 0 &&
+                emailRegex.test(emailVal) &&
+                subjectVal !== '' &&
+                messageVal.length > 0;
         }
-        
+
         function validateForm() {
             submitBtn.disabled = !checkAllValid();
         }
-        
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             if (!checkAllValid()) {
                 const groups = [
                     { elem: inputName, group: win.querySelector('#group-name'), valid: inputName.value.trim().length > 0 },
@@ -2670,7 +2686,7 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                     { elem: inputSubject, group: win.querySelector('#group-subject'), valid: inputSubject.value !== '' },
                     { elem: inputMessage, group: win.querySelector('#group-message'), valid: inputMessage.value.trim().length > 0 }
                 ];
-                
+
                 groups.forEach(g => {
                     if (!g.valid) {
                         g.group.classList.add('error');
@@ -2680,17 +2696,17 @@ Network Card(s):           1 NIC(s) Installed (Status: Connected)`;
                 });
                 return;
             }
-            
+
             submitBtn.disabled = true;
             submitBtn.classList.add('loading');
             submitText.textContent = "Sending...";
             submitIcon.innerHTML = `<div class="contact-spinner"></div>`;
-            
+
             const nameVal = inputName.value.trim();
             const emailVal = inputEmail.value.trim();
             const subjectVal = inputSubject.value;
             const messageVal = inputMessage.value.trim();
-            
+
             let replyPrompt = `You are replying to a message sent to Faizol Aremu (a Fullstack Developer) through their portfolio website.
 Sender Name: ${nameVal}
 Sender Email: ${emailVal}
@@ -2707,33 +2723,33 @@ Write a concise, professional, and friendly auto-reply in character as Faizol Ar
 
             // --- Send email via EmailJS ---
             const templateParams = {
-                from_name:    nameVal,
-                from_email:   emailVal,
-                subject:      subjectVal,
-                budget:       selectedBudget || 'Not specified',
-                message:      messageVal,
-                to_name:      CONFIG.user.name,
-                to_email:     CONFIG.user.email
+                from_name: nameVal,
+                from_email: emailVal,
+                subject: subjectVal,
+                budget: selectedBudget || 'Not specified',
+                message: messageVal,
+                to_name: CONFIG.user.name,
+                to_email: CONFIG.user.email
             };
 
             if (typeof emailjs !== 'undefined' &&
-                EMAILJS_CONFIG.publicKey   !== 'YOUR_PUBLIC_KEY' &&
-                EMAILJS_CONFIG.serviceID   !== 'YOUR_SERVICE_ID' &&
-                EMAILJS_CONFIG.templateID  !== 'YOUR_TEMPLATE_ID') {
+                EMAILJS_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY' &&
+                EMAILJS_CONFIG.serviceID !== 'YOUR_SERVICE_ID' &&
+                EMAILJS_CONFIG.templateID !== 'YOUR_TEMPLATE_ID') {
 
                 emailjs.send(
                     EMAILJS_CONFIG.serviceID,
                     EMAILJS_CONFIG.templateID,
                     templateParams
                 )
-                .then(() => {
-                    showSuccess(nameVal, fallbackReply);
-                })
-                .catch(err => {
-                    console.error('EmailJS error:', err);
-                    // Still show success UI so UX is unbroken; log the error
-                    showSuccess(nameVal, fallbackReply);
-                });
+                    .then(() => {
+                        showSuccess(nameVal, fallbackReply);
+                    })
+                    .catch(err => {
+                        console.error('EmailJS error:', err);
+                        // Still show success UI so UX is unbroken; log the error
+                        showSuccess(nameVal, fallbackReply);
+                    });
 
             } else {
                 // EmailJS not configured yet – simulate a short delay then show success
@@ -2741,26 +2757,26 @@ Write a concise, professional, and friendly auto-reply in character as Faizol Ar
                 setTimeout(() => showSuccess(nameVal, fallbackReply), 1500);
             }
         });
-        
+
         function showSuccess(senderName, replyTextVal) {
             const desc = win.querySelector('.success-desc');
             desc.textContent = `Thank you, ${senderName}! Your message has been successfully sent.`;
-            
+
             formContainer.classList.add('hidden');
             successContainer.classList.remove('hidden');
-            
+
             aiReplyCard.classList.remove('hidden');
             aiReplyLoading.style.display = 'flex';
             aiReplyText.style.display = 'none';
             aiReplyText.classList.remove('error');
-            
+
             setTimeout(() => {
                 aiReplyLoading.style.display = 'none';
                 aiReplyText.style.display = 'block';
                 aiReplyText.textContent = replyTextVal;
             }, 1200);
         }
-        
+
         resetBtn.addEventListener('click', () => {
             inputName.value = '';
             inputEmail.value = '';
@@ -2769,16 +2785,16 @@ Write a concise, professional, and friendly auto-reply in character as Faizol Ar
             inputMessage.value = '';
             charCounter.textContent = '0 / 500';
             charCounter.className = 'contact-char-counter';
-            
+
             win.querySelectorAll('.contact-field-group').forEach(g => {
                 g.classList.remove('error');
                 const err = g.querySelector('.contact-field-error');
                 if (err) err.classList.remove('visible');
             });
-            
+
             budgetGroup.classList.add('hidden');
             budgetPillsContainer.querySelectorAll('.contact-budget-pill').forEach(p => p.classList.remove('selected'));
-            
+
             submitBtn.disabled = true;
             submitBtn.classList.remove('loading');
             submitText.textContent = "Send Message";
@@ -2787,7 +2803,7 @@ Write a concise, professional, and friendly auto-reply in character as Faizol Ar
                     <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
                 </svg>
             `;
-            
+
             successContainer.classList.add('hidden');
             formContainer.classList.remove('hidden');
         });
@@ -2805,7 +2821,7 @@ Write a concise, professional, and friendly auto-reply in character as Faizol Ar
 });
 
 // Global Window Management Functions
-window.openApp = function(appName) {
+window.openApp = function (appName) {
     if (appName === 'GitHub') {
         window.open('https://github.com/faizolaremu', '_blank');
         return;
@@ -2845,7 +2861,7 @@ window.openApp = function(appName) {
                 startMenu.classList.remove('active');
                 setTimeout(() => startMenu.classList.add('hidden'), 200);
             }
-            
+
             // update taskbar
             const taskbarBtn = document.querySelector(`.app-btn[data-app="${appName}"]`);
             if (taskbarBtn) {
@@ -2858,10 +2874,10 @@ window.openApp = function(appName) {
     }
 }
 
-window.closeApp = function(appName, minimizeOnly = false) {
+window.closeApp = function (appName, minimizeOnly = false) {
     const configId = appName.toLowerCase().replace(/\s+/g, '-');
     const win = document.getElementById(`${configId}-window`);
-    
+
     if (win) {
         if (minimizeOnly) {
             win.querySelector('.min-btn').click();
@@ -2871,7 +2887,7 @@ window.closeApp = function(appName, minimizeOnly = false) {
     }
 }
 
-window.openPersonalizePanel = function() {
+window.openPersonalizePanel = function () {
     window.openApp('Settings');
     // We simulate switching to the personalization tab:
     setTimeout(() => {
