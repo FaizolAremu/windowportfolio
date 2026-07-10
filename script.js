@@ -1066,6 +1066,15 @@ document.addEventListener('DOMContentLoaded', () => {
         openWindows[id] = win;
         bringToFront(win);
 
+        // Mobile: force full-screen positioning (CSS handles visual, but set state)
+        const isMobile = () => window.innerWidth <= 767;
+        if (isMobile()) {
+            win.style.left = '0px';
+            win.style.top = '0px';
+            win.style.width = '100vw';
+            win.style.height = 'calc(100vh - 44px)';
+        }
+
         win.addEventListener('mousedown', () => bringToFront(win));
 
         // Button Logic
@@ -1094,7 +1103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 win.style.left = '0px';
                 win.style.top = '0px';
                 win.style.width = '100vw';
-                win.style.height = 'calc(100vh - 50px)'; // 50px taskbar
+                win.style.height = `calc(100vh - ${isMobile() ? 44 : 48}px)`; // responsive taskbar height
                 isMaximized = true;
             } else {
                 win.style.left = preMaxRect.left;
@@ -1137,7 +1146,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const onDragStart = (e) => {
             if (e.target.closest('.window-controls')) return;
-            if (isMaximized) return; 
+            if (isMaximized) return;
+            // Disable drag on mobile — windows are always full-screen
+            if (isMobile()) return; 
             isDragging = true;
             bringToFront(win);
             
@@ -1199,6 +1210,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const onResizeStart = (e, handle) => {
             e.stopPropagation();
             if (isMaximized) return;
+            // Disable resize on mobile
+            if (isMobile()) return;
             isResizing = true;
             currentHandle = handle.className;
             bringToFront(win);

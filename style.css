@@ -4808,3 +4808,883 @@ body.light-mode .browser-result-title {
         overflow-y: visible;
     }
 }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN — Tablet, Mobile & Small Mobile
+   ==========================================================================
+   Breakpoints:
+     • Tablet:       max-width: 1023px
+     • Mobile:       max-width: 767px
+     • Small Mobile: max-width: 480px
+   ========================================================================== */
+
+/* ------------------------------------------------
+   TABLET  (≤ 1023px)
+   ------------------------------------------------ */
+@media (max-width: 1023px) {
+
+    /* Lock Screen */
+    #time-display {
+        font-size: 4.5rem;
+    }
+
+    #date-display {
+        font-size: 1.25rem;
+    }
+
+    /* Login Screen */
+    .avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+    }
+
+    #name-display {
+        font-size: 1.6rem;
+    }
+
+    /* Desktop Icons */
+    .desktop-icons {
+        grid-template-columns: repeat(auto-fill, 75px);
+        grid-template-rows: repeat(auto-fill, 85px);
+    }
+
+    .desktop-icon {
+        width: 75px;
+        height: 85px;
+    }
+
+    .desktop-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Start Menu */
+    #start-menu {
+        width: min(580px, 92vw);
+        padding: 24px;
+    }
+
+    /* System Panels */
+    .sys-panel {
+        width: min(320px, calc(100vw - 20px));
+    }
+
+    #quick-settings-panel {
+        width: min(360px, calc(100vw - 20px));
+    }
+
+    /* App Windows — shrink slightly */
+    .app-window {
+        max-width: 95vw;
+        max-height: calc(100vh - 55px);
+    }
+
+    /* Settings sidebar narrower */
+    .settings-sidebar {
+        width: 220px;
+    }
+
+    /* Skills sidebar narrower */
+    .skills-sidebar {
+        width: 220px;
+    }
+
+    /* Skills grid — single column on tablet */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* About Me dashboard */
+    .about-col-left {
+        width: 220px;
+    }
+
+    /* VS Code sidebar narrower */
+    .vscode-sidebar {
+        width: 170px;
+    }
+
+    /* Projects sidebar */
+    .proj-sidebar {
+        width: 170px;
+        min-width: 170px;
+    }
+
+    /* Contact left panel narrower */
+    .contact-left-panel {
+        width: 200px;
+        min-width: 200px;
+        padding: 24px 16px;
+    }
+}
+
+/* ------------------------------------------------
+   MOBILE  (≤ 767px)
+   ------------------------------------------------ */
+@media (max-width: 767px) {
+
+    /* Lock Screen */
+    #time-display {
+        font-size: 3.5rem;
+    }
+
+    #date-display {
+        font-size: 1.1rem;
+    }
+
+    .lock-info {
+        margin-top: 20vh;
+    }
+
+    .unlock-hint {
+        bottom: 30px;
+        font-size: 0.9rem;
+    }
+
+    /* Login Screen */
+    .avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+
+    #name-display {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+    }
+
+    #password-input {
+        width: 220px;
+        padding: 10px 40px 10px 12px;
+    }
+
+    .login-wrapper {
+        padding: 30px 20px;
+    }
+
+    /* Desktop Icons — vertical flow, 4 columns like a phone home screen */
+    .desktop-icons {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        grid-auto-flow: row;
+        height: calc(100vh - 52px);
+        padding: 15px 10px;
+        gap: 8px;
+        overflow-y: auto;
+        justify-items: center;
+    }
+
+    .desktop-icon {
+        width: 70px;
+        height: 80px;
+    }
+
+    .desktop-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    .desktop-icon span {
+        font-size: 10px;
+    }
+
+    /* Context Menu */
+    .context-menu {
+        width: 200px;
+    }
+
+    /* Taskbar — compact mobile nav */
+    .taskbar {
+        height: 44px;
+        padding: 0 6px;
+    }
+
+    .taskbar-icon {
+        width: 36px;
+        height: 36px;
+        margin: 0 1px;
+    }
+
+    .taskbar-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Hide system tray icons on mobile to save space */
+    .tray-icons {
+        display: none;
+    }
+
+    /* Compact time display */
+    .tray-time {
+        padding: 0 6px;
+        font-size: 11px;
+    }
+
+    #taskbar-date {
+        display: none;
+    }
+
+    /* Start Menu — full-width compact drawer */
+    #start-menu {
+        width: calc(100vw - 16px);
+        left: 50%;
+        bottom: 52px;
+        padding: 20px;
+        border-radius: 12px 12px 0 0;
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    /* Start menu pinned grid — 4 columns on mobile */
+    #start-pinned-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    /* System Panels — full width */
+    .sys-panel {
+        width: calc(100vw - 16px);
+        right: 8px;
+        bottom: 52px;
+    }
+
+    #quick-settings-panel {
+        width: calc(100vw - 16px);
+        right: 8px;
+    }
+
+    /* Calendar panel */
+    #calendar-panel {
+        width: calc(100vw - 16px);
+        right: 8px;
+    }
+
+    /* ---- APP WINDOWS: Force full-screen on mobile ---- */
+    .app-window {
+        width: 100vw !important;
+        height: calc(100vh - 44px) !important;
+        top: 0 !important;
+        left: 0 !important;
+        border-radius: 0 !important;
+        max-width: 100vw !important;
+        max-height: calc(100vh - 44px) !important;
+    }
+
+    /* Hide resize handles on mobile */
+    .resize-handle {
+        display: none !important;
+    }
+
+    /* Hide minimize & maximize buttons on mobile (windows are always fullscreen) */
+    .win-btn.min-btn,
+    .win-btn.max-btn {
+        display: none;
+    }
+
+    /* Window header tighter */
+    .window-header {
+        height: 32px;
+    }
+
+    .window-title {
+        padding-left: 10px;
+        font-size: 12px;
+    }
+
+    .win-btn {
+        width: 40px;
+    }
+
+    /* ---- PROJECTS APP ---- */
+    .proj-sidebar {
+        display: none;
+    }
+
+    .proj-grid {
+        grid-template-columns: 1fr;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .proj-toolbar {
+        padding: 8px 12px;
+    }
+
+    .proj-thumb {
+        height: 100px;
+    }
+
+    /* ---- RESUME APP ---- */
+    .pdf-toolbar {
+        padding: 0 10px;
+        height: 42px;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .pdf-toolbar-left {
+        font-size: 11px;
+    }
+
+    .pdf-toolbar-center {
+        padding: 2px 4px;
+        gap: 6px;
+    }
+
+    .pdf-download-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
+    .pdf-download-btn span {
+        display: none;
+    }
+
+    .pdf-body {
+        padding: 10px 8px;
+    }
+
+    .resume-document {
+        padding: 24px 16px;
+        font-size: 14px;
+    }
+
+    .resume-name {
+        font-size: 1.5rem;
+    }
+
+    .resume-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .resume-links {
+        gap: 8px;
+        font-size: 0.75rem;
+    }
+
+    .resume-section-title {
+        font-size: 0.95rem;
+    }
+
+    .resume-job-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .resume-edu-header {
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .resume-skills-group {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .resume-skills-category {
+        min-width: unset;
+    }
+
+    /* ---- ABOUT ME APP ---- */
+    .about-dashboard {
+        flex-direction: column;
+        padding: 12px;
+        overflow-y: auto;
+    }
+
+    .about-col-left {
+        width: 100%;
+        flex-shrink: unset;
+    }
+
+    .about-col-right {
+        width: 100%;
+    }
+
+    .about-avatar {
+        width: 64px;
+        height: 64px;
+        font-size: 22px;
+    }
+
+    .about-name {
+        font-size: 16px;
+    }
+
+    .about-stat-num {
+        font-size: 20px;
+    }
+
+    .about-tl-role {
+        font-size: 13px;
+    }
+
+    .about-tl-desc li {
+        font-size: 12px;
+    }
+
+    /* ---- SKILLS APP ---- */
+    .skills-sidebar {
+        display: none;
+    }
+
+    .skills-main {
+        padding: 20px 16px;
+    }
+
+    .skills-main-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .skills-search-wrapper {
+        width: 100%;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .skills-card {
+        padding: 12px 14px;
+    }
+
+    .skills-category-title {
+        font-size: 20px;
+    }
+
+    /* ---- SETTINGS APP ---- */
+    .settings-sidebar {
+        display: none;
+    }
+
+    .settings-content {
+        padding: 20px 16px;
+    }
+
+    .settings-page h2 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .settings-control-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 16px;
+    }
+
+    .settings-control-info {
+        padding-right: 0;
+    }
+
+    .settings-control-value.slider-value {
+        width: 100%;
+    }
+
+    .settings-wallpaper-row {
+        padding: 12px 16px;
+    }
+
+    .settings-accent-row {
+        padding: 12px 16px;
+    }
+
+    .about-hero-card {
+        flex-direction: column !important;
+        text-align: center;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    /* ---- VS CODE / ABOUT ME EDITOR ---- */
+    .vscode-activity-bar {
+        display: none;
+    }
+
+    .vscode-sidebar {
+        display: none;
+    }
+
+    .vscode-tab-bar {
+        height: 30px;
+    }
+
+    .vscode-tab {
+        padding: 0 10px;
+        font-size: 11px;
+    }
+
+    .vscode-line-numbers {
+        width: 32px;
+        padding-right: 6px;
+        font-size: 11px;
+    }
+
+    .vscode-code-pre {
+        padding: 10px;
+        font-size: 11px;
+    }
+
+    .vscode-status-bar {
+        font-size: 10px;
+        padding: 0 6px;
+        height: 20px;
+    }
+
+    /* ---- BROWSER APP ---- */
+    .browser-tabs-bar {
+        padding: 4px 4px 0 4px;
+    }
+
+    .browser-tab {
+        font-size: 11px;
+        padding: 4px 10px;
+        min-width: 60px;
+        max-width: 120px;
+    }
+
+    .browser-nav-bar {
+        padding: 6px 8px;
+        gap: 4px;
+    }
+
+    .browser-nav-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+
+    .browser-address-container {
+        padding: 3px 10px;
+    }
+
+    #browser-address-input {
+        font-size: 11px;
+    }
+
+    .browser-home-page {
+        padding: 20px 12px;
+    }
+
+    .browser-search-logo {
+        font-size: 28px;
+    }
+
+    #browser-search-box {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .browser-result-card img {
+        height: 100px;
+    }
+
+    /* ---- TERMINAL APP ---- */
+    .terminal-container {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    /* ---- CONTACT ME APP (extend existing mobile styles) ---- */
+    .contact-layout {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .contact-left-panel {
+        width: 100%;
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 16px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .contact-avatar-container {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 0;
+    }
+
+    .contact-avatar-initials {
+        font-size: 16px;
+    }
+
+    .contact-user-name {
+        font-size: 15px;
+    }
+
+    .contact-user-role {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .contact-divider {
+        display: none;
+    }
+
+    .contact-response-card {
+        display: none;
+    }
+
+    .contact-social-row {
+        display: none;
+    }
+
+    .contact-details-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .contact-detail-row {
+        height: auto;
+        padding: 4px 6px;
+    }
+
+    .contact-right-panel {
+        padding: 16px;
+        overflow-y: visible;
+    }
+
+    .contact-form-header h2 {
+        font-size: 18px;
+    }
+
+    .contact-textarea {
+        height: 100px;
+        min-height: 80px;
+    }
+}
+
+/* ------------------------------------------------
+   SMALL MOBILE  (≤ 480px)
+   ------------------------------------------------ */
+@media (max-width: 480px) {
+
+    /* Lock Screen */
+    #time-display {
+        font-size: 3rem;
+    }
+
+    #date-display {
+        font-size: 1rem;
+    }
+
+    /* Login */
+    .avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+    }
+
+    #name-display {
+        font-size: 1.15rem;
+    }
+
+    #password-input {
+        width: 200px;
+    }
+
+    /* Desktop Icons — 3 columns on very small screens */
+    .desktop-icons {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 10px 8px;
+    }
+
+    .desktop-icon {
+        width: 65px;
+        height: 75px;
+    }
+
+    .desktop-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .desktop-icon span {
+        font-size: 9px;
+    }
+
+    /* Start menu — 3 columns */
+    #start-pinned-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    /* Taskbar — even more compact */
+    .taskbar {
+        height: 42px;
+    }
+
+    .taskbar-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .taskbar-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .tray-time {
+        font-size: 10px;
+    }
+
+    /* App windows adjust for smaller taskbar */
+    .app-window {
+        height: calc(100vh - 42px) !important;
+        max-height: calc(100vh - 42px) !important;
+    }
+
+    /* Resume — tighter */
+    .resume-document {
+        padding: 16px 12px;
+    }
+
+    .resume-name {
+        font-size: 1.3rem;
+    }
+
+    .resume-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* About Me — tighter stats */
+    .about-stat-num {
+        font-size: 18px;
+    }
+
+    .about-card {
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .about-badge {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+
+    /* Skills — tighter */
+    .skills-main {
+        padding: 14px 10px;
+    }
+
+    .skills-category-title {
+        font-size: 18px;
+    }
+
+    .skills-card {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .skills-card-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .skills-card-name {
+        font-size: 13px;
+    }
+
+    /* Settings — tighter */
+    .settings-content {
+        padding: 14px 10px;
+    }
+
+    .settings-page h2 {
+        font-size: 20px;
+    }
+
+    .settings-section-title {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .settings-control-row {
+        padding: 10px 14px;
+    }
+
+    /* Browser — tighter search */
+    .browser-search-logo {
+        font-size: 22px;
+    }
+
+    #browser-search-box {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+
+    #browser-search-btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    /* Terminal */
+    .terminal-container {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    /* Contact — single column detail list */
+    .contact-details-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-left-panel {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* ------------------------------------------------
+   TOUCH DEVICE ENHANCEMENTS
+   ------------------------------------------------ */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger tap targets */
+    .desktop-icon {
+        min-height: 75px;
+    }
+
+    .taskbar-icon {
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    /* Remove hover effects that cause sticky states on touch */
+    .desktop-icon:hover {
+        background: transparent;
+        border-color: transparent;
+    }
+
+    .taskbar-icon:hover {
+        background-color: transparent;
+    }
+
+    .menu-item:hover {
+        background: transparent;
+    }
+
+    /* Make scrollable areas have momentum scrolling */
+    .window-body,
+    .skills-main,
+    .settings-content,
+    .about-dashboard,
+    .terminal-container,
+    .browser-viewport,
+    .contact-right-panel,
+    .proj-grid,
+    .pdf-body {
+        -webkit-overflow-scrolling: touch;
+    }
+}
