@@ -263,6 +263,10 @@ document.addEventListener('DOMContentLoaded', () => {
         loginScreen.classList.add('hidden');
         desktopScreen.classList.remove('hidden');
         
+        // Show taskbar now that we are on the desktop
+        const taskbar = document.getElementById('taskbar');
+        if (taskbar) taskbar.style.display = 'flex';
+        
         // Optional: clear password field
         passwordInput.value = '';
     });
