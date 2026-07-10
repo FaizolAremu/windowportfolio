@@ -905,7 +905,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sleepScreen.style.opacity === '1') {
                 sleepScreen.style.opacity = '0';
                 sleepScreen.style.pointerEvents = 'none';
-                setTimeout(() => sleepScreen.classList.add('hidden'), 500);
+                setTimeout(() => {
+                    sleepScreen.classList.add('hidden');
+                    
+                    // Go to lock screen on wake up
+                    const lockScreen = document.getElementById('lock-screen');
+                    const loginScreen = document.getElementById('login-screen');
+                    const desktopScreen = document.getElementById('desktop-screen');
+                    const taskbar = document.getElementById('taskbar');
+                    
+                    if (desktopScreen) desktopScreen.classList.add('hidden');
+                    if (loginScreen) loginScreen.classList.add('hidden');
+                    if (taskbar) taskbar.style.display = 'none';
+                    if (lockScreen) lockScreen.classList.remove('hidden', 'slide-up');
+                }, 500);
             }
         };
         sleepScreen.addEventListener('click', wakeUp);
@@ -926,6 +939,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show boot screen to simulate restart
             const bootScreen = document.getElementById('boot-screen');
             if (bootScreen) {
+                const taskbar = document.getElementById('taskbar');
+                if (taskbar) taskbar.style.display = 'none';
+                
                 bootScreen.classList.remove('hidden');
                 setTimeout(() => {
                     bootScreen.classList.add('hidden');
@@ -983,10 +999,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lockScreen = document.getElementById('lock-screen');
                 const loginScreen = document.getElementById('login-screen');
                 const desktopScreen = document.getElementById('desktop-screen');
+                const taskbar = document.getElementById('taskbar');
                 
                 if (desktopScreen) desktopScreen.classList.add('hidden');
                 if (lockScreen) lockScreen.classList.remove('slide-up');
                 if (loginScreen) loginScreen.classList.add('hidden');
+                if (taskbar) taskbar.style.display = 'none';
 
                 if (bootScreen) {
                     bootScreen.classList.remove('hidden');
