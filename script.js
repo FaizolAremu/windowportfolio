@@ -159,14 +159,14 @@ const PROJECTS = [
         demo: "https://proxycalculator.netlify.app/",
         repo: "https://github.com/FaizolAremu/Standard-calculator"
     },
-    // {
-    //     title: "CGPA Grading System",
-    //     category: "All Projects",
-    //     tags: ["HTML", "CSS", "JavaScript"],
-    //     description: "A web-based academic grading tool that calculates a student's Cumulative Grade Point Average based on course credits and grades.",
-    //     demo: "https://proxygradingsystem.netlify.app/",
-    //     repo: "https://github.com/FaizolAremu/Grading-system"
-    // }
+    {
+        title: "CGPA Grading System",
+        category: "All Projects",
+        tags: ["HTML", "CSS", "JavaScript"],
+        description: "A web-based academic grading tool that calculates a student's Cumulative Grade Point Average based on course credits and grades.",
+        demo: "https://proxygradingsystem.netlify.app/",
+        repo: "https://github.com/FaizolAremu/Grading-system"
+    }
 ];
 
 /**
