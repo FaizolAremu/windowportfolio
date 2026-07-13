@@ -166,6 +166,15 @@ const PROJECTS = [
         description: "A web-based academic grading tool that calculates a student's Cumulative Grade Point Average based on course credits and grades.",
         demo: "https://proxygradingsystem.netlify.app/",
         repo: "https://github.com/FaizolAremu/Grading-system"
+    },
+    {
+        title: "Cowrywise Clone (Final Project)",
+        category: "All Projects",
+        image: "./projects/Cowrywise/Media/cowrywise-app-screen-home-2025.webp",
+        tags: ["HTML", "CSS", "JavaScript", "Firebase"],
+        description: "My Level 2 Web Development Final Project. A fully functional and interactive clone of the Cowrywise platform, featuring complex layouts, authentication state handling, and dynamic data rendering using Firebase.",
+        demo: "https://proxycowrywiseproject.netlify.app/",
+        repo: "https://github.com/FaizolAremu/Cowry-wise"
     }
 ];
 
