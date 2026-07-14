@@ -174,7 +174,7 @@ const PROJECTS = [
         tags: ["HTML", "CSS", "JavaScript", "Firebase"],
         description: "My Level 2 Web Development Final Project. A fully functional and interactive clone of the Cowrywise platform, featuring complex layouts, authentication state handling, and dynamic data rendering using Firebase.",
         demo: "https://proxycowrywiseproject.netlify.app/",
-        repo: "https://github.com/FaizolAremu/Cowry-wise"
+        repo: "https://github.com/FaizolAremu/Level2-finalproject"
     }
 ];
 
